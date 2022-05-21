@@ -1,0 +1,85 @@
+=std=bcl::util=> Logger was changed to: File with identifier: ./log_files/D4.updated.ready.rand.1x32_005_025/log_merge.txt
+/net/tungsten/hd1/brownbp1/workspace/bcl/build/linux64_release/bin/bcl-apps-static.exe model:ComputeStatistics -message_level Verbose -input ./results/D4.updated.ready.rand.1x32_005_025/independent0-4_monitoring0-4_number0.gz.txt -logger File ./log_files/D4.updated.ready.rand.1x32_005_025/log_merge.txt -opencl Disable -filename_obj_function ./results/D4.updated.ready.rand.1x32_005_025/final_objective.ind_merged.txt -obj_function 'AucRocCurve(cutoff=0.5,parity=1,x_axis_log=1,min fpr=0.001,max fpr=0.1)' 
+BCL v4.1.0, r0, compiled on Mon Nov 22 07:47:50 2021
+=std=bcl=> executing application: model:ComputeStatistics
+=crt=bcl::random=> Seed was set to 5489!
+=crt=bcl::random=> Seed was set to 5489!
+
+========================================================================================================================
+
+BCL FLAGS
+
+-message_level set
+   <level> Verbose
+   <verbosity> Summary (default)
+-logger set
+   <> File
+   <identifier> ./log_files/D4.updated.ready.rand.1x32_005_025/log_merge.txt
+-help not set
+-readme not set
+-file_compressed_alternatives not set
+-file_compression not set
+   <compression_type> Uncompressed (default)
+-enums_files not set
+-random_seed not set
+   <seed> 5489 (default)
+-model_path not set
+   <model_path_name> /net/tungsten/hd1/brownbp1/workspace/bcl/model/ (default)
+-histogram_path not set
+   <path> /net/tungsten/hd1/brownbp1/workspace/bcl/histogram/ (default)
+-opencl set
+   <platform> Disable
+-scheduler not set
+   <scheduler> Serial (default)
+   <number_cpus> 1 (default)
+
+========================================================================================================================
+
+APPLICATION FLAGS
+
+-help not set
+-readme not set
+-input set
+   <filename> ./results/D4.updated.ready.rand.1x32_005_025/independent0-4_monitoring0-4_number0.gz.txt
+-consensus_size_limit not set
+   <consensus_size_limit> 18446744073709551615 (default)
+-table_name not set
+   <table_name> table.txt (default)
+-sort_by not set
+   <sort_by> RMSD (default)
+-plot_x not set
+-plot_log_x not set
+-plot_y not set
+-no_plot not set
+-take_log10 not set
+   <take_log10>  (default)
+-correlation not set
+-potency_cutoff not set
+   <potency_cutoff>  (default)
+-actives_below_cutoff not set
+-output_directory not set
+   <output_directory> ./ (default)
+-obj_function set
+   <obj_function> AucRocCurve(cutoff=0.5,parity=1,x_axis_log=1,min fpr=0.001,max fpr=0.1)
+-filename_obj_function set
+   <filename_obj_function> ./results/D4.updated.ready.rand.1x32_005_025/final_objective.ind_merged.txt
+-image_format not set
+   <format> png (default)
+
+========================================================================================================================
+
+=std=bcl::app=> Output path set to./results/D4.updated.ready.rand.1x32_005_025/
+=std=bcl::model=> weighted auc for result # 0: 0.251665; 503.33 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.240132; 480.265 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.180987; 361.975 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.131442; 262.884 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.138513; 277.026 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.188548; 377.096 x the naive predictor result
+=std=bcl::app=> name: independent0-4_monitoring0-4_number0.gz.txt_col0 RMSD: 0.343007 Enr:4.4932 AUC: 0.856549 Int_FppVsPPV(0.1%,1%): 1.07926 Int_FppVsPPV(0.1%,2%): 1.0179 Int_FppVsPPV(0.1%,3%): 0.989942 Int_FppVsPPV(0%,100%): 0.877958
+=std=bcl::app=> name: independent0-4_monitoring0-4_number0.gz.txt_col1 RMSD: 0.407167 Enr:2.03087 AUC: 0.870009 Int_FppVsPPV(0.1%,1%): 1.10093 Int_FppVsPPV(0.1%,2%): 1.06961 Int_FppVsPPV(0.1%,3%): 1.05419 Int_FppVsPPV(0%,100%): 0.955998
+=std=bcl::app=> name: independent0-4_monitoring0-4_number0.gz.txt_col2 RMSD: 0.377386 Enr:1.45033 AUC: 0.874533 Int_FppVsPPV(0.1%,1%): 1.1136 Int_FppVsPPV(0.1%,2%): 1.07907 Int_FppVsPPV(0.1%,3%): 1.06272 Int_FppVsPPV(0%,100%): 0.969524
+=std=bcl::app=> name: independent0-4_monitoring0-4_number0.gz.txt_col3 RMSD: 0.350724 Enr:1.22092 AUC: 0.868892 Int_FppVsPPV(0.1%,1%): 0.84899 Int_FppVsPPV(0.1%,2%): 0.863986 Int_FppVsPPV(0.1%,3%): 0.871463 Int_FppVsPPV(0%,100%): 0.807754
+=std=bcl::app=> name: independent0-4_monitoring0-4_number0.gz.txt_col4 RMSD: 0.296776 Enr:1.135 AUC: 0.860959 Int_FppVsPPV(0.1%,1%): 1.12448 Int_FppVsPPV(0.1%,2%): 1.08978 Int_FppVsPPV(0.1%,3%): 1.07288 Int_FppVsPPV(0%,100%): 1.14409
+
+========================================================================================================================
+=slt=bcl=> bcl has run for 00:00:15, peak virtual memory used: 118 MB, peak physical RAM used: 57 MB

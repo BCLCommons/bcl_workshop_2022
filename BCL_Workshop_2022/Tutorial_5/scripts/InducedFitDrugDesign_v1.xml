@@ -1,0 +1,288 @@
+<ROSETTASCRIPTS>
+    <SCOREFXNS>
+	        <ScoreFunction name="t14" weights="talaris2014"/>
+	        <ScoreFunction name="t14w" weights="talaris2014">
+                        <Reweight scoretype="coordinate_constraint" weight="1.0"/>
+                </ScoreFunction>
+    </SCOREFXNS>
+    <LIGAND_AREAS>
+        <LigandArea name="docking_sidechain" chain="X" cutoff="6.0" add_nbr_radius="true" all_atom_mode="true" minimize_ligand="10"/>
+        <LigandArea name="final_sidechain" chain="X" cutoff="6.0" add_nbr_radius="true" all_atom_mode="true"/>
+        <LigandArea name="final_backbone" chain="X" cutoff="7.0" add_nbr_radius="false" all_atom_mode="true" Calpha_restraints="0.3"/>
+    </LIGAND_AREAS>
+    
+    <INTERFACE_BUILDERS>
+        <InterfaceBuilder name="side_chain_for_docking" ligand_areas="docking_sidechain"/>
+        <InterfaceBuilder name="side_chain_for_final" ligand_areas="final_sidechain"/>
+        <InterfaceBuilder name="backbone" ligand_areas="final_backbone" extension_window="3"/>
+    </INTERFACE_BUILDERS>
+    
+    <MOVEMAP_BUILDERS>
+        <MoveMapBuilder name="docking" sc_interface="side_chain_for_docking" minimize_water="true"/>
+        <MoveMapBuilder name="final" sc_interface="side_chain_for_final" bb_interface="backbone" minimize_water="true"/>
+    </MOVEMAP_BUILDERS>
+    
+    <SCORINGGRIDS ligand_chain="X" width="30.0">
+        <ClassicGrid grid_name="vdw" weight="1.0" />
+    </SCORINGGRIDS>
+   
+    <RESIDUE_SELECTORS>
+  	<Chain name="ligand" chains="X"/>
+        <Not name="receptor" selector="ligand"/>
+        <Neighborhood name="interface" selector="ligand" distance="4.0"/>
+        <Not name="not_interface" selector="interface"/>
+    </RESIDUE_SELECTORS> 
+ 	<TASKOPERATIONS>
+		<RestrictToRepacking name="rtrp"/>
+		<InitializeFromCommandline name="ifcl" />
+		<OperateOnResidueSubset name="repackonly_ligand" selector="ligand" >
+                        <RestrictToRepackingRLT/>
+                </OperateOnResidueSubset>
+                <OperateOnResidueSubset name="repack_interface" selector="interface" >
+                        <RestrictToRepackingRLT/>
+                </OperateOnResidueSubset>
+                <OperateOnResidueSubset name="fix_notinterface" selector="not_interface" >
+                        <PreventRepackingRLT/>
+                </OperateOnResidueSubset>
+	</TASKOPERATIONS>
+        <SIMPLE_METRICS>
+                <TotalEnergyMetric name="energy" />
+        </SIMPLE_METRICS>
+	<FILTERS>
+		<LigInterfaceEnergy name="ifscore"  scorefxn="t14" include_cstE="0" energy_cutoff="0.0"/>
+		<Rmsd name="rmsd_filter" superimpose="1" threshold="4.0" confidence="1.0"/>
+	</FILTERS>
+        <SIMPLE_METRICS>
+		<InteractionEnergyMetric name="lig_ifscore" force_rescore="true" residue_selector="ligand" residue_selector2="receptor"  scorefxn="t14" />
+        </SIMPLE_METRICS>
+    <MOVERS>
+
+		# Compute protein-ligand interaction energy
+		<RunSimpleMetrics name="ifx" metrics="lig_ifscore" prefix="ligand_" />
+
+		# Constraints
+		<AddConstraintsToCurrentConformationMover name="cst" coord_dev="1.0" CA_only="0" bb_only="1" bound_width="2.0"/>
+		<ClearConstraintsMover name="uncst"/>
+		<AtomCoordinateCstMover name="relax_cst" coord_dev="1.0" bounded="false" bound_width="0" 
+		sidechain="true" native="false" func_groups="false"/>
+
+		# Relax
+                <VirtualRoot name="root" removable="1" />
+                <VirtualRoot name="remove" remove="1" />
+		<FastRelax name="relax"  scorefxn="t14w" ramp_down_constraints="false" 
+		repeats="1" task_operations="rtrp,repack_interface,fix_notinterface"/>
+		<ParsedProtocol name="relax_cycle">
+                        <Add mover_name="root"/>
+                        <Add mover_name="relax_cst"/>
+                        <Add mover_name="relax"/>
+                        <Add mover_name="remove"/>
+                        <Add mover_name="uncst"/>
+                </ParsedProtocol>
+
+		# Minimize
+		<MinMover name="min"  scorefxn="t14w" chi="true" bb="true" cartesian="false" type="lbfgs_armijo_nonmonotone"/>
+		<ParsedProtocol name="min_cycle">
+                        <Add mover_name="cst"/>
+                        <Add mover_name="min"/>
+                        <Add mover_name="uncst"/>
+                </ParsedProtocol>	
+		
+		##########################################################################################################
+		#					Start BCL Drug Design Movers					 #
+		##########################################################################################################
+
+		# Common Type I and II TKI design moves
+
+		# Type I TKI design moves
+               <BCLFragmentMutateMover name="t1_ewl" 
+		ligand_chain="X" 
+		object_data_label="ExtendWithLinker(
+		ov_reverse=True,ov_shuffle_h=False,
+		ring_library=%%rotamer_library%%/ring_libraries/drug_ring_database.simple.aro.small.sdf.gz, 
+		extend_within_prob=0.0,direct_link_prob=100000,
+		druglikeness_type=IsConstitutionDruglike,
+		mutable_atoms=18)"
+		/>
+
+		<BCLFragmentMutateMover name="t1_ewl_internal" 
+		ligand_chain="X" 
+		object_data_label="ExtendWithLinker(
+		ring_library=%%rotamer_library%%/ring_libraries/drug_ring_database.simple.aro.small.sdf.gz, 
+		extend_within_prob=1.0,single_element_link_prob=100000,
+		N_prob=1000,O_prob=1000,
+		druglikeness_type=IsConstitutionDruglike,
+		mutable_atoms=8 10)"
+		/>		
+
+		<BCLFragmentMutateMover name="t1_am" 
+		ligand_chain="X" 
+		object_data_label="AddMedChem(
+		medchem_library=%%medchem_fragments%%/chains.sdf.gz, 
+		druglikeness_type=IsConstitutionDruglike,
+		mutable_fragments=%%mutfrag%%,
+		complement_mutable_fragments=1,
+		fixed_elements=H N O)"
+		/>
+
+		<BCLFragmentMutateMover name="t1_h_c" 
+		ligand_chain="X" 
+		object_data_label="Halogenate(
+		druglikeness_type=IsConstitutionDruglike,
+		mutable_atoms=11 12 13 14 15,
+		reversible=1,
+		allowed_halogens=F Cl)"
+		/>
+		
+		<BCLFragmentMutateMover name="t1_a_c" 
+		ligand_chain="X" 
+		object_data_label="Alchemy(
+		druglikeness_type=IsConstitutionDruglike,
+		mutable_atoms=11 12 13 14 15,
+		allowed_elements=C,
+		restrict_to_bonded_h=1)"
+		/>
+		
+		<BCLFragmentMutateMover name="t1_rs" 
+		ligand_chain="X" 
+		object_data_label="RingSwap(
+		ring_library=%%rotamer_library%%/ring_libraries/drug_ring_database.simple.aro.sdf.gz, 
+		druglikeness_type=IsConstitutionDruglike,conservative=False,restricted=True,
+		scaffold_mol=%%mutfrag%%,
+		atom comparison=ElementType,
+		bond comparison=BondOrderOrAromaticWithRingness,
+		mutable_atoms=11,fix_geometry=True,refine_alignment=False,
+		ring_initiation_probability=0.0)"
+		/>
+		
+		# Alchemy can be used as a dummy mutate when doing random combinations
+		<BCLFragmentMutateMover name="t1_a_control" 
+		ligand_chain="X" 
+		object_data_label="Alchemy(
+		druglikeness_type=IsConstitutionDruglike,
+		mutable_elements=H,
+		allowed_elements=H
+		)"
+		/>
+		
+		<BCLFragmentMutateMover name="t1_a" 
+		ligand_chain="X" 
+		object_data_label="Alchemy(
+		druglikeness_type=IsConstitutionDruglike,
+		mutable_atoms=18,
+		allowed_elements=N O)"
+		/> 
+
+		<RandomMover name="decorate_core" movers="t1_h_c,t1_a_c" weights="0.5,0.5" repeats="2"/>  
+		<RandomMover name="decorate_new" movers="t1_am,t1_a_control" weights="0.25,0.75" repeats="1"/>
+		<RandomMover name="perturb_scaffold" movers="t1_ewl_internal,t1_rs,t1_a_control" weights="0.05,0.25,0.7" repeats="1"/>
+		<RandomMover name="core_mod" movers="perturb_scaffold,decorate_core" weights="0.25,0.75" repeats="1"/>
+		
+		<ParsedProtocol name="design_t1" mode="sequence">
+			<Add mover_name="t1_ewl"/>
+			<Add mover_name="decorate_new"/>
+			<Add mover_name="core_mod"/>
+                </ParsedProtocol>              
+
+		# Type II TKI design moves
+		
+		<BCLFragmentMutateMover name="t2_ewl" 
+		ligand_chain="X" 
+		object_data_label="ExtendWithLinker(
+		ring_library=%%rotamer_library%%/ring_libraries/individual_rings/000.sdf.gz, 
+		extend_within_prob=0.0,amide_link_prob=100000,amide_n_attach_prob=0.5,
+		druglikeness_type=IsConstitutionDruglike,
+		mutable_atoms=14)"
+		/>
+
+		<BCLFragmentMutateMover name="t2_am" 
+		ligand_chain="X" 
+		object_data_label="AddMedChem(
+		medchem_library=%%medchem_fragments%%/hydrophobic_pocket_fragments.sdf.gz, 
+		druglikeness_type=IsConstitutionDruglike,
+		mutable_fragments=%%mutfrag%%,
+		complement_mutable_fragments=1,
+		fixed_elements=H N O)"
+		/>
+
+		<BCLFragmentMutateMover name="t2_a" 
+		ligand_chain="X" 
+		object_data_label="Alchemy(
+		druglikeness_type=IsConstitutionDruglike,
+		mutable_atoms=18,
+		allowed_elements=N O)"
+		/>
+		
+		<BCLFragmentMutateMover name="add_c" 
+		ligand_chain="X" 
+		object_data_label="Alchemy(
+		druglikeness_type=IsConstitutionDruglike,
+		allowed_elements=C,restrict_to_bonded_h=true,
+		mutable_atoms=14)"
+		/>
+		
+		<BCLFragmentMutateMover name="t2_ewl_with_c" 
+		ligand_chain="X" 
+		object_data_label="ExtendWithLinker(
+		ring_library=%%rotamer_library%%/ring_libraries/individual_rings/000.sdf.gz, 
+		extend_within_prob=0.0,amide_link_prob=100000,amide_n_attach_prob=0.5,
+		druglikeness_type=IsConstitutionDruglike,
+		mutable_fragments=%%mutfrag%%,
+		complement_mutable_fragments=1,
+		fixed_elements=H N O)"
+		/>
+		
+		<ParsedProtocol name="t2_ewl_extended" mode="sequence">
+			<Add mover_name="add_c"/>
+			<Add mover_name="t2_ewl_with_c"/>
+                </ParsedProtocol>
+                
+                <RandomMover name="t2_ewl_rand" movers="t2_ewl,t2_ewl_extended" weights="0.9,0.1"/>
+
+		<ParsedProtocol name="design_t2" mode="sequence">
+			<Add mover_name="t2_ewl_rand"/>
+			<Add mover_name="t2_am"/>
+			<Add mover_name="decorate_core"/>
+			<Add mover_name="t2_a"/>
+                </ParsedProtocol>
+
+		# Select a design sequence
+                <RandomMover name="design_t1-2" movers="design_t2,design_t1" weights="0.5,0.5"/>
+
+		# BCL mutate MCM optimization
+	        <GenericMonteCarlo name="bcl_gmc" mover_name="design_t1-2" scorefxn_name="t14w"
+		trials="20" sample_type="low" 
+		temperature="1.0" drift="0" recover_low="1" reset_baselines="0" 
+		adaptive_movers="0" preapply="0" />
+
+		##########################################################################################################
+		#					End BCL Drug Design Movers					 #
+		##########################################################################################################
+
+	# Low resoluteon docking
+        <Transform name="transform" chain="X" box_size="6.0" move_distance="0.2" angle="2.0" cycles="500" repeats="1" temperature="%%temp%%" initial_perturb="0.0" initial_angle_perturb="0.0" ensemble_proteins="%%confs_list%%" use_main_model="false" />
+
+	# High resolution docking
+        <HighResDocker name="high_res_docker" cycles="12" repack_every_Nth="3" scorefxn="t14" movemap_builder="docking"/>
+
+	# Scoring
+        <InterfaceScoreCalculator name="add_scores" chains="X" scorefxn="t14" compute_grid_scores="0"/>
+
+        <ParsedProtocol name="low_res_dock">
+            <Add mover_name="transform"/>
+        </ParsedProtocol>
+        
+        <ParsedProtocol name="high_res_dock">
+		<Add mover_name="relax_cycle"/>
+		<Add mover_name="high_res_docker"/>
+		<Add mover_name="min_cycle"/>
+        </ParsedProtocol>
+    </MOVERS>
+    <PROTOCOLS>
+	<Add mover_name="min_cycle"/>
+        <Add mover_name="design_t%%tki_type%%"/>
+        <Add mover_name="low_res_dock"/>
+        <Add mover_name="high_res_dock"/>
+	<Add mover_name="ifx"/>
+	<Add mover_name="add_scores"/>
+    </PROTOCOLS>
+</ROSETTASCRIPTS>

@@ -1,0 +1,411 @@
+<ROSETTASCRIPTS>
+    	<SCOREFXNS>
+		<ScoreFunction name="t14" weights="talaris2014"/>
+		<ScoreFunction name="t14w" weights="talaris2014">
+			<Reweight scoretype="coordinate_constraint" weight="1.0"/>
+		</ScoreFunction>
+    	</SCOREFXNS>
+        <RESIDUE_SELECTORS>
+                <Chain name="ligand" chains="X"/>
+                <Not name="receptor" selector="ligand"/> #Note: this selects the entire receptor
+                <Neighborhood name="interface" selector="ligand" distance="6"/> #Note: this selects the ligand AND surrounding residues
+                <Not name="not_interface" selector="interface"/> #Note: this selects only the parts of the protein far from the interface
+        </RESIDUE_SELECTORS>
+	<TASKOPERATIONS>
+                # Turn off design but allow repacking
+		<RestrictToRepacking name="rtrp"/>
+		# Include rotamer options from the command line
+		<InitializeFromCommandline name="ifcl" />
+	    	# Repack interface
+		<OperateOnResidueSubset name="repackonly_ligand" selector="ligand" >
+                        <RestrictToRepackingRLT/>
+                </OperateOnResidueSubset>
+                <OperateOnResidueSubset name="repack_interface" selector="interface" >
+                        <RestrictToRepackingRLT/>
+                </OperateOnResidueSubset>
+                <OperateOnResidueSubset name="fix_notinterface" selector="not_interface" >
+                        <PreventRepackingRLT/>
+                </OperateOnResidueSubset>
+	</TASKOPERATIONS>
+	<FILTERS>
+	
+		# TARGET #
+		
+		# D4 interaction energy filters
+		<LigInterfaceEnergy name="d4_ifscore" scorefxn="t14" include_cstE="0" energy_cutoff="0.0"/>
+		<IfThenFilter name="d4_ifscore_bounded" threshold="0">
+    			<IF testfilter="d4_ifscore" valuefilter="d4_ifscore"/>
+    			<ELSE value="0.0"/>
+		</IfThenFilter>
+		<ReadPoseExtraScoreFilter name="read_d4_ifx" term_name="d4_ifx" threshold="0.0"/>
+		
+		# OFF-TARGETs #
+		
+		# D2 interaction energy filters
+		<LigInterfaceEnergy name="d2_ifscore" scorefxn="t14" include_cstE="0" energy_cutoff="0.0"/>
+		<IfThenFilter name="d2_ifscore_bounded" threshold="0">
+    			<IF testfilter="d2_ifscore" valuefilter="d2_ifscore"/>
+    			<ELSE value="0.0"/>
+		</IfThenFilter>	
+                <ReadPoseExtraScoreFilter name="read_d2_ifx" term_name="d2_ifx" threshold="0.0"/>
+
+		# D3 interaction energy filters
+		<LigInterfaceEnergy name="d3_ifscore" scorefxn="t14" include_cstE="0" energy_cutoff="0.0"/>
+		<IfThenFilter name="d3_ifscore_bounded" threshold="0">
+    			<IF testfilter="d2_ifscore" valuefilter="d3_ifscore"/>
+    			<ELSE value="0.0"/>
+		</IfThenFilter>	
+                <ReadPoseExtraScoreFilter name="read_d3_ifx" term_name="d3_ifx" threshold="0.0"/>                
+
+		# D5 interaction energy filters
+		<LigInterfaceEnergy name="d5_ifscore" scorefxn="t14" include_cstE="0" energy_cutoff="0.0"/>
+		<IfThenFilter name="d5_ifscore_bounded" threshold="0">
+    			<IF testfilter="d5_ifscore" valuefilter="d5_ifscore"/>
+    			<ELSE value="0.0"/>
+		</IfThenFilter>	
+                <ReadPoseExtraScoreFilter name="read_d5_ifx" term_name="d5_ifx" threshold="0.0"/>                
+
+		# Selectivity filters
+		<CalculatorFilter name="d4-d2_ifx" threshold="10.0" equation="E1-E2" >
+      			<Var name="E1" filter="read_d4_ifx" />
+      			<Var name="E2" filter="read_d2_ifx" />
+		</CalculatorFilter>
+		<CalculatorFilter name="d4-d3_ifx" threshold="10.0" equation="E1-E2" >
+      			<Var name="E1" filter="read_d4_ifx" />
+      			<Var name="E2" filter="read_d3_ifx" />
+		</CalculatorFilter>
+		<CalculatorFilter name="d4-d5_ifx" threshold="10.0" equation="E1-E2" >
+      			<Var name="E1" filter="read_d4_ifx" />
+      			<Var name="E2" filter="read_d5_ifx" />
+		</CalculatorFilter>
+		<CalculatorFilter name="boltz_selectivity" threshold="10.0" 
+		equation="t1=exp(-E1/kT); t2=exp(-E2/kT); t3=exp(-E3/kT); t4=exp(-E4/kT); t1/( t1 + t2 + t3 + t4)"
+		>
+			<Var name="E1" filter="read_d4_ifx" />
+			<Var name="E2" filter="read_d2_ifx" />
+			<Var name="E3" filter="read_d3_ifx" />
+			<Var name="E4" filter="read_d5_ifx" />
+			<Var name="kT" value="0.596" />
+		</CalculatorFilter>
+	</FILTERS>
+        <SIMPLE_METRICS>
+		<InteractionEnergyMetric name="lig_ifscore" force_rescore="true" residue_selector="ligand" residue_selector2="receptor" scorefxn="t14" />
+        </SIMPLE_METRICS>
+	<MOVERS>
+		# Scoring movers
+		<FilterReportAsPoseExtraScoresMover name="save_d4_ifx" report_as="d4_ifx" filter_name="d4_ifscore_bounded"/>
+		<FilterReportAsPoseExtraScoresMover name="save_d2_ifx" report_as="d2_ifx" filter_name="d2_ifscore_bounded"/>
+		<FilterReportAsPoseExtraScoresMover name="save_d3_ifx" report_as="d3_ifx" filter_name="d3_ifscore_bounded"/>
+		<FilterReportAsPoseExtraScoresMover name="save_d5_ifx" report_as="d5_ifx" filter_name="d5_ifscore_bounded"/>
+		
+		# Movie mover
+		<PDBTrajectoryRecorder name="write_pdb" stride="1" filename="%%prefix%%track.pdb" cumulate_replicas="0" cumulate_jobs="1"/>
+		<PDBTrajectoryRecorder name="write_pdb_d4" stride="1" filename="%%prefix%%D4.pdb" cumulate_replicas="0" cumulate_jobs="0"/>
+		<PDBTrajectoryRecorder name="write_pdb_d2" stride="1" filename="%%prefix%%D2.pdb" cumulate_replicas="0" cumulate_jobs="0"/>
+		<PDBTrajectoryRecorder name="write_pdb_d3" stride="1" filename="%%prefix%%D3.pdb" cumulate_replicas="0" cumulate_jobs="0"/>
+		<PDBTrajectoryRecorder name="write_pdb_d5" stride="1" filename="%%prefix%%D5.pdb" cumulate_replicas="0" cumulate_jobs="0"/>
+
+		# Track poses
+		<SavePoseMover name="save_d4_wt" restore_pose="0" reference_name="d4_wt" />	
+		<SavePoseMover name="load_d4_wt" restore_pose="1" reference_name="d4_wt" />	
+		<SavePoseMover name="save_d4_d2like" restore_pose="0" reference_name="d4_d2like" />	
+		<SavePoseMover name="load_d4_d2like" restore_pose="1" reference_name="d4_d2like" />
+		<SavePoseMover name="save_d4_d3like" restore_pose="0" reference_name="d4_d3like" />	
+		<SavePoseMover name="load_d4_d3like" restore_pose="1" reference_name="d4_d3like" />
+		<SavePoseMover name="save_d4_d5like" restore_pose="0" reference_name="d4_d5like" />	
+		<SavePoseMover name="load_d4_d5like" restore_pose="1" reference_name="d4_d5like" />
+
+		# Write out final poses of D4 and D2-like moves
+                <ParsedProtocol name="retrieve_final_poses" mode="sequence">
+                        <Add mover_name="load_d4_wt"/>
+                        <Add mover_name="write_pdb_d4"/>
+                        <Add mover_name="load_d4_d2like"/>
+                        <Add mover_name="write_pdb_d2"/>
+                        <Add mover_name="load_d4_d3like"/>
+                        <Add mover_name="write_pdb_d3"/>
+                        <Add mover_name="load_d4_d5like"/>
+                        <Add mover_name="write_pdb_d5"/>
+                </ParsedProtocol>
+
+		# Score poses
+		<RunSimpleMetrics name="run_d4_metrics" metrics="lig_ifscore" prefix="d4_ifx_" />
+		<RunSimpleMetrics name="run_d2_metrics" metrics="lig_ifscore" prefix="d2_ifx_" />
+		<RunSimpleMetrics name="run_d3_metrics" metrics="lig_ifscore" prefix="d3_ifx_" />
+		<RunSimpleMetrics name="run_d5_metrics" metrics="lig_ifscore" prefix="d5_ifx_" />
+		<InterfaceScoreCalculator name="add_scores" chains="X" scorefxn="t14" compute_grid_scores="0" />
+	
+		# Constraint movers
+        	<AddConstraintsToCurrentConformationMover name="cst" coord_dev="1.0" CA_only="0" bb_only="1"/>
+		<ClearConstraintsMover name="uncst"/>
+		<AtomCoordinateCstMover name="relax_cst" coord_dev="1.0" bounded="false" bound_width="0" 
+		sidechain="true" native="false" func_groups="false"/>
+	
+		# Minimization movers
+		<MinMover name="min_soft_initial" scorefxn="t14w" chi="true" bb="true" cartesian="false"/>
+		<ParsedProtocol name="min_cycle_soft_initial">
+                        <Add mover_name="cst"/>
+                        <Add mover_name="min_soft_initial"/>
+                        <Add mover_name="uncst"/>
+                </ParsedProtocol>	
+                
+		# Relax movers
+		<VirtualRoot name="root" removable="1" />
+		<VirtualRoot name="remove" remove="1" />
+		<FastRelax name="relax"  scorefxn="t14w" ramp_down_constraints="false" repeats="1" task_operations="rtrp,repack_interface,fix_notinterface"/>
+		<ParsedProtocol name="relax_cycle">
+			<Add mover_name="root"/>
+			<Add mover_name="relax_cst"/>
+			<Add mover_name="relax"/>
+			<Add mover_name="remove"/>
+			<Add mover_name="uncst"/>
+		</ParsedProtocol>
+	
+		# Design movers
+		<SimpleThreadingMover name="design_d4" pack_neighbors="true"
+        	neighbor_dis="4.0" start_position="1" thread_sequence="%%d4_seq%%" 
+		scorefxn="t14" skip_unknown_mutant="false" pack_rounds="5" />	
+		<SimpleThreadingMover name="design_d2" pack_neighbors="true"
+        	neighbor_dis="4.0" start_position="1" thread_sequence="%%d2_seq%%" 
+		scorefxn="t14" skip_unknown_mutant="false" pack_rounds="5" />
+		<SimpleThreadingMover name="design_d3" pack_neighbors="true"
+        	neighbor_dis="4.0" start_position="1" thread_sequence="%%d3_seq%%" 
+		scorefxn="t14" skip_unknown_mutant="false" pack_rounds="5" />
+		<SimpleThreadingMover name="design_d5" pack_neighbors="true"
+        	neighbor_dis="4.0" start_position="1" thread_sequence="%%d5_seq%%" 
+		scorefxn="t14" skip_unknown_mutant="false" pack_rounds="5" />
+		
+		# Off-target scoring cycle movers
+                <ParsedProtocol name="score_off_targets" mode="sequence">
+                	<Add mover_name="design_d2"/>
+        	        <Add mover_name="relax_cycle"/>
+        	        <Add mover_name="save_d2_ifx"/>
+			<Add mover_name="save_d4_d2like"/>
+                	<Add mover_name="design_d3"/>
+        	        <Add mover_name="relax_cycle"/>
+        	        <Add mover_name="save_d3_ifx"/>
+			<Add mover_name="save_d4_d3like"/>
+                	<Add mover_name="design_d5"/>
+        	        <Add mover_name="relax_cycle"/>
+        	        <Add mover_name="save_d5_ifx"/>
+			<Add mover_name="save_d4_d5like"/>
+                </ParsedProtocol>
+	
+		#########################################################################
+		#			BCL drug design movers			          #
+		#########################################################################
+		
+		# Extend outward from the starting scaffold (i.e. grow the scaffold)
+		<BCLFragmentMutateMover name="extend_with_linker" 
+		ligand_chain="X" 
+		object_data_label="ExtendWithLinker(
+		ring_library=%%rotamer_library%%/ring_libraries/drug_ring_database.simple.aro.sdf.gz, 
+		direct_link_prob=10000000,extend_within_prob=0.0,
+		druglikeness_type=IsConstitutionDruglike,
+		mutable_atoms=16 17 18 19 20 21)"
+		/>
+
+		<BCLFragmentMutateMover name="add_medchem_east" 
+		ligand_chain="X" 
+		object_data_label="AddMedChem(
+		medchem_library=%%rotamer_library%%/medchem_fragments/bcl_buildfrag_0.sdf.gz, 
+		druglikeness_type=IsConstitutionDruglike,
+		mutable_atoms=16 17 18 19 20 21)"
+		/>
+
+		<BCLFragmentMutateMover name="add_medchem_west" 
+		ligand_chain="X" 
+		object_data_label="AddMedChem(
+		medchem_library=%%rotamer_library%%/medchem_fragments/bcl_buildfrag_0.sdf.gz, 
+		druglikeness_type=IsConstitutionDruglike,
+		mutable_atoms=0 1 2 3 5 6 7 8)"
+		/>
+
+		<BCLFragmentMutateMover name="alchemy" 
+		ligand_chain="X" 
+		object_data_label="Alchemy(
+		allowed_elements=C O H,restrict_to_bonded_h=true,
+		druglikeness_type=IsConstitutionDruglike,
+		mutable_atoms=0 1 2 3 4 5 6 7 8)"
+		/>
+
+                <RandomMover name="bcl_rand_grow_east"
+                movers="add_medchem_east,extend_with_linker"
+                weights="0.50,0.50"
+                />
+
+                <RandomMover name="bcl_rand_grow_west"
+                movers="add_medchem_west,alchemy"
+                weights="0.50,0.50"
+                />
+
+		# Scaffold hopping
+		<BCLFragmentMutateMover name="ringswap" 
+		ligand_chain="X" 
+		object_data_label="RingSwap(
+		ring_library=%%rotamer_library%%/ring_libraries/drug_ring_database.simple.aro.sdf.gz, 
+		druglikeness_type=IsConstitutionDruglike,conservative=true,
+		mutable_atoms=16 17 18 19 20 21,
+		ring_initiation_probability=0.0)"
+		/>
+
+		<BCLFragmentMutateMover name="ringswap_conservative_aro_east" 
+		ligand_chain="X" 
+		object_data_label="RingSwap(
+		ring_library=%%rotamer_library%%/ring_libraries/drug_ring_database.simple.aro.sdf.gz, 
+		druglikeness_type=IsConstitutionDruglike,conservative=true,
+		mutable_atoms=16 17 18 19 20 21,
+		ring_initiation_probability=0.0)"
+		/>
+
+		<BCLFragmentMutateMover name="ringswap_conservative_aro_west" 
+		ligand_chain="X" 
+		object_data_label="RingSwap(
+		ring_library=%%rotamer_library%%/ring_libraries/drug_ring_database.simple.aro.sdf.gz, 
+		druglikeness_type=IsConstitutionDruglike,conservative=true,
+		mutable_atoms=0 1 2 3 4 5 6 7 8,
+		ring_initiation_probability=0.0)"
+		/>
+
+		<BCLFragmentMutateMover name="ringswap_conservative_core" 
+		ligand_chain="X" 
+		object_data_label="RingSwap(
+		ring_library=%%rings%%,
+		ring_initiation_probability=0.0,restricted=0,conservative=1,
+		refine_alignment=1,
+		atom_comparison=CouldHaveSubstituents,
+		bond_comparison=BondOrderWithIsometryOrAromatic,
+		druglikeness_type=IsConstitutionDruglike,
+		n_max_attempts=50,
+		mutable_atoms=15)"
+		/>
+
+		<BCLFragmentMutateMover name="alchemy_core" 
+		ligand_chain="X" 
+		object_data_label="Alchemy(
+		allowed_elements=C O,restrict_to_bonded_h=false,
+		druglikeness_type=IsConstitutionDruglike,
+		mutable_atoms=10 11 12 13 14 15)"
+		/>
+
+		# Optimize halogenation of the rings with MCM sampling
+		<BCLFragmentMutateMover name="halogenate_east" 
+		ligand_chain="X" 
+		object_data_label="Halogenate(
+		druglikeness_type=IsConstitutionDruglike,
+		reversible=true,
+		allowed_halogens=F Cl Br,
+		mutable_atoms=16 17 18 19 20 21)" 
+		/>
+
+		<BCLFragmentMutateMover name="halogenate_west" 
+		ligand_chain="X" 
+		object_data_label="Halogenate(
+		druglikeness_type=IsConstitutionDruglike,
+		reversible=true,
+		allowed_halogens=F Cl Br,
+		mutable_atoms=0 1 5 8)" 
+		/>
+		
+                <ParsedProtocol name="halogenate_east_cycle" mode="sequence">
+                	<Add mover_name="design_d4"/>
+		        <Add mover_name="halogenate_east"/>
+        	        <Add mover_name="relax_cycle"/>
+        	        <Add mover_name="save_d4_ifx"/>
+			<Add mover_name="save_d4_wt"/>
+                	<Add mover_name="score_off_targets"/>
+                </ParsedProtocol>
+
+                <ParsedProtocol name="halogenate_west_cycle" mode="sequence">
+                	<Add mover_name="design_d4"/>
+		        <Add mover_name="halogenate_west"/>
+        	        <Add mover_name="relax_cycle"/>
+        	        <Add mover_name="save_d4_ifx"/>
+			<Add mover_name="save_d4_wt"/>
+                	<Add mover_name="score_off_targets"/>
+                </ParsedProtocol>
+
+	        <GenericMonteCarlo name="gmc_halogenate_east" mover_name="halogenate_east_cycle"
+		trials="10" sample_type="low" filter_name="d4-d2_ifx"
+		temperature="0.6" drift="1" recover_low="1" reset_baselines="0" 
+		adaptive_movers="0" preapply="1" />
+
+	        <GenericMonteCarlo name="gmc_halogenate_west" mover_name="halogenate_west_cycle"
+		trials="10" sample_type="low" filter_name="d4-d2_ifx"
+		temperature="0.6" drift="1" recover_low="1" reset_baselines="0" 
+		adaptive_movers="0" preapply="1" />
+
+                <ParsedProtocol name="bcl_swap_core" mode="sequence">
+                	<Add mover_name="design_d4"/>
+		        <Add mover_name="ringswap_conservative_core"/>
+        	        <Add mover_name="relax_cycle"/>
+        	        <Add mover_name="save_d4_ifx"/>
+			<Add mover_name="save_d4_wt"/>
+                	<Add mover_name="score_off_targets"/>
+                </ParsedProtocol>
+
+                <ParsedProtocol name="bcl_swap_east" mode="sequence">
+                	<Add mover_name="design_d4"/>
+		        <Add mover_name="ringswap_conservative_aro_east"/>
+        	        <Add mover_name="relax_cycle"/>
+        	        <Add mover_name="save_d4_ifx"/>
+			<Add mover_name="save_d4_wt"/>
+                	<Add mover_name="score_off_targets"/>
+                </ParsedProtocol>
+
+                <ParsedProtocol name="bcl_swap_west" mode="sequence">
+                	<Add mover_name="design_d4"/>
+		        <Add mover_name="ringswap_conservative_aro_west"/>
+        	        <Add mover_name="relax_cycle"/>
+        	        <Add mover_name="save_d4_ifx"/>
+			<Add mover_name="save_d4_wt"/>
+                	<Add mover_name="score_off_targets"/>
+                </ParsedProtocol>
+
+                <RandomMover name="bcl_opti_helper_east"
+                movers="bcl_rand_grow_east,halogenate_east"
+                weights="0.5,0.5"
+                />
+
+                <RandomMover name="bcl_opti_helper_west"
+                movers="bcl_rand_grow_west,halogenate_west"
+                weights="0.5,0.5"
+                />
+
+                <ParsedProtocol name="bcl_opti" mode="sequence">
+                	<Add mover_name="design_d4"/>
+		        <Add mover_name="bcl_opti_helper_west"/>
+		        <Add mover_name="bcl_opti_helper_east"/>
+        	        <Add mover_name="relax_cycle"/>
+        	        <Add mover_name="save_d4_ifx"/>
+			<Add mover_name="save_d4_wt"/>
+                	<Add mover_name="score_off_targets"/>
+                </ParsedProtocol>
+
+                <RandomMover name="bcl_design"
+                movers="bcl_swap_core,bcl_swap_east,bcl_swap_west,bcl_opti"
+                weights="0.25,0.25,0.25,0.25"
+                />
+
+		<ParsedProtocol name="score_only" mode="sequence">
+                	<Add mover_name="design_d4"/>
+        	        <Add mover_name="relax_cycle"/>
+        	        <Add mover_name="save_d4_ifx"/>
+			<Add mover_name="save_d4_wt"/>
+                	<Add mover_name="score_off_targets"/>
+                </ParsedProtocol>
+
+	</MOVERS>
+	<APPLY_TO_POSE>
+	</APPLY_TO_POSE>
+	<PROTOCOLS>
+		<Add mover_name="min_cycle_soft_initial"/>
+		<Add mover_name="bcl_design"/>
+		Add mover_name="score_only"/>
+        	<Add filter_name="d4-d2_ifx"/>
+        	<Add filter_name="d4-d3_ifx"/>
+        	<Add filter_name="d4-d5_ifx"/>
+        	<Add filter_name="boltz_selectivity"/>
+        	<Add mover_name="retrieve_final_poses"/>
+	</PROTOCOLS>
+	<OUTPUT />
+</ROSETTASCRIPTS>

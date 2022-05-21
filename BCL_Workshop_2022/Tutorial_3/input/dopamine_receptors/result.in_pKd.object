@@ -1,0 +1,1 @@
+Combine(GreaterEqual(lhs=DRD4_pKi,rhs=8.0),GreaterEqual(lhs=DRD4_pKi,rhs=7.0),GreaterEqual(lhs=DRD4_pKi,rhs=6.3),GreaterEqual(lhs=DRD4_pKi,rhs=6.0),GreaterEqual(lhs=DRD4_pKi,rhs=5.3))

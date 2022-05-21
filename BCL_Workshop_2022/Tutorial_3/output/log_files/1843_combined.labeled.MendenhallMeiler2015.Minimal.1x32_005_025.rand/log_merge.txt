@@ -1,0 +1,77 @@
+=std=bcl::util=> Logger was changed to: File with identifier: ./log_files/1834_combined.labeled.MendenhallMeiler2015.Minimal.1x32_005_025.rand/log_merge.txt
+/net/tungsten/hd1/brownbp1/workspace/bcl/build/linux64_release/bin/bcl-apps-static.exe model:ComputeStatistics -message_level Verbose -input ./results/1834_combined.labeled.MendenhallMeiler2015.Minimal.1x32_005_025.rand/independent0-4_monitoring0-4_number0.gz.txt -logger File ./log_files/1834_combined.labeled.MendenhallMeiler2015.Minimal.1x32_005_025.rand/log_merge.txt -opencl Disable -filename_obj_function ./results/1834_combined.labeled.MendenhallMeiler2015.Minimal.1x32_005_025.rand/final_objective.ind_merged.txt -obj_function 'AucRocCurve(cutoff=0.5,parity=1,x_axis_log=1,min fpr=0.001,max fpr=0.1)' 
+BCL v4.1.0, r0, compiled on Fri Dec 24 20:58:35 2021
+=std=bcl=> executing application: model:ComputeStatistics
+=crt=bcl::random=> Seed was set to 5489!
+=crt=bcl::random=> Seed was set to 5489!
+
+========================================================================================================================
+
+BCL FLAGS
+
+-message_level set
+   <level> Verbose
+   <verbosity> Summary (default)
+-logger set
+   <> File
+   <identifier> ./log_files/1834_combined.labeled.MendenhallMeiler2015.Minimal.1x32_005_025.rand/log_merge.txt
+-help not set
+-readme not set
+-file_compressed_alternatives not set
+-file_compression not set
+   <compression_type> Uncompressed (default)
+-enums_files not set
+-random_seed not set
+   <seed> 5489 (default)
+-model_path not set
+   <model_path_name> /net/tungsten/hd1/brownbp1/workspace/bcl/model/ (default)
+-histogram_path not set
+   <path> /net/tungsten/hd1/brownbp1/workspace/bcl/histogram/ (default)
+-opencl set
+   <platform> Disable
+-scheduler not set
+   <scheduler> Serial (default)
+   <number_cpus> 1 (default)
+
+========================================================================================================================
+
+APPLICATION FLAGS
+
+-help not set
+-readme not set
+-input set
+   <filename> ./results/1834_combined.labeled.MendenhallMeiler2015.Minimal.1x32_005_025.rand/independent0-4_monitoring0-4_number0.gz.txt
+-consensus_size_limit not set
+   <consensus_size_limit> 18446744073709551615 (default)
+-table_name not set
+   <table_name> table.txt (default)
+-sort_by not set
+   <sort_by> RMSD (default)
+-plot_x not set
+-plot_log_x not set
+-plot_y not set
+-no_plot not set
+-take_log10 not set
+   <take_log10>  (default)
+-correlation not set
+-potency_cutoff not set
+   <potency_cutoff>  (default)
+-actives_below_cutoff not set
+-output_directory not set
+   <output_directory> ./ (default)
+-obj_function set
+   <obj_function> AucRocCurve(cutoff=0.5,parity=1,x_axis_log=1,min fpr=0.001,max fpr=0.1)
+-filename_obj_function set
+   <filename_obj_function> ./results/1834_combined.labeled.MendenhallMeiler2015.Minimal.1x32_005_025.rand/final_objective.ind_merged.txt
+-image_format not set
+   <format> png (default)
+
+========================================================================================================================
+
+=std=bcl::app=> Output path set to./results/1834_combined.labeled.MendenhallMeiler2015.Minimal.1x32_005_025.rand/
+=std=bcl::model=> weighted auc for result # 0: 0.43805; 876.1 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.43805; 876.1 x the naive predictor result
+=std=bcl::app=> name: independent0-4_monitoring0-4_number0.gz.txt RMSD: 0.0587158 Enr:26.6328 AUC: 0.849404 Int_FppVsPPV(0.1%,1%): 0.290664 Int_FppVsPPV(0.1%,2%): 0.29996 Int_FppVsPPV(0.1%,3%): 0.303668 Int_FppVsPPV(0%,100%): 0.212758
+
+========================================================================================================================
+=slt=bcl=> bcl has run for 00:00:10, peak virtual memory used: 195 MB, peak physical RAM used: 132 MB

@@ -1,0 +1,88 @@
+=std=bcl::util=> Logger was changed to: File with identifier: amide_product.acid_first.log
+/home/ben/workspace/bcl/build/linux64_release/bin/bcl-apps-static.exe molecule:Mutate -input_filenames acid.sdf -output amide_product.acid_first.sdf -implementation 'AddMedChem(medchem_library=amine.sdf,mutable_elements=X)' -logger File amide_product.acid_first.log 
+BCL v4.2.0, r0, compiled on Thu Jan  6 10:36:55 2022
+=std=bcl=> executing application: molecule:Mutate
+=crt=bcl::random=> Seed was set to 5489!
+=crt=bcl::random=> Seed was set to 5489!
+
+========================================================================================================================
+
+BCL FLAGS
+
+-message_level not set
+   <level> Standard (default)
+   <verbosity> Summary (default)
+-logger set
+   <> File
+   <identifier> amide_product.acid_first.log
+-help not set
+-readme not set
+-file_compressed_alternatives not set
+-file_compression not set
+   <compression_type> Uncompressed (default)
+-enums_files not set
+-random_seed not set
+   <seed> 5489 (default)
+-model_path not set
+   <model_path_name> /home/ben/workspace/bcl/model/ (default)
+-histogram_path not set
+   <path> /home/ben/workspace/bcl/histogram/ (default)
+-opencl not set
+   <platform> Disable (default)
+-scheduler not set
+   <scheduler> Serial (default)
+   <number_cpus> 1 (default)
+
+========================================================================================================================
+
+APPLICATION FLAGS
+
+-help not set
+-readme not set
+-input_filenames set
+   <filenames> acid.sdf
+-input_start not set
+   <start> 0 (default)
+-input_max not set
+   <number> 18446744073709551615 (default)
+-add_h not set
+-remove_h not set
+-neutralize not set
+   <method> BondOrderAndpH (default)
+-explicit_aromaticity not set
+-implementation set
+   <mutate> AddMedChem(medchem_library=amine.sdf,mutable_elements=X)
+-mutable_atoms not set
+-accumulate not set
+-recenter not set
+-output set
+   <output> amide_product.acid_first.sdf
+
+========================================================================================================================
+
+=std=bcl::chemistry=> AddMedChem!
+=std=bcl::chemistry=> Skipping drug-likeness filter!
+=std=bcl::chemistry=> Getting atom indices for conformer sampling...
+=std=bcl::chemistry=> SampleByParts with the following atom indices: 0 11 12 13 14 15 16 17 18 19 20 21 22 23 24 
+=std=bcl::chemistry=> Generating single conformer
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 12
+=std=bcl::chemistry=> Found 4 rotatable bonds, 1 flexible rings, 7 changeable bond angles; 
+
+========================================================================================================================
+=slt=bcl=> bcl has run for 00:00:03, peak virtual memory used: 1293 MB, peak physical RAM used: 1200 MB
+=std=bcl::util=> vdw score time has run for 0.00016 seconds
+=std=bcl::util=> ConformationComparison has run for 0.003672 seconds
+=std=bcl::util=> Clash resolution (not counting clash scoring) has run for 0.050103 seconds
+=std=bcl::util=>   AtomClashScore ClashComputation has run for 0.046747 seconds
+=std=bcl::util=> Sampling Total has run for 0.681487 seconds
+=std=bcl::util=> bond_length_sampling has run for 0.003273 seconds
+=std=bcl::util=> bond_angle_setup has run for 0.063781 seconds
+=std=bcl::util=> bond_angles_sampling_for_ring_bonds has run for 0.039475 seconds
+=std=bcl::util=> bond_angle_sampling_for_3-4_bonded_atoms has run for 0.01316 seconds
+=std=bcl::util=> bond_angle_sampling_for_2_bonded_atoms has run for 0.002511 seconds
+=std=bcl::util=> do_rotate_bond has run for 0.005471 seconds
+=std=bcl::util=> create_transformation_matrix has run for 0.013788 seconds
+=std=bcl::util=> mutate_chain has run for 0.185439 seconds
+=std=bcl::util=> mutate_ring has run for 0.163809 seconds
+=std=bcl::util=> MapFragmentIsomorphisms has run for 0.907948 seconds
+=std=bcl::util=> FindFrags has run for 0.04709 seconds

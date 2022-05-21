@@ -1,0 +1,3 @@
+SEQUENCE: 
+SCORE: total_score boltz_selectivity            d2_ifx            d3_ifx d4-d2_ifx d4-d3_ifx d4-d5_ifx    d4_ifx    d5_ifx dslf_fa13    fa_atr    fa_dun   fa_elec fa_intra_rep       fa_rep       fa_sol hbond_bb_sc hbond_lr_bb    hbond_sc hbond_sr_bb       omega     p_aa_pp pro_close      rama       ref yhh_planarity description 
+SCORE:    -383.901             0.820           -15.111           -16.518    -2.552    -1.145    -1.687   -17.663   -15.976    -2.008 -1315.062   287.046  -119.457        2.348      124.353      708.369     -12.198      -5.600     -19.685    -138.187      57.031     -25.530     3.294    -7.109    78.355         0.138 output/469_vs_002/002_t14_d4.469.receptor_002_0001.fa_0001

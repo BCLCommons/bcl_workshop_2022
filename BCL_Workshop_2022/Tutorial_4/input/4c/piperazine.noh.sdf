@@ -1,0 +1,20 @@
+piperazine
+  PyMOL2.3          3D                             0
+
+  6  6  0  0  0  0  0  0  0  0999 V2000
+    1.0862    0.1858   -0.9903 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.2829    0.6961   -0.2533 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.0862   -0.1857    0.9903 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.2830   -0.6960    0.2534 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.3575    0.2458   -1.3197 N   0  0  0  0  0  0  0  0  0  0  0  0
+    0.3575   -0.2458    1.3198 N   0  0  0  0  0  0  0  0  0  0  0  0
+  1  4  1  0  0  0  0
+  1  5  1  0  0  0  0
+  2  3  1  0  0  0  0
+  2  5  1  0  0  0  0
+  3  6  1  0  0  0  0
+  4  6  1  0  0  0  0
+M  BCL ATM C_TeTeTeTe C_TeTeTeTe C_TeTeTeTe C_TeTeTeTe N_Te2TeTeTe N_Te2TeTeTe
+M  BCL BND NonConjugatedSingleBondInRing NonConjugatedSingleBondInRing NonConjugatedSingleBondInRing NonConjugatedSingleBondInRing NonConjugatedSingleBondInRing NonConjugatedSingleBondInRing
+M  END
+$$$$

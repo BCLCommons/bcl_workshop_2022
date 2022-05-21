@@ -1,0 +1,1 @@
+bash scripts/ChemoGeneticsDesign.gmc.sh scripts/ChemoGeneticsDesign.gmc.xml BRD2.pdb XYZ.pdb XYZ.params resfiles/pocket.resfile output/GMC_POCKET_ > output/GMC_POCKET_.log &

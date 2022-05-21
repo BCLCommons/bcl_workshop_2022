@@ -1,0 +1,16 @@
+## Sample BRD2 BD2 conserved L383 (41 in Rosetta numbering); the first residue in the PIKAA list corresponds to native
+NATAA
+USE_INPUT_SC
+start
+28 A PIKAA WFYLV
+30 A PIKAA FYWLV
+34 A PIKAA VLA
+39 A PIKAA LVA
+41 A PIKAA LVA
+44 A PIKAA YFWLV
+86 A PIKAA YFWLV
+87 A PIKAA NQDES
+83 A PIKAA CMS
+91 A PIKAA HNQ
+93 A PIKAA VLA
+96 A PIKAA MSC

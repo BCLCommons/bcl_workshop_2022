@@ -1,0 +1,2120 @@
+=std=bcl::util=> Logger was changed to: File with identifier: ./log_files/D4.updated.ready.rand.250_iter.1x32_005_025/independent2_monitoring2_number0.txt
+/home/ben/workspace/bcl/build/linux64_release/bin/bcl-apps-static.exe model:Train 'NeuralNetwork( transfer function = Sigmoid, weight update = Simple(alpha=0.5,eta=0.05),dropout(0.05,0.25),objective function = AucRocCurve(cutoff=0.5,parity=1,x_axis_log=1,min fpr=0.001,max fpr=0.1),scaling=AveStd,steps per update=1,hidden architecture(32),balance=True,balance target ratio=0.1,shuffle=True,input dropout type=Zero)' -max_minutes 24000 -max_iterations 250 -opencl Disable --result_averaging_window 0 -random_seed 1396072662 -final_objective_function 'AucRocCurve(cutoff=0.5,parity=1,x_axis_log=1,min fpr=0.001,max fpr=0.1)' -training 'Subset(number chunks=5,chunks="[0, 5) - [2] - [2]",filename="../input/dopamine_receptors/D4.updated.ready.rand.bin") ' -monitoring 'Subset(number chunks=5,chunks="[2]",filename="../input/dopamine_receptors/D4.updated.ready.rand.bin") ' -independent 'Subset(number chunks=5,chunks="[2]",filename="../input/dopamine_receptors/D4.updated.ready.rand.bin") ' --print_independent_predictions ./results/D4.updated.ready.rand.250_iter.1x32_005_025/independent2_monitoring2_number0.gz -storage_model 'File(directory=./models/D4.updated.ready.rand.250_iter.1x32_005_025,prefix="model",write_descriptors=1,key=2)' -logger File ./log_files/D4.updated.ready.rand.250_iter.1x32_005_025/independent2_monitoring2_number0.txt 
+BCL v4.1.0, r0, compiled on Mon Nov  8 09:34:06 2021
+=std=bcl=> executing application: model:Train
+=crt=bcl::random=> Seed was set to 5489!
+=crt=bcl::random=> Seed was set to 1396072662!
+
+========================================================================================================================
+
+PARAMETERS
+
+- set
+   <iterator> NeuralNetwork( transfer function = Sigmoid, weight update = Simple(alpha=0.5,eta=0.05),dropout(0.05,0.25),objective function = AucRocCurve(cutoff=0.5,parity=1,x_axis_log=1,min fpr=0.001,max fpr=0.1),scaling=AveStd,steps per update=1,hidden architecture(32),balance=True,balance target ratio=0.1,shuffle=True,input dropout type=Zero)
+
+========================================================================================================================
+
+BCL FLAGS
+
+-message_level not set
+   <level> Standard (default)
+   <verbosity> Summary (default)
+-logger set
+   <> File
+   <identifier> ./log_files/D4.updated.ready.rand.250_iter.1x32_005_025/independent2_monitoring2_number0.txt
+-help not set
+-readme not set
+-file_compressed_alternatives not set
+-file_compression not set
+   <compression_type> Uncompressed (default)
+-enums_files not set
+-random_seed set
+   <seed> 1396072662
+-model_path not set
+   <model_path_name> /home/ben/workspace/bcl/model/ (default)
+-histogram_path not set
+   <path> /home/ben/workspace/bcl/histogram/ (default)
+-opencl set
+   <platform> Disable
+-scheduler not set
+   <scheduler> Serial (default)
+   <number_cpus> 1 (default)
+
+========================================================================================================================
+
+APPLICATION FLAGS
+
+-help not set
+-readme not set
+-suppress_progress_output not set
+-max_minutes set
+   <minutes> 24000
+-max_iterations set
+   <iterations> 250
+-max_unimproved_iterations not set
+   <iterations> 18446744073709551615 (default)
+-result_averaging_window set
+   <window_size> 0
+-final_objective_function set
+   <> AucRocCurve(cutoff=0.5,parity=1,x_axis_log=1,min fpr=0.001,max fpr=0.1)
+-continued_training not set
+   <file_name>  (default)
+-continue not set
+   <file_name>  (default)
+-training set
+   <> Subset(number chunks=5,chunks="[0, 5) - [2] - [2]",filename="../input/dopamine_receptors/D4.updated.ready.rand.bin") 
+-monitoring set
+   <> Subset(number chunks=5,chunks="[2]",filename="../input/dopamine_receptors/D4.updated.ready.rand.bin") 
+-independent set
+   <> Subset(number chunks=5,chunks="[2]",filename="../input/dopamine_receptors/D4.updated.ready.rand.bin") 
+-feature_labels not set
+   <feature_labels>  (default)
+-result_labels not set
+   <result_labels>  (default)
+-id_labels not set
+   <id_labels>  (default)
+-print_training_predictions not set
+   <output_filename> training_pred.txt (default)
+-print_monitoring_predictions not set
+   <output_filename> monitor_pred.txt (default)
+-print_independent_predictions set
+   <output_filename> ./results/D4.updated.ready.rand.250_iter.1x32_005_025/independent2_monitoring2_number0.gz
+-storage_model set
+   <model_storage> File(directory=./models/D4.updated.ready.rand.250_iter.1x32_005_025,prefix="model",write_descriptors=1,key=2)
+-storage_descriptor_selection not set
+   <storage> File (default)
+
+========================================================================================================================
+
+=std=bcl::model=> # features: 3149 feature size: 1490 result size: 5 feature result size of data superset: 1495
+=std=bcl::model=> result columns: 1490 - 1494
+=std=bcl::model=> # features: 3149 feature size: 1490 result size: 5 feature result size of data superset: 1495
+=std=bcl::model=> result columns: 1490 - 1494
+=std=bcl::app=> Created independent data set with 630 points
+Created monitoring data set with 630 points
+Created training data set with 2519 points
+=std=bcl::app=> 
+Number of descriptor values: 1490
+Number of result values:  5
+=std=bcl::app=> constructing datasets finished total: 0 [sec]
+=std=bcl::model=> Found 6 classes of training points. Counts per class: 741 461 323 470 244 280 .  Class Binary IDs: 01111 11111 00000 00111 00011 00001 
+=std=bcl::model=> Setting up training data with 2519 points
+=std=bcl::model=> Set up data set ranges with # threads: 1
+=std=bcl::model=> Set up data set ranges with # ranges: 2519
+=std=bcl::model=> Set up data set ranges for updating every nth feature: 1
+=std=bcl::model=> std: 0.0259064
+=std=bcl::model=> std: 0.176777
+=std=bcl::model=> Training relative RMSD for iteration 0: 0.139628
+=std=bcl::model=> weighted auc for result # 0: 0.0545852; 109.17 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.0627641; 125.528 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.0726976; 145.395 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.106786; 213.572 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.126882; 253.765 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.0847431; 169.486 x the naive predictor result
+=crt=bcl::opti=> Iteration: 1 improved Result: 0.0847431 Best: 0.0847431
+=std=bcl::model=> Training relative RMSD for iteration 1: 0.128065
+=std=bcl::model=> weighted auc for result # 0: 0.0701673; 140.335 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.102055; 204.11 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.14522; 290.44 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.131009; 262.018 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.119498; 238.996 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.11359; 227.18 x the naive predictor result
+=crt=bcl::opti=> Iteration: 2 improved Result: 0.11359 Best: 0.11359
+=std=bcl::model=> Training relative RMSD for iteration 2: 0.122288
+=std=bcl::model=> weighted auc for result # 0: 0.0751931; 150.386 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.110086; 220.171 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.146078; 292.155 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.143217; 286.434 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0834508; 166.902 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.111605; 223.21 x the naive predictor result
+=crt=bcl::opti=> Iteration: 3 improved Result: 0.111605 Best: 0.111605
+=std=bcl::model=> Training relative RMSD for iteration 3: 0.118249
+=std=bcl::model=> weighted auc for result # 0: 0.0969632; 193.926 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.122281; 244.562 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.173384; 346.769 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.150073; 300.147 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0925696; 185.139 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.127054; 254.109 x the naive predictor result
+=crt=bcl::opti=> Iteration: 4 improved Result: 0.127054 Best: 0.127054
+=std=bcl::model=> Training relative RMSD for iteration 4: 0.115062
+=std=bcl::model=> weighted auc for result # 0: 0.0748525; 149.705 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.108405; 216.81 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.144424; 288.847 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.134092; 268.185 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0663724; 132.745 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.105629; 211.258 x the naive predictor result
+=crt=bcl::opti=> Iteration: 5 improved Result: 0.105629 Best: 0.105629
+=std=bcl::model=> Training relative RMSD for iteration 5: 0.11319
+=std=bcl::model=> weighted auc for result # 0: 0.0942423; 188.485 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.139868; 279.737 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.125235; 250.469 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.125298; 250.597 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0756202; 151.24 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.112053; 224.106 x the naive predictor result
+=crt=bcl::opti=> Iteration: 6 improved Result: 0.112053 Best: 0.112053
+=std=bcl::model=> Training relative RMSD for iteration 6: 0.11092
+=std=bcl::model=> weighted auc for result # 0: 0.114446; 228.892 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.148425; 296.85 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.177454; 354.908 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.130218; 260.436 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0690062; 138.012 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.12791; 255.82 x the naive predictor result
+=crt=bcl::opti=> Iteration: 7 improved Result: 0.12791 Best: 0.12791
+=std=bcl::model=> Training relative RMSD for iteration 7: 0.109225
+=std=bcl::model=> weighted auc for result # 0: 0.10917; 218.341 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.164167; 328.334 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.147193; 294.386 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.143913; 287.825 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0988673; 197.735 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.132662; 265.324 x the naive predictor result
+=crt=bcl::opti=> Iteration: 8 improved Result: 0.132662 Best: 0.132662
+=std=bcl::model=> Training relative RMSD for iteration 8: 0.106911
+=std=bcl::model=> weighted auc for result # 0: 0.104947; 209.893 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.141345; 282.69 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.136935; 273.87 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.128471; 256.942 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.081424; 162.848 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.118624; 237.249 x the naive predictor result
+=crt=bcl::opti=> Iteration: 9 improved Result: 0.118624 Best: 0.118624
+=std=bcl::model=> Training relative RMSD for iteration 9: 0.106639
+=std=bcl::model=> weighted auc for result # 0: 0.100543; 201.086 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.145259; 290.519 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.133588; 267.175 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.116293; 232.586 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0609121; 121.824 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.111319; 222.638 x the naive predictor result
+=crt=bcl::opti=> Iteration: 10 improved Result: 0.111319 Best: 0.111319
+=std=bcl::model=> Training relative RMSD for iteration 10: 0.103743
+=std=bcl::model=> weighted auc for result # 0: 0.139138; 278.277 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.18028; 360.559 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.132956; 265.911 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.121268; 242.536 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0683464; 136.693 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.128398; 256.795 x the naive predictor result
+=crt=bcl::opti=> Iteration: 11 improved Result: 0.128398 Best: 0.128398
+=std=bcl::model=> Training relative RMSD for iteration 11: 0.103188
+=std=bcl::model=> weighted auc for result # 0: 0.116009; 232.018 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.164556; 329.112 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.146019; 292.038 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.134807; 269.614 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0683484; 136.697 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.125948; 251.896 x the naive predictor result
+=crt=bcl::opti=> Iteration: 12 improved Result: 0.125948 Best: 0.125948
+=std=bcl::model=> Training relative RMSD for iteration 12: 0.101304
+=std=bcl::model=> weighted auc for result # 0: 0.113288; 226.576 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.173658; 347.315 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.119838; 239.676 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.120418; 240.835 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0649453; 129.891 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.118429; 236.859 x the naive predictor result
+=crt=bcl::opti=> Iteration: 13 improved Result: 0.118429 Best: 0.118429
+=std=bcl::model=> Training relative RMSD for iteration 13: 0.10092
+=std=bcl::model=> weighted auc for result # 0: 0.123449; 246.897 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.156103; 312.207 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.153155; 306.31 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.127611; 255.223 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0707166; 141.433 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.126207; 252.414 x the naive predictor result
+=crt=bcl::opti=> Iteration: 14 improved Result: 0.126207 Best: 0.126207
+=std=bcl::model=> Training relative RMSD for iteration 14: 0.0998337
+=std=bcl::model=> weighted auc for result # 0: 0.124601; 249.202 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.179931; 359.862 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.134329; 268.659 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.120307; 240.613 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0748724; 149.745 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.126808; 253.616 x the naive predictor result
+=crt=bcl::opti=> Iteration: 15 improved Result: 0.126808 Best: 0.126808
+=std=bcl::model=> Training relative RMSD for iteration 15: 0.0992893
+=std=bcl::model=> weighted auc for result # 0: 0.131559; 263.118 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.170183; 340.367 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.134044; 268.088 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.130758; 261.516 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0811376; 162.275 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.129536; 259.073 x the naive predictor result
+=crt=bcl::opti=> Iteration: 16 improved Result: 0.129536 Best: 0.129536
+=std=bcl::model=> Training relative RMSD for iteration 16: 0.0978388
+=std=bcl::model=> weighted auc for result # 0: 0.135292; 270.584 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.174202; 348.403 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.12384; 247.68 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.0975796; 195.159 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.057739; 115.478 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.117731; 235.461 x the naive predictor result
+=crt=bcl::opti=> Iteration: 17 improved Result: 0.117731 Best: 0.117731
+=std=bcl::model=> Training relative RMSD for iteration 17: 0.0964805
+=std=bcl::model=> weighted auc for result # 0: 0.13559; 271.18 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.196315; 392.629 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.156697; 313.394 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.134032; 268.064 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0744168; 148.834 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.13941; 278.82 x the naive predictor result
+=crt=bcl::opti=> Iteration: 18 improved Result: 0.13941 Best: 0.13941
+=std=bcl::model=> Training relative RMSD for iteration 18: 0.0957238
+=std=bcl::model=> weighted auc for result # 0: 0.137887; 275.774 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.195629; 391.258 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.132208; 264.416 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.129018; 258.037 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.067217; 134.434 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.132392; 264.784 x the naive predictor result
+=crt=bcl::opti=> Iteration: 19 improved Result: 0.132392 Best: 0.132392
+=std=bcl::model=> Training relative RMSD for iteration 19: 0.0953083
+=std=bcl::model=> weighted auc for result # 0: 0.135377; 270.753 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.198973; 397.946 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.154663; 309.327 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.135828; 271.656 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0678479; 135.696 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.138538; 277.076 x the naive predictor result
+=crt=bcl::opti=> Iteration: 20 improved Result: 0.138538 Best: 0.138538
+=std=bcl::model=> Training relative RMSD for iteration 20: 0.094258
+=std=bcl::model=> weighted auc for result # 0: 0.139153; 278.307 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.189148; 378.295 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.151404; 302.808 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.143986; 287.973 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0803888; 160.778 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.140816; 281.632 x the naive predictor result
+=crt=bcl::opti=> Iteration: 21 improved Result: 0.140816 Best: 0.140816
+=std=bcl::model=> Training relative RMSD for iteration 21: 0.0925055
+=std=bcl::model=> weighted auc for result # 0: 0.143923; 287.846 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.202362; 404.725 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.154161; 308.322 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.132768; 265.536 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0592932; 118.586 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.138501; 277.003 x the naive predictor result
+=crt=bcl::opti=> Iteration: 22 improved Result: 0.138501 Best: 0.138501
+=std=bcl::model=> Training relative RMSD for iteration 22: 0.0927369
+=std=bcl::model=> weighted auc for result # 0: 0.135458; 270.915 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.197137; 394.274 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.1476; 295.199 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.133692; 267.384 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0721354; 144.271 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.137204; 274.409 x the naive predictor result
+=crt=bcl::opti=> Iteration: 23 improved Result: 0.137204 Best: 0.137204
+=std=bcl::model=> Training relative RMSD for iteration 23: 0.0924973
+=std=bcl::model=> weighted auc for result # 0: 0.153178; 306.357 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.214516; 429.031 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.157326; 314.652 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.142115; 284.23 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0678362; 135.672 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.146994; 293.989 x the naive predictor result
+=crt=bcl::opti=> Iteration: 24 improved Result: 0.146994 Best: 0.146994
+=std=bcl::model=> Training relative RMSD for iteration 24: 0.0910495
+=std=bcl::model=> weighted auc for result # 0: 0.158044; 316.088 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.202287; 404.575 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.143375; 286.751 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.139161; 278.323 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0782238; 156.448 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.144218; 288.437 x the naive predictor result
+=crt=bcl::opti=> Iteration: 25 improved Result: 0.144218 Best: 0.144218
+=std=bcl::model=> Training relative RMSD for iteration 25: 0.091522
+=std=bcl::model=> weighted auc for result # 0: 0.124331; 248.662 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.208601; 417.202 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.155504; 311.008 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.136043; 272.086 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0663442; 132.688 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.138165; 276.329 x the naive predictor result
+=crt=bcl::opti=> Iteration: 26 improved Result: 0.138165 Best: 0.138165
+=std=bcl::model=> Training relative RMSD for iteration 26: 0.0905327
+=std=bcl::model=> weighted auc for result # 0: 0.161911; 323.821 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.223676; 447.351 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.156751; 313.501 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.155681; 311.361 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0735488; 147.098 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.154313; 308.627 x the naive predictor result
+=crt=bcl::opti=> Iteration: 27 improved Result: 0.154313 Best: 0.154313
+=std=bcl::model=> Training relative RMSD for iteration 27: 0.0907172
+=std=bcl::model=> weighted auc for result # 0: 0.14296; 285.921 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.223758; 447.516 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.144476; 288.952 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.144455; 288.911 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0655122; 131.024 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.144232; 288.465 x the naive predictor result
+=crt=bcl::opti=> Iteration: 28 improved Result: 0.144232 Best: 0.144232
+=std=bcl::model=> Training relative RMSD for iteration 28: 0.0898017
+=std=bcl::model=> weighted auc for result # 0: 0.131991; 263.982 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.219011; 438.022 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.144059; 288.118 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.136773; 273.545 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0582035; 116.407 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.138007; 276.015 x the naive predictor result
+=crt=bcl::opti=> Iteration: 29 improved Result: 0.138007 Best: 0.138007
+=std=bcl::model=> Training relative RMSD for iteration 29: 0.0897652
+=std=bcl::model=> weighted auc for result # 0: 0.156513; 313.025 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.212697; 425.395 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.13247; 264.941 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.131664; 263.327 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0648369; 129.674 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.139636; 279.272 x the naive predictor result
+=crt=bcl::opti=> Iteration: 30 improved Result: 0.139636 Best: 0.139636
+=std=bcl::model=> Training relative RMSD for iteration 30: 0.0880272
+=std=bcl::model=> weighted auc for result # 0: 0.149925; 299.851 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.207245; 414.49 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.159464; 318.928 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.157103; 314.207 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0586487; 117.297 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.146477; 292.955 x the naive predictor result
+=crt=bcl::opti=> Iteration: 31 improved Result: 0.146477 Best: 0.146477
+=std=bcl::model=> Training relative RMSD for iteration 31: 0.0876398
+=std=bcl::model=> weighted auc for result # 0: 0.141237; 282.473 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.193755; 387.51 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.150521; 301.043 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.130972; 261.944 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0620543; 124.109 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.135708; 271.416 x the naive predictor result
+=crt=bcl::opti=> Iteration: 32 improved Result: 0.135708 Best: 0.135708
+=std=bcl::model=> Training relative RMSD for iteration 32: 0.0872012
+=std=bcl::model=> weighted auc for result # 0: 0.172366; 344.733 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.199947; 399.894 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.153068; 306.136 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.14048; 280.96 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0657946; 131.589 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.146331; 292.662 x the naive predictor result
+=crt=bcl::opti=> Iteration: 33 improved Result: 0.146331 Best: 0.146331
+=std=bcl::model=> Training relative RMSD for iteration 33: 0.0867775
+=std=bcl::model=> weighted auc for result # 0: 0.174886; 349.771 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.193651; 387.302 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.151241; 302.483 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.142949; 285.898 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0637164; 127.433 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.145289; 290.577 x the naive predictor result
+=crt=bcl::opti=> Iteration: 34 improved Result: 0.145289 Best: 0.145289
+=std=bcl::model=> Training relative RMSD for iteration 34: 0.0869375
+=std=bcl::model=> weighted auc for result # 0: 0.162691; 325.381 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.223108; 446.216 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.151398; 302.795 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.149758; 299.515 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.07301; 146.02 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.151993; 303.986 x the naive predictor result
+=crt=bcl::opti=> Iteration: 35 improved Result: 0.151993 Best: 0.151993
+=std=bcl::model=> Training relative RMSD for iteration 35: 0.0875446
+=std=bcl::model=> weighted auc for result # 0: 0.153592; 307.185 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.236608; 473.215 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.159936; 319.872 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.148058; 296.116 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0682222; 136.444 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.153283; 306.566 x the naive predictor result
+=crt=bcl::opti=> Iteration: 36 improved Result: 0.153283 Best: 0.153283
+=std=bcl::model=> Training relative RMSD for iteration 36: 0.0862483
+=std=bcl::model=> weighted auc for result # 0: 0.164397; 328.793 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.210782; 421.563 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.152792; 305.584 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.142241; 284.483 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0627832; 125.566 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.146599; 293.198 x the naive predictor result
+=crt=bcl::opti=> Iteration: 37 improved Result: 0.146599 Best: 0.146599
+=std=bcl::model=> Training relative RMSD for iteration 37: 0.0855348
+=std=bcl::model=> weighted auc for result # 0: 0.164111; 328.223 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.235428; 470.855 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.151283; 302.567 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.146768; 293.537 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0677169; 135.434 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.153062; 306.123 x the naive predictor result
+=crt=bcl::opti=> Iteration: 38 improved Result: 0.153062 Best: 0.153062
+=std=bcl::model=> Training relative RMSD for iteration 38: 0.0860122
+=std=bcl::model=> weighted auc for result # 0: 0.166709; 333.418 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.225581; 451.162 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.128909; 257.818 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.138628; 277.256 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0678606; 135.721 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.145537; 291.075 x the naive predictor result
+=crt=bcl::opti=> Iteration: 39 improved Result: 0.145537 Best: 0.145537
+=std=bcl::model=> Training relative RMSD for iteration 39: 0.0852783
+=std=bcl::model=> weighted auc for result # 0: 0.16813; 336.261 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.212287; 424.573 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.160103; 320.206 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.137521; 275.043 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0537972; 107.594 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.146368; 292.735 x the naive predictor result
+=crt=bcl::opti=> Iteration: 40 improved Result: 0.146368 Best: 0.146368
+=std=bcl::model=> Training relative RMSD for iteration 40: 0.0853076
+=std=bcl::model=> weighted auc for result # 0: 0.163918; 327.835 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.218558; 437.116 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.159366; 318.732 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.147705; 295.41 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0556396; 111.279 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.149037; 298.074 x the naive predictor result
+=crt=bcl::opti=> Iteration: 41 improved Result: 0.149037 Best: 0.149037
+=std=bcl::model=> Training relative RMSD for iteration 41: 0.0841919
+=std=bcl::model=> weighted auc for result # 0: 0.163291; 326.582 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.233336; 466.672 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.164512; 329.025 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.146837; 293.673 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0649913; 129.983 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.154593; 309.187 x the naive predictor result
+=crt=bcl::opti=> Iteration: 42 improved Result: 0.154593 Best: 0.154593
+=std=bcl::model=> Training relative RMSD for iteration 42: 0.0843621
+=std=bcl::model=> weighted auc for result # 0: 0.159749; 319.497 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.216164; 432.329 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.165072; 330.145 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.149218; 298.436 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0737877; 147.575 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.152798; 305.596 x the naive predictor result
+=crt=bcl::opti=> Iteration: 43 improved Result: 0.152798 Best: 0.152798
+=std=bcl::model=> Training relative RMSD for iteration 43: 0.0853098
+=std=bcl::model=> weighted auc for result # 0: 0.176056; 352.113 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.220261; 440.522 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.159546; 319.092 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.14323; 286.461 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0681726; 136.345 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.153453; 306.907 x the naive predictor result
+=crt=bcl::opti=> Iteration: 44 improved Result: 0.153453 Best: 0.153453
+=std=bcl::model=> Training relative RMSD for iteration 44: 0.0837487
+=std=bcl::model=> weighted auc for result # 0: 0.154933; 309.866 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.234; 468.001 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.182682; 365.363 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.165941; 331.883 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0621619; 124.324 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.159944; 319.887 x the naive predictor result
+=crt=bcl::opti=> Iteration: 45 improved Result: 0.159944 Best: 0.159944
+=std=bcl::model=> Training relative RMSD for iteration 45: 0.0828314
+=std=bcl::model=> weighted auc for result # 0: 0.173047; 346.094 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.226483; 452.967 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.171172; 342.345 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.145983; 291.967 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0641624; 128.325 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.15617; 312.34 x the naive predictor result
+=crt=bcl::opti=> Iteration: 46 improved Result: 0.15617 Best: 0.15617
+=std=bcl::model=> Training relative RMSD for iteration 46: 0.0837558
+=std=bcl::model=> weighted auc for result # 0: 0.150127; 300.253 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.210628; 421.256 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.164837; 329.674 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.149349; 298.698 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0672756; 134.551 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.148443; 296.886 x the naive predictor result
+=crt=bcl::opti=> Iteration: 47 improved Result: 0.148443 Best: 0.148443
+=std=bcl::model=> Training relative RMSD for iteration 47: 0.0829443
+=std=bcl::model=> weighted auc for result # 0: 0.177142; 354.284 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.217864; 435.728 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.157091; 314.182 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.149246; 298.491 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0649616; 129.923 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.153261; 306.522 x the naive predictor result
+=crt=bcl::opti=> Iteration: 48 improved Result: 0.153261 Best: 0.153261
+=std=bcl::model=> Training relative RMSD for iteration 48: 0.0821828
+=std=bcl::model=> weighted auc for result # 0: 0.137998; 275.995 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.227909; 455.819 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.175957; 351.914 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.153982; 307.965 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0693485; 138.697 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.153039; 306.078 x the naive predictor result
+=crt=bcl::opti=> Iteration: 49 improved Result: 0.153039 Best: 0.153039
+=std=bcl::model=> Training relative RMSD for iteration 49: 0.0819869
+=std=bcl::model=> weighted auc for result # 0: 0.167428; 334.855 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.2492; 498.401 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.184842; 369.685 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.178049; 356.099 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0720569; 144.114 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.170315; 340.631 x the naive predictor result
+=crt=bcl::opti=> Iteration: 50 improved Result: 0.170315 Best: 0.170315
+=std=bcl::model=> Training relative RMSD for iteration 50: 0.0815899
+=std=bcl::model=> weighted auc for result # 0: 0.183273; 366.545 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.227401; 454.802 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.157809; 315.619 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.133676; 267.351 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0588159; 117.632 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.152195; 304.39 x the naive predictor result
+=crt=bcl::opti=> Iteration: 51 improved Result: 0.152195 Best: 0.152195
+=std=bcl::model=> Training relative RMSD for iteration 51: 0.0812745
+=std=bcl::model=> weighted auc for result # 0: 0.150627; 301.254 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.235933; 471.866 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.156716; 313.433 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.14861; 297.219 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0619344; 123.869 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.150764; 301.528 x the naive predictor result
+=crt=bcl::opti=> Iteration: 52 improved Result: 0.150764 Best: 0.150764
+=std=bcl::model=> Training relative RMSD for iteration 52: 0.0813414
+=std=bcl::model=> weighted auc for result # 0: 0.144028; 288.056 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.245648; 491.296 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.15514; 310.281 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.147618; 295.236 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0578174; 115.635 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.15005; 300.101 x the naive predictor result
+=crt=bcl::opti=> Iteration: 53 improved Result: 0.15005 Best: 0.15005
+=std=bcl::model=> Training relative RMSD for iteration 53: 0.0812079
+=std=bcl::model=> weighted auc for result # 0: 0.153602; 307.204 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.244647; 489.295 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.158741; 317.482 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.151661; 303.323 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0734368; 146.874 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.156418; 312.835 x the naive predictor result
+=crt=bcl::opti=> Iteration: 54 improved Result: 0.156418 Best: 0.156418
+=std=bcl::model=> Training relative RMSD for iteration 54: 0.082065
+=std=bcl::model=> weighted auc for result # 0: 0.155739; 311.479 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.223734; 447.467 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.174778; 349.556 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.174515; 349.03 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0750578; 150.116 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.160765; 321.529 x the naive predictor result
+=crt=bcl::opti=> Iteration: 55 improved Result: 0.160765 Best: 0.160765
+=std=bcl::model=> Training relative RMSD for iteration 55: 0.08041
+=std=bcl::model=> weighted auc for result # 0: 0.154791; 309.582 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.219061; 438.122 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.182322; 364.644 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.173071; 346.142 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0736713; 147.343 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.160583; 321.167 x the naive predictor result
+=crt=bcl::opti=> Iteration: 56 improved Result: 0.160583 Best: 0.160583
+=std=bcl::model=> Training relative RMSD for iteration 56: 0.080891
+=std=bcl::model=> weighted auc for result # 0: 0.16751; 335.019 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.234424; 468.847 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.176982; 353.964 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.162917; 325.834 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0700519; 140.104 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.162377; 324.754 x the naive predictor result
+=crt=bcl::opti=> Iteration: 57 improved Result: 0.162377 Best: 0.162377
+=std=bcl::model=> Training relative RMSD for iteration 57: 0.0797329
+=std=bcl::model=> weighted auc for result # 0: 0.171898; 343.796 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.232644; 465.288 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.163728; 327.456 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.152913; 305.827 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0762552; 152.51 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.159488; 318.975 x the naive predictor result
+=crt=bcl::opti=> Iteration: 58 improved Result: 0.159488 Best: 0.159488
+=std=bcl::model=> Training relative RMSD for iteration 58: 0.0801627
+=std=bcl::model=> weighted auc for result # 0: 0.148457; 296.914 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.231315; 462.631 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.168565; 337.131 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.157498; 314.996 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0703219; 140.644 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.155232; 310.463 x the naive predictor result
+=crt=bcl::opti=> Iteration: 59 improved Result: 0.155232 Best: 0.155232
+=std=bcl::model=> Training relative RMSD for iteration 59: 0.0792207
+=std=bcl::model=> weighted auc for result # 0: 0.186043; 372.087 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.249971; 499.942 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.170259; 340.518 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.150816; 301.632 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0616287; 123.257 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.163744; 327.487 x the naive predictor result
+=crt=bcl::opti=> Iteration: 60 improved Result: 0.163744 Best: 0.163744
+=std=bcl::model=> Training relative RMSD for iteration 60: 0.0805759
+=std=bcl::model=> weighted auc for result # 0: 0.174832; 349.665 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.241813; 483.626 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.17274; 345.481 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.160379; 320.759 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0720287; 144.057 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.164359; 328.717 x the naive predictor result
+=crt=bcl::opti=> Iteration: 61 improved Result: 0.164359 Best: 0.164359
+=std=bcl::model=> Training relative RMSD for iteration 61: 0.0785581
+=std=bcl::model=> weighted auc for result # 0: 0.181395; 362.79 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.251238; 502.476 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.19131; 382.62 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.168425; 336.849 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0761531; 152.306 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.173704; 347.408 x the naive predictor result
+=crt=bcl::opti=> Iteration: 62 improved Result: 0.173704 Best: 0.173704
+=std=bcl::model=> Training relative RMSD for iteration 62: 0.0795869
+=std=bcl::model=> weighted auc for result # 0: 0.165408; 330.815 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.235236; 470.472 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.181934; 363.867 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.160622; 321.243 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0766912; 153.382 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.163978; 327.956 x the naive predictor result
+=crt=bcl::opti=> Iteration: 63 improved Result: 0.163978 Best: 0.163978
+=std=bcl::model=> Training relative RMSD for iteration 63: 0.0790647
+=std=bcl::model=> weighted auc for result # 0: 0.171138; 342.276 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.223161; 446.322 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.175246; 350.493 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.153253; 306.507 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0726647; 145.329 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.159093; 318.185 x the naive predictor result
+=crt=bcl::opti=> Iteration: 64 improved Result: 0.159093 Best: 0.159093
+=std=bcl::model=> Training relative RMSD for iteration 64: 0.0788618
+=std=bcl::model=> weighted auc for result # 0: 0.176467; 352.935 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.230571; 461.142 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.169966; 339.933 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.160909; 321.817 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0644517; 128.903 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.160473; 320.946 x the naive predictor result
+=crt=bcl::opti=> Iteration: 65 improved Result: 0.160473 Best: 0.160473
+=std=bcl::model=> Training relative RMSD for iteration 65: 0.0787828
+=std=bcl::model=> weighted auc for result # 0: 0.164949; 329.898 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.248794; 497.588 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.1739; 347.8 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.150412; 300.825 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0755666; 151.133 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.162724; 325.449 x the naive predictor result
+=crt=bcl::opti=> Iteration: 66 improved Result: 0.162724 Best: 0.162724
+=std=bcl::model=> Training relative RMSD for iteration 66: 0.0780152
+=std=bcl::model=> weighted auc for result # 0: 0.172545; 345.09 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.261546; 523.093 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.159838; 319.676 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.154462; 308.925 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0791741; 158.348 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.165513; 331.026 x the naive predictor result
+=crt=bcl::opti=> Iteration: 67 improved Result: 0.165513 Best: 0.165513
+=std=bcl::model=> Training relative RMSD for iteration 67: 0.0781599
+=std=bcl::model=> weighted auc for result # 0: 0.176646; 353.293 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.243375; 486.75 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.179855; 359.71 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.15065; 301.301 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0772956; 154.591 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.165564; 331.129 x the naive predictor result
+=crt=bcl::opti=> Iteration: 68 improved Result: 0.165564 Best: 0.165564
+=std=bcl::model=> Training relative RMSD for iteration 68: 0.0772501
+=std=bcl::model=> weighted auc for result # 0: 0.152885; 305.771 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.230168; 460.337 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.178754; 357.508 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.159217; 318.433 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0846889; 169.378 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.161143; 322.285 x the naive predictor result
+=crt=bcl::opti=> Iteration: 69 improved Result: 0.161143 Best: 0.161143
+=std=bcl::model=> Training relative RMSD for iteration 69: 0.0780584
+=std=bcl::model=> weighted auc for result # 0: 0.17995; 359.9 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.236014; 472.029 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.171226; 342.453 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.15368; 307.36 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0743605; 148.721 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.163046; 326.093 x the naive predictor result
+=crt=bcl::opti=> Iteration: 70 improved Result: 0.163046 Best: 0.163046
+=std=bcl::model=> Training relative RMSD for iteration 70: 0.0784805
+=std=bcl::model=> weighted auc for result # 0: 0.184034; 368.068 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.248372; 496.744 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.186416; 372.832 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.168192; 336.384 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0850975; 170.195 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.174422; 348.845 x the naive predictor result
+=crt=bcl::opti=> Iteration: 71 improved Result: 0.174422 Best: 0.174422
+=std=bcl::model=> Training relative RMSD for iteration 71: 0.0766752
+=std=bcl::model=> weighted auc for result # 0: 0.16615; 332.299 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.239758; 479.515 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.171344; 342.688 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.157899; 315.798 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0729944; 145.989 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.161629; 323.258 x the naive predictor result
+=crt=bcl::opti=> Iteration: 72 improved Result: 0.161629 Best: 0.161629
+=std=bcl::model=> Training relative RMSD for iteration 72: 0.0769316
+=std=bcl::model=> weighted auc for result # 0: 0.157041; 314.082 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.243909; 487.819 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.169927; 339.854 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.147179; 294.358 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0664874; 132.975 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.156909; 313.817 x the naive predictor result
+=crt=bcl::opti=> Iteration: 73 improved Result: 0.156909 Best: 0.156909
+=std=bcl::model=> Training relative RMSD for iteration 73: 0.0767056
+=std=bcl::model=> weighted auc for result # 0: 0.167068; 334.137 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.24229; 484.581 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.176745; 353.491 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.153322; 306.644 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0704273; 140.855 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.161971; 323.941 x the naive predictor result
+=crt=bcl::opti=> Iteration: 74 improved Result: 0.161971 Best: 0.161971
+=std=bcl::model=> Training relative RMSD for iteration 74: 0.0778853
+=std=bcl::model=> weighted auc for result # 0: 0.182707; 365.413 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.251384; 502.767 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.164764; 329.529 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.149812; 299.624 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0591772; 118.354 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.161569; 323.138 x the naive predictor result
+=crt=bcl::opti=> Iteration: 75 improved Result: 0.161569 Best: 0.161569
+=std=bcl::model=> Training relative RMSD for iteration 75: 0.0768537
+=std=bcl::model=> weighted auc for result # 0: 0.178552; 357.103 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.248933; 497.866 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.181114; 362.228 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.16749; 334.98 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0719815; 143.963 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.169614; 339.228 x the naive predictor result
+=crt=bcl::opti=> Iteration: 76 improved Result: 0.169614 Best: 0.169614
+=std=bcl::model=> Training relative RMSD for iteration 76: 0.0768462
+=std=bcl::model=> weighted auc for result # 0: 0.162287; 324.574 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.245678; 491.357 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.1918; 383.6 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.16726; 334.52 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0765022; 153.004 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.168706; 337.411 x the naive predictor result
+=crt=bcl::opti=> Iteration: 77 improved Result: 0.168706 Best: 0.168706
+=std=bcl::model=> Training relative RMSD for iteration 77: 0.0760432
+=std=bcl::model=> weighted auc for result # 0: 0.188038; 376.077 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.250154; 500.309 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.179207; 358.414 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.141595; 283.19 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0697132; 139.426 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.165742; 331.483 x the naive predictor result
+=crt=bcl::opti=> Iteration: 78 improved Result: 0.165742 Best: 0.165742
+=std=bcl::model=> Training relative RMSD for iteration 78: 0.0766645
+=std=bcl::model=> weighted auc for result # 0: 0.175563; 351.125 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.253196; 506.393 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.17874; 357.48 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.149559; 299.117 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.070873; 141.746 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.165586; 331.172 x the naive predictor result
+=crt=bcl::opti=> Iteration: 79 improved Result: 0.165586 Best: 0.165586
+=std=bcl::model=> Training relative RMSD for iteration 79: 0.0763978
+=std=bcl::model=> weighted auc for result # 0: 0.176419; 352.837 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.252484; 504.968 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.190301; 380.602 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.151376; 302.752 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0753679; 150.736 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.16919; 338.379 x the naive predictor result
+=crt=bcl::opti=> Iteration: 80 improved Result: 0.16919 Best: 0.16919
+=std=bcl::model=> Training relative RMSD for iteration 80: 0.0760744
+=std=bcl::model=> weighted auc for result # 0: 0.158272; 316.544 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.240473; 480.945 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.174906; 349.811 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.13629; 272.581 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0733252; 146.65 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.156653; 313.306 x the naive predictor result
+=crt=bcl::opti=> Iteration: 81 improved Result: 0.156653 Best: 0.156653
+=std=bcl::model=> Training relative RMSD for iteration 81: 0.0764847
+=std=bcl::model=> weighted auc for result # 0: 0.180739; 361.478 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.261614; 523.227 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.176838; 353.676 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.153096; 306.191 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0760371; 152.074 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.169665; 339.329 x the naive predictor result
+=crt=bcl::opti=> Iteration: 82 improved Result: 0.169665 Best: 0.169665
+=std=bcl::model=> Training relative RMSD for iteration 82: 0.0771293
+=std=bcl::model=> weighted auc for result # 0: 0.157398; 314.797 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.238179; 476.359 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.179214; 358.428 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.149646; 299.293 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0623889; 124.778 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.157365; 314.731 x the naive predictor result
+=crt=bcl::opti=> Iteration: 83 improved Result: 0.157365 Best: 0.157365
+=std=bcl::model=> Training relative RMSD for iteration 83: 0.0756375
+=std=bcl::model=> weighted auc for result # 0: 0.184254; 368.509 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.232962; 465.924 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.194208; 388.415 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.152685; 305.37 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0707553; 141.511 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.166973; 333.946 x the naive predictor result
+=crt=bcl::opti=> Iteration: 84 improved Result: 0.166973 Best: 0.166973
+=std=bcl::model=> Training relative RMSD for iteration 84: 0.0765194
+=std=bcl::model=> weighted auc for result # 0: 0.167264; 334.527 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.245404; 490.808 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.176676; 353.353 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.142327; 284.654 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0662315; 132.463 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.159581; 319.161 x the naive predictor result
+=crt=bcl::opti=> Iteration: 85 improved Result: 0.159581 Best: 0.159581
+=std=bcl::model=> Training relative RMSD for iteration 85: 0.0757094
+=std=bcl::model=> weighted auc for result # 0: 0.167629; 335.258 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.243705; 487.41 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.17836; 356.719 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.141214; 282.428 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0665734; 133.147 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.159496; 318.993 x the naive predictor result
+=crt=bcl::opti=> Iteration: 86 improved Result: 0.159496 Best: 0.159496
+=std=bcl::model=> Training relative RMSD for iteration 86: 0.0755716
+=std=bcl::model=> weighted auc for result # 0: 0.170198; 340.397 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.261912; 523.825 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.17032; 340.641 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.1506; 301.2 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0805789; 161.158 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.166722; 333.444 x the naive predictor result
+=crt=bcl::opti=> Iteration: 87 improved Result: 0.166722 Best: 0.166722
+=std=bcl::model=> Training relative RMSD for iteration 87: 0.075651
+=std=bcl::model=> weighted auc for result # 0: 0.178994; 357.988 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.254254; 508.509 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.17573; 351.46 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.144821; 289.642 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0708214; 141.643 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.164924; 329.848 x the naive predictor result
+=crt=bcl::opti=> Iteration: 88 improved Result: 0.164924 Best: 0.164924
+=std=bcl::model=> Training relative RMSD for iteration 88: 0.0746804
+=std=bcl::model=> weighted auc for result # 0: 0.166905; 333.811 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.233283; 466.566 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.193603; 387.207 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.160128; 320.257 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0779914; 155.983 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.166382; 332.765 x the naive predictor result
+=crt=bcl::opti=> Iteration: 89 improved Result: 0.166382 Best: 0.166382
+=std=bcl::model=> Training relative RMSD for iteration 89: 0.0750301
+=std=bcl::model=> weighted auc for result # 0: 0.168424; 336.849 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.268777; 537.555 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.183665; 367.329 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.151362; 302.724 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0867752; 173.55 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.171801; 343.601 x the naive predictor result
+=crt=bcl::opti=> Iteration: 90 improved Result: 0.171801 Best: 0.171801
+=std=bcl::model=> Training relative RMSD for iteration 90: 0.0749352
+=std=bcl::model=> weighted auc for result # 0: 0.163393; 326.786 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.246164; 492.328 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.169655; 339.31 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.146829; 293.659 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0777775; 155.555 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.160764; 321.528 x the naive predictor result
+=crt=bcl::opti=> Iteration: 91 improved Result: 0.160764 Best: 0.160764
+=std=bcl::model=> Training relative RMSD for iteration 91: 0.0748813
+=std=bcl::model=> weighted auc for result # 0: 0.163151; 326.303 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.236872; 473.744 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.182736; 365.471 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.146859; 293.719 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.085674; 171.348 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.163058; 326.117 x the naive predictor result
+=crt=bcl::opti=> Iteration: 92 improved Result: 0.163058 Best: 0.163058
+=std=bcl::model=> Training relative RMSD for iteration 92: 0.0743467
+=std=bcl::model=> weighted auc for result # 0: 0.175573; 351.146 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.257587; 515.174 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.188218; 376.437 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.150627; 301.254 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.069155; 138.31 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.168232; 336.464 x the naive predictor result
+=crt=bcl::opti=> Iteration: 93 improved Result: 0.168232 Best: 0.168232
+=std=bcl::model=> Training relative RMSD for iteration 93: 0.0742851
+=std=bcl::model=> weighted auc for result # 0: 0.160155; 320.309 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.22697; 453.939 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.187841; 375.683 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.142071; 284.142 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0635709; 127.142 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.156121; 312.243 x the naive predictor result
+=crt=bcl::opti=> Iteration: 94 improved Result: 0.156121 Best: 0.156121
+=std=bcl::model=> Training relative RMSD for iteration 94: 0.0747847
+=std=bcl::model=> weighted auc for result # 0: 0.155386; 310.771 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.26225; 524.5 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.194371; 388.742 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.156823; 313.646 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0812062; 162.412 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.170007; 340.014 x the naive predictor result
+=crt=bcl::opti=> Iteration: 95 improved Result: 0.170007 Best: 0.170007
+=std=bcl::model=> Training relative RMSD for iteration 95: 0.0747583
+=std=bcl::model=> weighted auc for result # 0: 0.158857; 317.713 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.253791; 507.583 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.18497; 369.941 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.142554; 285.108 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0687573; 137.515 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.161786; 323.572 x the naive predictor result
+=crt=bcl::opti=> Iteration: 96 improved Result: 0.161786 Best: 0.161786
+=std=bcl::model=> Training relative RMSD for iteration 96: 0.0749277
+=std=bcl::model=> weighted auc for result # 0: 0.158356; 316.713 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.247403; 494.806 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.1819; 363.799 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.147222; 294.444 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0727; 145.4 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.161516; 323.032 x the naive predictor result
+=crt=bcl::opti=> Iteration: 97 improved Result: 0.161516 Best: 0.161516
+=std=bcl::model=> Training relative RMSD for iteration 97: 0.0744186
+=std=bcl::model=> weighted auc for result # 0: 0.178207; 356.415 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.246512; 493.023 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.197145; 394.291 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.147133; 294.266 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0678614; 135.723 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.167372; 334.743 x the naive predictor result
+=crt=bcl::opti=> Iteration: 98 improved Result: 0.167372 Best: 0.167372
+=std=bcl::model=> Training relative RMSD for iteration 98: 0.0738823
+=std=bcl::model=> weighted auc for result # 0: 0.153853; 307.707 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.24297; 485.941 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.181495; 362.99 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.154619; 309.238 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0751445; 150.289 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.161616; 323.233 x the naive predictor result
+=crt=bcl::opti=> Iteration: 99 improved Result: 0.161616 Best: 0.161616
+=std=bcl::model=> Training relative RMSD for iteration 99: 0.074184
+=std=bcl::model=> weighted auc for result # 0: 0.160142; 320.284 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.248463; 496.925 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.19101; 382.02 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.16255; 325.099 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0740293; 148.059 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.167239; 334.477 x the naive predictor result
+=crt=bcl::opti=> Iteration: 100 improved Result: 0.167239 Best: 0.167239
+=std=bcl::model=> Training relative RMSD for iteration 100: 0.0747257
+=std=bcl::model=> weighted auc for result # 0: 0.162163; 324.326 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.236348; 472.695 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.205283; 410.565 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.164009; 328.017 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.080423; 160.846 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.169645; 339.29 x the naive predictor result
+=crt=bcl::opti=> Iteration: 101 improved Result: 0.169645 Best: 0.169645
+=std=bcl::model=> Training relative RMSD for iteration 101: 0.0746026
+=std=bcl::model=> weighted auc for result # 0: 0.179424; 358.848 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.247701; 495.403 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.191162; 382.323 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.175329; 350.659 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0877546; 175.509 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.176274; 352.548 x the naive predictor result
+=crt=bcl::opti=> Iteration: 102 improved Result: 0.176274 Best: 0.176274
+=std=bcl::model=> Training relative RMSD for iteration 102: 0.0732899
+=std=bcl::model=> weighted auc for result # 0: 0.157257; 314.514 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.26323; 526.46 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.197899; 395.798 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.168077; 336.154 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0835184; 167.037 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.173996; 347.993 x the naive predictor result
+=crt=bcl::opti=> Iteration: 103 improved Result: 0.173996 Best: 0.173996
+=std=bcl::model=> Training relative RMSD for iteration 103: 0.0738714
+=std=bcl::model=> weighted auc for result # 0: 0.160691; 321.381 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.228935; 457.87 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.184755; 369.511 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.152635; 305.269 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0813983; 162.797 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.161683; 323.366 x the naive predictor result
+=crt=bcl::opti=> Iteration: 104 improved Result: 0.161683 Best: 0.161683
+=std=bcl::model=> Training relative RMSD for iteration 104: 0.0743707
+=std=bcl::model=> weighted auc for result # 0: 0.160638; 321.275 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.24777; 495.54 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.189454; 378.908 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.154436; 308.873 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0898495; 179.699 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.16843; 336.859 x the naive predictor result
+=crt=bcl::opti=> Iteration: 105 improved Result: 0.16843 Best: 0.16843
+=std=bcl::model=> Training relative RMSD for iteration 105: 0.073515
+=std=bcl::model=> weighted auc for result # 0: 0.15758; 315.159 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.220805; 441.611 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.178539; 357.077 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.159915; 319.83 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0768014; 153.603 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.158728; 317.456 x the naive predictor result
+=crt=bcl::opti=> Iteration: 106 improved Result: 0.158728 Best: 0.158728
+=std=bcl::model=> Training relative RMSD for iteration 106: 0.0731734
+=std=bcl::model=> weighted auc for result # 0: 0.165814; 331.627 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.233036; 466.072 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.188263; 376.527 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.181394; 362.789 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0827795; 165.559 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.170257; 340.515 x the naive predictor result
+=crt=bcl::opti=> Iteration: 107 improved Result: 0.170257 Best: 0.170257
+=std=bcl::model=> Training relative RMSD for iteration 107: 0.0733289
+=std=bcl::model=> weighted auc for result # 0: 0.168013; 336.027 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.262214; 524.427 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.199311; 398.622 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.162993; 325.986 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0835076; 167.015 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.175208; 350.415 x the naive predictor result
+=crt=bcl::opti=> Iteration: 108 improved Result: 0.175208 Best: 0.175208
+=std=bcl::model=> Training relative RMSD for iteration 108: 0.0730806
+=std=bcl::model=> weighted auc for result # 0: 0.173027; 346.054 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.255835; 511.671 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.204453; 408.906 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.168779; 337.558 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0801763; 160.353 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.176454; 352.908 x the naive predictor result
+=crt=bcl::opti=> Iteration: 109 improved Result: 0.176454 Best: 0.176454
+=std=bcl::model=> Training relative RMSD for iteration 109: 0.0724998
+=std=bcl::model=> weighted auc for result # 0: 0.165982; 331.963 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.249339; 498.678 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.20701; 414.021 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.170559; 341.118 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0859114; 171.823 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.17576; 351.521 x the naive predictor result
+=crt=bcl::opti=> Iteration: 110 improved Result: 0.17576 Best: 0.17576
+=std=bcl::model=> Training relative RMSD for iteration 110: 0.073118
+=std=bcl::model=> weighted auc for result # 0: 0.16253; 325.059 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.242256; 484.512 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.18354; 367.08 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.156586; 313.173 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0764695; 152.939 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.164276; 328.553 x the naive predictor result
+=crt=bcl::opti=> Iteration: 111 improved Result: 0.164276 Best: 0.164276
+=std=bcl::model=> Training relative RMSD for iteration 111: 0.0732806
+=std=bcl::model=> weighted auc for result # 0: 0.159027; 318.054 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.251336; 502.673 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.190377; 380.754 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.177744; 355.488 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0780329; 156.066 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.171303; 342.607 x the naive predictor result
+=crt=bcl::opti=> Iteration: 112 improved Result: 0.171303 Best: 0.171303
+=std=bcl::model=> Training relative RMSD for iteration 112: 0.073457
+=std=bcl::model=> weighted auc for result # 0: 0.158663; 317.327 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.232665; 465.329 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.194413; 388.826 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.164583; 329.166 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0784019; 156.804 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.165745; 331.49 x the naive predictor result
+=crt=bcl::opti=> Iteration: 113 improved Result: 0.165745 Best: 0.165745
+=std=bcl::model=> Training relative RMSD for iteration 113: 0.0729153
+=std=bcl::model=> weighted auc for result # 0: 0.178887; 357.774 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.25869; 517.381 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.184485; 368.97 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.17697; 353.94 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0894026; 178.805 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.177687; 355.374 x the naive predictor result
+=crt=bcl::opti=> Iteration: 114 improved Result: 0.177687 Best: 0.177687
+=std=bcl::model=> Training relative RMSD for iteration 114: 0.0738467
+=std=bcl::model=> weighted auc for result # 0: 0.162641; 325.281 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.238439; 476.879 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.190989; 381.978 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.175011; 350.021 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0820798; 164.16 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.169832; 339.664 x the naive predictor result
+=crt=bcl::opti=> Iteration: 115 improved Result: 0.169832 Best: 0.169832
+=std=bcl::model=> Training relative RMSD for iteration 115: 0.0721634
+=std=bcl::model=> weighted auc for result # 0: 0.150987; 301.974 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.248135; 496.269 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.192457; 384.914 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.159299; 318.597 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0741436; 148.287 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.165004; 330.008 x the naive predictor result
+=crt=bcl::opti=> Iteration: 116 improved Result: 0.165004 Best: 0.165004
+=std=bcl::model=> Training relative RMSD for iteration 116: 0.072458
+=std=bcl::model=> weighted auc for result # 0: 0.166222; 332.445 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.230744; 461.488 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.203853; 407.706 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.170394; 340.788 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0771126; 154.225 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.169665; 339.33 x the naive predictor result
+=crt=bcl::opti=> Iteration: 117 improved Result: 0.169665 Best: 0.169665
+=std=bcl::model=> Training relative RMSD for iteration 117: 0.0721313
+=std=bcl::model=> weighted auc for result # 0: 0.158145; 316.29 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.226153; 452.306 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.194357; 388.715 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.164873; 329.746 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0757966; 151.593 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.163865; 327.73 x the naive predictor result
+=crt=bcl::opti=> Iteration: 118 improved Result: 0.163865 Best: 0.163865
+=std=bcl::model=> Training relative RMSD for iteration 118: 0.0729947
+=std=bcl::model=> weighted auc for result # 0: 0.173918; 347.836 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.252776; 505.551 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.195172; 390.344 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.161755; 323.509 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0790806; 158.161 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.17254; 345.08 x the naive predictor result
+=crt=bcl::opti=> Iteration: 119 improved Result: 0.17254 Best: 0.17254
+=std=bcl::model=> Training relative RMSD for iteration 119: 0.0725386
+=std=bcl::model=> weighted auc for result # 0: 0.169837; 339.673 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.242445; 484.889 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.190122; 380.243 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.181122; 362.244 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0751883; 150.377 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.171743; 343.485 x the naive predictor result
+=crt=bcl::opti=> Iteration: 120 improved Result: 0.171743 Best: 0.171743
+=std=bcl::model=> Training relative RMSD for iteration 120: 0.0725791
+=std=bcl::model=> weighted auc for result # 0: 0.172749; 345.497 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.253121; 506.243 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.188594; 377.187 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.168947; 337.895 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0819118; 163.824 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.173065; 346.129 x the naive predictor result
+=crt=bcl::opti=> Iteration: 121 improved Result: 0.173065 Best: 0.173065
+=std=bcl::model=> Training relative RMSD for iteration 121: 0.0722648
+=std=bcl::model=> weighted auc for result # 0: 0.154946; 309.892 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.232803; 465.606 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.198732; 397.465 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.163006; 326.013 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0705431; 141.086 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.164006; 328.013 x the naive predictor result
+=crt=bcl::opti=> Iteration: 122 improved Result: 0.164006 Best: 0.164006
+=std=bcl::model=> Training relative RMSD for iteration 122: 0.0712055
+=std=bcl::model=> weighted auc for result # 0: 0.187063; 374.126 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.249053; 498.106 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.198987; 397.974 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.169294; 338.589 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0755737; 151.147 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.175994; 351.988 x the naive predictor result
+=crt=bcl::opti=> Iteration: 123 improved Result: 0.175994 Best: 0.175994
+=std=bcl::model=> Training relative RMSD for iteration 123: 0.0722495
+=std=bcl::model=> weighted auc for result # 0: 0.179419; 358.839 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.250182; 500.364 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.195215; 390.429 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.159751; 319.502 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0799751; 159.95 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.172908; 345.817 x the naive predictor result
+=crt=bcl::opti=> Iteration: 124 improved Result: 0.172908 Best: 0.172908
+=std=bcl::model=> Training relative RMSD for iteration 124: 0.0730851
+=std=bcl::model=> weighted auc for result # 0: 0.15774; 315.479 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.237617; 475.234 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.180998; 361.997 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.151694; 303.388 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0678142; 135.628 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.159173; 318.345 x the naive predictor result
+=crt=bcl::opti=> Iteration: 125 improved Result: 0.159173 Best: 0.159173
+=std=bcl::model=> Training relative RMSD for iteration 125: 0.0713662
+=std=bcl::model=> weighted auc for result # 0: 0.151056; 302.111 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.223172; 446.344 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.17368; 347.361 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.146131; 292.262 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0827969; 165.594 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.155367; 310.734 x the naive predictor result
+=crt=bcl::opti=> Iteration: 126 improved Result: 0.155367 Best: 0.155367
+=std=bcl::model=> Training relative RMSD for iteration 126: 0.0721593
+=std=bcl::model=> weighted auc for result # 0: 0.178834; 357.669 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.26643; 532.861 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.190567; 381.134 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.159482; 318.964 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0777889; 155.578 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.17462; 349.241 x the naive predictor result
+=crt=bcl::opti=> Iteration: 127 improved Result: 0.17462 Best: 0.17462
+=std=bcl::model=> Training relative RMSD for iteration 127: 0.0718892
+=std=bcl::model=> weighted auc for result # 0: 0.170971; 341.941 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.245946; 491.892 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.189574; 379.149 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.160376; 320.752 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0841704; 168.341 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.170207; 340.415 x the naive predictor result
+=crt=bcl::opti=> Iteration: 128 improved Result: 0.170207 Best: 0.170207
+=std=bcl::model=> Training relative RMSD for iteration 128: 0.0723588
+=std=bcl::model=> weighted auc for result # 0: 0.166603; 333.206 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.22465; 449.299 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.193261; 386.522 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.166143; 332.285 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0805421; 161.084 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.16624; 332.479 x the naive predictor result
+=crt=bcl::opti=> Iteration: 129 improved Result: 0.16624 Best: 0.16624
+=std=bcl::model=> Training relative RMSD for iteration 129: 0.0723109
+=std=bcl::model=> weighted auc for result # 0: 0.147732; 295.465 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.238534; 477.068 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.203321; 406.643 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.159339; 318.679 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.078068; 156.136 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.165399; 330.798 x the naive predictor result
+=crt=bcl::opti=> Iteration: 130 improved Result: 0.165399 Best: 0.165399
+=std=bcl::model=> Training relative RMSD for iteration 130: 0.071554
+=std=bcl::model=> weighted auc for result # 0: 0.152123; 304.247 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.231808; 463.615 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.183126; 366.252 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.134875; 269.75 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0630222; 126.044 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.152991; 305.982 x the naive predictor result
+=crt=bcl::opti=> Iteration: 131 improved Result: 0.152991 Best: 0.152991
+=std=bcl::model=> Training relative RMSD for iteration 131: 0.071219
+=std=bcl::model=> weighted auc for result # 0: 0.168299; 336.598 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.240473; 480.947 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.176984; 353.968 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.139035; 278.069 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0671543; 134.309 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.158389; 316.778 x the naive predictor result
+=crt=bcl::opti=> Iteration: 132 improved Result: 0.158389 Best: 0.158389
+=std=bcl::model=> Training relative RMSD for iteration 132: 0.0726755
+=std=bcl::model=> weighted auc for result # 0: 0.18503; 370.059 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.249629; 499.259 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.175483; 350.966 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.153974; 307.948 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.074833; 149.666 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.16779; 335.58 x the naive predictor result
+=crt=bcl::opti=> Iteration: 133 improved Result: 0.16779 Best: 0.16779
+=std=bcl::model=> Training relative RMSD for iteration 133: 0.0721695
+=std=bcl::model=> weighted auc for result # 0: 0.164533; 329.067 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.220844; 441.688 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.162802; 325.603 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.138396; 276.792 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0708758; 141.752 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.15149; 302.98 x the naive predictor result
+=crt=bcl::opti=> Iteration: 134 improved Result: 0.15149 Best: 0.15149
+=std=bcl::model=> Training relative RMSD for iteration 134: 0.0717565
+=std=bcl::model=> weighted auc for result # 0: 0.175058; 350.116 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.233286; 466.573 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.177544; 355.088 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.142642; 285.284 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0781433; 156.287 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.161335; 322.669 x the naive predictor result
+=crt=bcl::opti=> Iteration: 135 improved Result: 0.161335 Best: 0.161335
+=std=bcl::model=> Training relative RMSD for iteration 135: 0.0704656
+=std=bcl::model=> weighted auc for result # 0: 0.165981; 331.963 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.240444; 480.889 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.169479; 338.957 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.137978; 275.955 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0746311; 149.262 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.157703; 315.405 x the naive predictor result
+=crt=bcl::opti=> Iteration: 136 improved Result: 0.157703 Best: 0.157703
+=std=bcl::model=> Training relative RMSD for iteration 136: 0.0713222
+=std=bcl::model=> weighted auc for result # 0: 0.166419; 332.837 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.250856; 501.712 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.188719; 377.437 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.148706; 297.412 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0809554; 161.911 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.167131; 334.262 x the naive predictor result
+=crt=bcl::opti=> Iteration: 137 improved Result: 0.167131 Best: 0.167131
+=std=bcl::model=> Training relative RMSD for iteration 137: 0.0710662
+=std=bcl::model=> weighted auc for result # 0: 0.156878; 313.756 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.251997; 503.995 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.188483; 376.965 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.141211; 282.422 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0767004; 153.401 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.163054; 326.108 x the naive predictor result
+=crt=bcl::opti=> Iteration: 138 improved Result: 0.163054 Best: 0.163054
+=std=bcl::model=> Training relative RMSD for iteration 138: 0.0702123
+=std=bcl::model=> weighted auc for result # 0: 0.14515; 290.3 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.250221; 500.442 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.179274; 358.549 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.153315; 306.629 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0773303; 154.661 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.161058; 322.116 x the naive predictor result
+=crt=bcl::opti=> Iteration: 139 improved Result: 0.161058 Best: 0.161058
+=std=bcl::model=> Training relative RMSD for iteration 139: 0.0701392
+=std=bcl::model=> weighted auc for result # 0: 0.170082; 340.165 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.242814; 485.627 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.17592; 351.84 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.141586; 283.172 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0700358; 140.072 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.160088; 320.175 x the naive predictor result
+=crt=bcl::opti=> Iteration: 140 improved Result: 0.160088 Best: 0.160088
+=std=bcl::model=> Training relative RMSD for iteration 140: 0.0715394
+=std=bcl::model=> weighted auc for result # 0: 0.186735; 373.47 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.275292; 550.585 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.182308; 364.615 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.145271; 290.542 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0722435; 144.487 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.17237; 344.74 x the naive predictor result
+=crt=bcl::opti=> Iteration: 141 improved Result: 0.17237 Best: 0.17237
+=std=bcl::model=> Training relative RMSD for iteration 141: 0.0694716
+=std=bcl::model=> weighted auc for result # 0: 0.170083; 340.167 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.2525; 505.001 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.183451; 366.903 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.156005; 312.009 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0732645; 146.529 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.167061; 334.122 x the naive predictor result
+=crt=bcl::opti=> Iteration: 142 improved Result: 0.167061 Best: 0.167061
+=std=bcl::model=> Training relative RMSD for iteration 142: 0.0713459
+=std=bcl::model=> weighted auc for result # 0: 0.170306; 340.612 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.277974; 555.948 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.183672; 367.343 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.14854; 297.08 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0742129; 148.426 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.170941; 341.882 x the naive predictor result
+=crt=bcl::opti=> Iteration: 143 improved Result: 0.170941 Best: 0.170941
+=std=bcl::model=> Training relative RMSD for iteration 143: 0.0707959
+=std=bcl::model=> weighted auc for result # 0: 0.167737; 335.473 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.256333; 512.666 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.184375; 368.75 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.139261; 278.522 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.075424; 150.848 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.164626; 329.252 x the naive predictor result
+=crt=bcl::opti=> Iteration: 144 improved Result: 0.164626 Best: 0.164626
+=std=bcl::model=> Training relative RMSD for iteration 144: 0.0704203
+=std=bcl::model=> weighted auc for result # 0: 0.152277; 304.554 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.234456; 468.912 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.184718; 369.436 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.145229; 290.458 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0765544; 153.109 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.158647; 317.294 x the naive predictor result
+=crt=bcl::opti=> Iteration: 145 improved Result: 0.158647 Best: 0.158647
+=std=bcl::model=> Training relative RMSD for iteration 145: 0.0708757
+=std=bcl::model=> weighted auc for result # 0: 0.166999; 333.999 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.246709; 493.419 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.181161; 362.322 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.136653; 273.305 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0721628; 144.326 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.160737; 321.474 x the naive predictor result
+=crt=bcl::opti=> Iteration: 146 improved Result: 0.160737 Best: 0.160737
+=std=bcl::model=> Training relative RMSD for iteration 146: 0.0702031
+=std=bcl::model=> weighted auc for result # 0: 0.161015; 322.03 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.243306; 486.612 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.188086; 376.172 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.158047; 316.095 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0859483; 171.897 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.167281; 334.561 x the naive predictor result
+=crt=bcl::opti=> Iteration: 147 improved Result: 0.167281 Best: 0.167281
+=std=bcl::model=> Training relative RMSD for iteration 147: 0.0709359
+=std=bcl::model=> weighted auc for result # 0: 0.176526; 353.051 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.27719; 554.379 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.196882; 393.764 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.172041; 344.082 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0774165; 154.833 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.180011; 360.022 x the naive predictor result
+=crt=bcl::opti=> Iteration: 148 improved Result: 0.180011 Best: 0.180011
+=std=bcl::model=> Training relative RMSD for iteration 148: 0.0700875
+=std=bcl::model=> weighted auc for result # 0: 0.17002; 340.04 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.264032; 528.064 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.192998; 385.995 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.149776; 299.551 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0718419; 143.684 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.169733; 339.467 x the naive predictor result
+=crt=bcl::opti=> Iteration: 149 improved Result: 0.169733 Best: 0.169733
+=std=bcl::model=> Training relative RMSD for iteration 149: 0.0699956
+=std=bcl::model=> weighted auc for result # 0: 0.173349; 346.698 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.268615; 537.23 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.184097; 368.193 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.149091; 298.182 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0700794; 140.159 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.169046; 338.092 x the naive predictor result
+=crt=bcl::opti=> Iteration: 150 improved Result: 0.169046 Best: 0.169046
+=std=bcl::model=> Training relative RMSD for iteration 150: 0.0693434
+=std=bcl::model=> weighted auc for result # 0: 0.157062; 314.124 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.252728; 505.456 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.200535; 401.069 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.166417; 332.835 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0706711; 141.342 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.169483; 338.965 x the naive predictor result
+=crt=bcl::opti=> Iteration: 151 improved Result: 0.169483 Best: 0.169483
+=std=bcl::model=> Training relative RMSD for iteration 151: 0.0706377
+=std=bcl::model=> weighted auc for result # 0: 0.173157; 346.314 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.276016; 552.032 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.190059; 380.119 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.171017; 342.034 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0727859; 145.572 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.176607; 353.214 x the naive predictor result
+=crt=bcl::opti=> Iteration: 152 improved Result: 0.176607 Best: 0.176607
+=std=bcl::model=> Training relative RMSD for iteration 152: 0.0698932
+=std=bcl::model=> weighted auc for result # 0: 0.174483; 348.967 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.265398; 530.795 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.193376; 386.753 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.168001; 336.002 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0726975; 145.395 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.174791; 349.582 x the naive predictor result
+=crt=bcl::opti=> Iteration: 153 improved Result: 0.174791 Best: 0.174791
+=std=bcl::model=> Training relative RMSD for iteration 153: 0.0709095
+=std=bcl::model=> weighted auc for result # 0: 0.172724; 345.448 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.25259; 505.18 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.187437; 374.875 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.144776; 289.551 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0712946; 142.589 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.165764; 331.528 x the naive predictor result
+=crt=bcl::opti=> Iteration: 154 improved Result: 0.165764 Best: 0.165764
+=std=bcl::model=> Training relative RMSD for iteration 154: 0.0709858
+=std=bcl::model=> weighted auc for result # 0: 0.173326; 346.653 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.266491; 532.982 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.175059; 350.118 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.140779; 281.558 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0765827; 153.165 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.166448; 332.895 x the naive predictor result
+=crt=bcl::opti=> Iteration: 155 improved Result: 0.166448 Best: 0.166448
+=std=bcl::model=> Training relative RMSD for iteration 155: 0.0699115
+=std=bcl::model=> weighted auc for result # 0: 0.172642; 345.283 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.264927; 529.853 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.182838; 365.677 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.154296; 308.592 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0731923; 146.385 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.169579; 339.158 x the naive predictor result
+=crt=bcl::opti=> Iteration: 156 improved Result: 0.169579 Best: 0.169579
+=std=bcl::model=> Training relative RMSD for iteration 156: 0.0704245
+=std=bcl::model=> weighted auc for result # 0: 0.175836; 351.673 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.251431; 502.862 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.184571; 369.142 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.143796; 287.591 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0823961; 164.792 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.167606; 335.212 x the naive predictor result
+=crt=bcl::opti=> Iteration: 157 improved Result: 0.167606 Best: 0.167606
+=std=bcl::model=> Training relative RMSD for iteration 157: 0.0702092
+=std=bcl::model=> weighted auc for result # 0: 0.164623; 329.245 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.248823; 497.647 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.188086; 376.173 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.147898; 295.796 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0798123; 159.625 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.165849; 331.697 x the naive predictor result
+=crt=bcl::opti=> Iteration: 158 improved Result: 0.165849 Best: 0.165849
+=std=bcl::model=> Training relative RMSD for iteration 158: 0.0703762
+=std=bcl::model=> weighted auc for result # 0: 0.152316; 304.631 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.227567; 455.133 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.177452; 354.905 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.147934; 295.867 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0752028; 150.406 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.156094; 312.188 x the naive predictor result
+=crt=bcl::opti=> Iteration: 159 improved Result: 0.156094 Best: 0.156094
+=std=bcl::model=> Training relative RMSD for iteration 159: 0.0705656
+=std=bcl::model=> weighted auc for result # 0: 0.169515; 339.03 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.244799; 489.597 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.190305; 380.609 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.174792; 349.584 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0881812; 176.362 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.173518; 347.037 x the naive predictor result
+=crt=bcl::opti=> Iteration: 160 improved Result: 0.173518 Best: 0.173518
+=std=bcl::model=> Training relative RMSD for iteration 160: 0.0711508
+=std=bcl::model=> weighted auc for result # 0: 0.167339; 334.678 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.24677; 493.54 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.193434; 386.867 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.169541; 339.082 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0805746; 161.149 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.171532; 343.063 x the naive predictor result
+=crt=bcl::opti=> Iteration: 161 improved Result: 0.171532 Best: 0.171532
+=std=bcl::model=> Training relative RMSD for iteration 161: 0.0703043
+=std=bcl::model=> weighted auc for result # 0: 0.172012; 344.024 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.247351; 494.701 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.188093; 376.187 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.166646; 333.292 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0921222; 184.244 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.173245; 346.49 x the naive predictor result
+=crt=bcl::opti=> Iteration: 162 improved Result: 0.173245 Best: 0.173245
+=std=bcl::model=> Training relative RMSD for iteration 162: 0.0699524
+=std=bcl::model=> weighted auc for result # 0: 0.17094; 341.881 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.254831; 509.662 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.19218; 384.359 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.167243; 334.487 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0845329; 169.066 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.173945; 347.891 x the naive predictor result
+=crt=bcl::opti=> Iteration: 163 improved Result: 0.173945 Best: 0.173945
+=std=bcl::model=> Training relative RMSD for iteration 163: 0.0696473
+=std=bcl::model=> weighted auc for result # 0: 0.156044; 312.088 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.252169; 504.338 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.189171; 378.342 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.186887; 373.773 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0932308; 186.462 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.1755; 351.001 x the naive predictor result
+=crt=bcl::opti=> Iteration: 164 improved Result: 0.1755 Best: 0.1755
+=std=bcl::model=> Training relative RMSD for iteration 164: 0.0700572
+=std=bcl::model=> weighted auc for result # 0: 0.169372; 338.745 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.2352; 470.399 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.194181; 388.362 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.152389; 304.777 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0773301; 154.66 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.165694; 331.389 x the naive predictor result
+=crt=bcl::opti=> Iteration: 165 improved Result: 0.165694 Best: 0.165694
+=std=bcl::model=> Training relative RMSD for iteration 165: 0.0702888
+=std=bcl::model=> weighted auc for result # 0: 0.158323; 316.646 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.243563; 487.126 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.192795; 385.591 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.156057; 312.114 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.080034; 160.068 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.166154; 332.309 x the naive predictor result
+=crt=bcl::opti=> Iteration: 166 improved Result: 0.166154 Best: 0.166154
+=std=bcl::model=> Training relative RMSD for iteration 166: 0.0687387
+=std=bcl::model=> weighted auc for result # 0: 0.159663; 319.326 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.238639; 477.278 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.179963; 359.927 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.151335; 302.669 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0760267; 152.053 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.161125; 322.251 x the naive predictor result
+=crt=bcl::opti=> Iteration: 167 improved Result: 0.161125 Best: 0.161125
+=std=bcl::model=> Training relative RMSD for iteration 167: 0.0691101
+=std=bcl::model=> weighted auc for result # 0: 0.154901; 309.802 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.22749; 454.98 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.178588; 357.176 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.144864; 289.729 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.071337; 142.674 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.155436; 310.872 x the naive predictor result
+=crt=bcl::opti=> Iteration: 168 improved Result: 0.155436 Best: 0.155436
+=std=bcl::model=> Training relative RMSD for iteration 168: 0.0688905
+=std=bcl::model=> weighted auc for result # 0: 0.155884; 311.768 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.234681; 469.363 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.183999; 367.998 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.145743; 291.487 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0708633; 141.727 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.158234; 316.468 x the naive predictor result
+=crt=bcl::opti=> Iteration: 169 improved Result: 0.158234 Best: 0.158234
+=std=bcl::model=> Training relative RMSD for iteration 169: 0.0695445
+=std=bcl::model=> weighted auc for result # 0: 0.173009; 346.018 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.25194; 503.879 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.193917; 387.833 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.161399; 322.798 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0803638; 160.728 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.172126; 344.251 x the naive predictor result
+=crt=bcl::opti=> Iteration: 170 improved Result: 0.172126 Best: 0.172126
+=std=bcl::model=> Training relative RMSD for iteration 170: 0.0690086
+=std=bcl::model=> weighted auc for result # 0: 0.177535; 355.071 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.254398; 508.796 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.187532; 375.063 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.151316; 302.633 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0720229; 144.046 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.168561; 337.122 x the naive predictor result
+=crt=bcl::opti=> Iteration: 171 improved Result: 0.168561 Best: 0.168561
+=std=bcl::model=> Training relative RMSD for iteration 171: 0.069408
+=std=bcl::model=> weighted auc for result # 0: 0.187451; 374.903 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.256657; 513.313 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.187648; 375.296 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.146439; 292.879 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.079018; 158.036 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.171443; 342.885 x the naive predictor result
+=crt=bcl::opti=> Iteration: 172 improved Result: 0.171443 Best: 0.171443
+=std=bcl::model=> Training relative RMSD for iteration 172: 0.069208
+=std=bcl::model=> weighted auc for result # 0: 0.172464; 344.927 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.24108; 482.161 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.185715; 371.429 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.150933; 301.867 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0745978; 149.196 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.164958; 329.916 x the naive predictor result
+=crt=bcl::opti=> Iteration: 173 improved Result: 0.164958 Best: 0.164958
+=std=bcl::model=> Training relative RMSD for iteration 173: 0.069216
+=std=bcl::model=> weighted auc for result # 0: 0.159029; 318.058 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.273533; 547.067 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.203717; 407.433 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.14841; 296.821 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0767861; 153.572 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.172295; 344.59 x the naive predictor result
+=crt=bcl::opti=> Iteration: 174 improved Result: 0.172295 Best: 0.172295
+=std=bcl::model=> Training relative RMSD for iteration 174: 0.0683629
+=std=bcl::model=> weighted auc for result # 0: 0.157997; 315.994 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.233968; 467.936 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.209956; 419.911 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.18604; 372.08 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0883945; 176.789 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.175271; 350.542 x the naive predictor result
+=crt=bcl::opti=> Iteration: 175 improved Result: 0.175271 Best: 0.175271
+=std=bcl::model=> Training relative RMSD for iteration 175: 0.0691124
+=std=bcl::model=> weighted auc for result # 0: 0.151218; 302.435 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.237064; 474.127 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.197705; 395.41 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.145279; 290.559 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0702041; 140.408 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.160294; 320.588 x the naive predictor result
+=crt=bcl::opti=> Iteration: 176 improved Result: 0.160294 Best: 0.160294
+=std=bcl::model=> Training relative RMSD for iteration 176: 0.0688736
+=std=bcl::model=> weighted auc for result # 0: 0.154758; 309.517 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.248326; 496.651 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.199366; 398.732 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.14585; 291.7 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0683377; 136.675 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.163327; 326.655 x the naive predictor result
+=crt=bcl::opti=> Iteration: 177 improved Result: 0.163327 Best: 0.163327
+=std=bcl::model=> Training relative RMSD for iteration 177: 0.0672199
+=std=bcl::model=> weighted auc for result # 0: 0.17044; 340.881 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.246112; 492.225 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.204173; 408.347 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.146027; 292.055 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0658676; 131.735 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.166524; 333.048 x the naive predictor result
+=crt=bcl::opti=> Iteration: 178 improved Result: 0.166524 Best: 0.166524
+=std=bcl::model=> Training relative RMSD for iteration 178: 0.0686021
+=std=bcl::model=> weighted auc for result # 0: 0.17737; 354.74 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.254265; 508.53 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.207222; 414.443 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.152633; 305.267 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0664194; 132.839 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.171582; 343.164 x the naive predictor result
+=crt=bcl::opti=> Iteration: 179 improved Result: 0.171582 Best: 0.171582
+=std=bcl::model=> Training relative RMSD for iteration 179: 0.0683376
+=std=bcl::model=> weighted auc for result # 0: 0.173448; 346.896 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.267056; 534.113 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.205819; 411.638 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.145291; 290.582 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0676749; 135.35 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.171858; 343.716 x the naive predictor result
+=crt=bcl::opti=> Iteration: 180 improved Result: 0.171858 Best: 0.171858
+=std=bcl::model=> Training relative RMSD for iteration 180: 0.0691031
+=std=bcl::model=> weighted auc for result # 0: 0.186064; 372.128 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.289958; 579.917 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.211679; 423.358 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.156092; 312.184 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0783357; 156.671 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.184426; 368.852 x the naive predictor result
+=crt=bcl::opti=> Iteration: 181 improved Result: 0.184426 Best: 0.184426
+=std=bcl::model=> Training relative RMSD for iteration 181: 0.0681377
+=std=bcl::model=> weighted auc for result # 0: 0.159105; 318.21 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.243816; 487.632 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.197975; 395.95 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.144092; 288.184 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0635297; 127.059 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.161704; 323.407 x the naive predictor result
+=crt=bcl::opti=> Iteration: 182 improved Result: 0.161704 Best: 0.161704
+=std=bcl::model=> Training relative RMSD for iteration 182: 0.0693142
+=std=bcl::model=> weighted auc for result # 0: 0.165587; 331.173 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.24431; 488.621 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.194403; 388.806 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.163186; 326.372 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.070358; 140.716 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.167569; 335.138 x the naive predictor result
+=crt=bcl::opti=> Iteration: 183 improved Result: 0.167569 Best: 0.167569
+=std=bcl::model=> Training relative RMSD for iteration 183: 0.0691921
+=std=bcl::model=> weighted auc for result # 0: 0.168308; 336.616 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.248669; 497.337 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.208081; 416.163 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.148411; 296.822 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0719519; 143.904 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.169084; 338.168 x the naive predictor result
+=crt=bcl::opti=> Iteration: 184 improved Result: 0.169084 Best: 0.169084
+=std=bcl::model=> Training relative RMSD for iteration 184: 0.0681795
+=std=bcl::model=> weighted auc for result # 0: 0.179761; 359.522 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.263593; 527.185 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.194604; 389.209 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.154263; 308.526 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0703071; 140.614 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.172506; 345.011 x the naive predictor result
+=crt=bcl::opti=> Iteration: 185 improved Result: 0.172506 Best: 0.172506
+=std=bcl::model=> Training relative RMSD for iteration 185: 0.069537
+=std=bcl::model=> weighted auc for result # 0: 0.169341; 338.681 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.255619; 511.237 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.181896; 363.792 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.133916; 267.833 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0657456; 131.491 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.161303; 322.607 x the naive predictor result
+=crt=bcl::opti=> Iteration: 186 improved Result: 0.161303 Best: 0.161303
+=std=bcl::model=> Training relative RMSD for iteration 186: 0.0693249
+=std=bcl::model=> weighted auc for result # 0: 0.187423; 374.845 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.274207; 548.413 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.182493; 364.986 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.143488; 286.977 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0695949; 139.19 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.171441; 342.882 x the naive predictor result
+=crt=bcl::opti=> Iteration: 187 improved Result: 0.171441 Best: 0.171441
+=std=bcl::model=> Training relative RMSD for iteration 187: 0.0693951
+=std=bcl::model=> weighted auc for result # 0: 0.168368; 336.735 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.250104; 500.209 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.188085; 376.17 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.147364; 294.728 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0670485; 134.097 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.164194; 328.388 x the naive predictor result
+=crt=bcl::opti=> Iteration: 188 improved Result: 0.164194 Best: 0.164194
+=std=bcl::model=> Training relative RMSD for iteration 188: 0.0695798
+=std=bcl::model=> weighted auc for result # 0: 0.16108; 322.159 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.254912; 509.823 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.19325; 386.501 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.160541; 321.082 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0756691; 151.338 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.16909; 338.181 x the naive predictor result
+=crt=bcl::opti=> Iteration: 189 improved Result: 0.16909 Best: 0.16909
+=std=bcl::model=> Training relative RMSD for iteration 189: 0.0686128
+=std=bcl::model=> weighted auc for result # 0: 0.147439; 294.878 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.265977; 531.953 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.190121; 380.242 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.172497; 344.994 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0663685; 132.737 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.16848; 336.961 x the naive predictor result
+=crt=bcl::opti=> Iteration: 190 improved Result: 0.16848 Best: 0.16848
+=std=bcl::model=> Training relative RMSD for iteration 190: 0.0679789
+=std=bcl::model=> weighted auc for result # 0: 0.171996; 343.991 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.269133; 538.266 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.190068; 380.135 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.157051; 314.102 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0766968; 153.394 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.172989; 345.978 x the naive predictor result
+=crt=bcl::opti=> Iteration: 191 improved Result: 0.172989 Best: 0.172989
+=std=bcl::model=> Training relative RMSD for iteration 191: 0.0680765
+=std=bcl::model=> weighted auc for result # 0: 0.176488; 352.976 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.251691; 503.383 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.201238; 402.476 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.175032; 350.064 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0878867; 175.773 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.178467; 356.934 x the naive predictor result
+=crt=bcl::opti=> Iteration: 192 improved Result: 0.178467 Best: 0.178467
+=std=bcl::model=> Training relative RMSD for iteration 192: 0.0678433
+=std=bcl::model=> weighted auc for result # 0: 0.160826; 321.653 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.238664; 477.328 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.200555; 401.11 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.152816; 305.631 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0797494; 159.499 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.166522; 333.044 x the naive predictor result
+=crt=bcl::opti=> Iteration: 193 improved Result: 0.166522 Best: 0.166522
+=std=bcl::model=> Training relative RMSD for iteration 193: 0.0685084
+=std=bcl::model=> weighted auc for result # 0: 0.184873; 369.746 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.275629; 551.257 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.188269; 376.537 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.143372; 286.744 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0750337; 150.067 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.173435; 346.87 x the naive predictor result
+=crt=bcl::opti=> Iteration: 194 improved Result: 0.173435 Best: 0.173435
+=std=bcl::model=> Training relative RMSD for iteration 194: 0.0675744
+=std=bcl::model=> weighted auc for result # 0: 0.172593; 345.187 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.266524; 533.048 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.191689; 383.379 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.174727; 349.455 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0759624; 151.925 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.176299; 352.599 x the naive predictor result
+=crt=bcl::opti=> Iteration: 195 improved Result: 0.176299 Best: 0.176299
+=std=bcl::model=> Training relative RMSD for iteration 195: 0.0680975
+=std=bcl::model=> weighted auc for result # 0: 0.168646; 337.293 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.275456; 550.913 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.198793; 397.586 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.168903; 337.806 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0867356; 173.471 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.179707; 359.414 x the naive predictor result
+=crt=bcl::opti=> Iteration: 196 improved Result: 0.179707 Best: 0.179707
+=std=bcl::model=> Training relative RMSD for iteration 196: 0.0683845
+=std=bcl::model=> weighted auc for result # 0: 0.174288; 348.576 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.273513; 547.027 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.188312; 376.624 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.161229; 322.458 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0701947; 140.389 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.173507; 347.015 x the naive predictor result
+=crt=bcl::opti=> Iteration: 197 improved Result: 0.173507 Best: 0.173507
+=std=bcl::model=> Training relative RMSD for iteration 197: 0.0674926
+=std=bcl::model=> weighted auc for result # 0: 0.146556; 293.113 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.261603; 523.206 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.192042; 384.083 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.148174; 296.348 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0603782; 120.756 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.161751; 323.501 x the naive predictor result
+=crt=bcl::opti=> Iteration: 198 improved Result: 0.161751 Best: 0.161751
+=std=bcl::model=> Training relative RMSD for iteration 198: 0.068196
+=std=bcl::model=> weighted auc for result # 0: 0.171309; 342.619 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.253957; 507.915 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.194293; 388.586 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.142321; 284.643 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0719569; 143.914 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.166768; 333.535 x the naive predictor result
+=crt=bcl::opti=> Iteration: 199 improved Result: 0.166768 Best: 0.166768
+=std=bcl::model=> Training relative RMSD for iteration 199: 0.068913
+=std=bcl::model=> weighted auc for result # 0: 0.175803; 351.606 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.259291; 518.582 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.206402; 412.805 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.1795; 359 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0779169; 155.834 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.179783; 359.565 x the naive predictor result
+=crt=bcl::opti=> Iteration: 200 improved Result: 0.179783 Best: 0.179783
+=std=bcl::model=> Training relative RMSD for iteration 200: 0.0689806
+=std=bcl::model=> weighted auc for result # 0: 0.164926; 329.851 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.25474; 509.48 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.19937; 398.74 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.167494; 334.987 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0737472; 147.494 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.172055; 344.11 x the naive predictor result
+=crt=bcl::opti=> Iteration: 201 improved Result: 0.172055 Best: 0.172055
+=std=bcl::model=> Training relative RMSD for iteration 201: 0.0665701
+=std=bcl::model=> weighted auc for result # 0: 0.164244; 328.488 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.294859; 589.719 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.193701; 387.402 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.152514; 305.029 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0857786; 171.557 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.178219; 356.439 x the naive predictor result
+=crt=bcl::opti=> Iteration: 202 improved Result: 0.178219 Best: 0.178219
+=std=bcl::model=> Training relative RMSD for iteration 202: 0.0674172
+=std=bcl::model=> weighted auc for result # 0: 0.17013; 340.26 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.285314; 570.628 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.212048; 424.095 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.177199; 354.398 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0873223; 174.645 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.186403; 372.805 x the naive predictor result
+=crt=bcl::opti=> Iteration: 203 improved Result: 0.186403 Best: 0.186403
+=std=bcl::model=> Training relative RMSD for iteration 203: 0.0679408
+=std=bcl::model=> weighted auc for result # 0: 0.157292; 314.583 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.277422; 554.845 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.198256; 396.511 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.167203; 334.406 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0754392; 150.878 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.175122; 350.245 x the naive predictor result
+=crt=bcl::opti=> Iteration: 204 improved Result: 0.175122 Best: 0.175122
+=std=bcl::model=> Training relative RMSD for iteration 204: 0.0685079
+=std=bcl::model=> weighted auc for result # 0: 0.167418; 334.836 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.295919; 591.837 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.206147; 412.295 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.151191; 302.383 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.060919; 121.838 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.176319; 352.638 x the naive predictor result
+=crt=bcl::opti=> Iteration: 205 improved Result: 0.176319 Best: 0.176319
+=std=bcl::model=> Training relative RMSD for iteration 205: 0.0684062
+=std=bcl::model=> weighted auc for result # 0: 0.180125; 360.251 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.27103; 542.06 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.206946; 413.892 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.147441; 294.882 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0637354; 127.471 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.173855; 347.711 x the naive predictor result
+=crt=bcl::opti=> Iteration: 206 improved Result: 0.173855 Best: 0.173855
+=std=bcl::model=> Training relative RMSD for iteration 206: 0.0670674
+=std=bcl::model=> weighted auc for result # 0: 0.166615; 333.23 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.290301; 580.602 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.210892; 421.784 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.172696; 345.391 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0782536; 156.507 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.183751; 367.503 x the naive predictor result
+=crt=bcl::opti=> Iteration: 207 improved Result: 0.183751 Best: 0.183751
+=std=bcl::model=> Training relative RMSD for iteration 207: 0.0676267
+=std=bcl::model=> weighted auc for result # 0: 0.157373; 314.746 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.274095; 548.19 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.202688; 405.376 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.154021; 308.043 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0672083; 134.417 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.171077; 342.154 x the naive predictor result
+=crt=bcl::opti=> Iteration: 208 improved Result: 0.171077 Best: 0.171077
+=std=bcl::model=> Training relative RMSD for iteration 208: 0.0673049
+=std=bcl::model=> weighted auc for result # 0: 0.188443; 376.887 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.278488; 556.977 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.205703; 411.406 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.174058; 348.116 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0706764; 141.353 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.183474; 366.948 x the naive predictor result
+=crt=bcl::opti=> Iteration: 209 improved Result: 0.183474 Best: 0.183474
+=std=bcl::model=> Training relative RMSD for iteration 209: 0.0692893
+=std=bcl::model=> weighted auc for result # 0: 0.191401; 382.802 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.296093; 592.185 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.221174; 442.348 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.152; 304 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0651733; 130.347 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.185168; 370.336 x the naive predictor result
+=crt=bcl::opti=> Iteration: 210 improved Result: 0.185168 Best: 0.185168
+=std=bcl::model=> Training relative RMSD for iteration 210: 0.0681418
+=std=bcl::model=> weighted auc for result # 0: 0.164092; 328.184 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.253985; 507.97 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.219317; 438.634 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.161072; 322.144 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0693759; 138.752 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.173568; 347.137 x the naive predictor result
+=crt=bcl::opti=> Iteration: 211 improved Result: 0.173568 Best: 0.173568
+=std=bcl::model=> Training relative RMSD for iteration 211: 0.0684885
+=std=bcl::model=> weighted auc for result # 0: 0.177566; 355.131 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.265885; 531.77 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.216491; 432.983 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.138214; 276.428 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0645677; 129.135 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.172545; 345.089 x the naive predictor result
+=crt=bcl::opti=> Iteration: 212 improved Result: 0.172545 Best: 0.172545
+=std=bcl::model=> Training relative RMSD for iteration 212: 0.0674917
+=std=bcl::model=> weighted auc for result # 0: 0.179915; 359.83 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.273186; 546.372 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.211553; 423.106 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.152891; 305.782 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.062596; 125.192 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.176028; 352.056 x the naive predictor result
+=crt=bcl::opti=> Iteration: 213 improved Result: 0.176028 Best: 0.176028
+=std=bcl::model=> Training relative RMSD for iteration 213: 0.0669587
+=std=bcl::model=> weighted auc for result # 0: 0.160532; 321.063 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.266031; 532.063 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.209088; 418.176 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.149454; 298.908 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0663715; 132.743 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.170295; 340.591 x the naive predictor result
+=crt=bcl::opti=> Iteration: 214 improved Result: 0.170295 Best: 0.170295
+=std=bcl::model=> Training relative RMSD for iteration 214: 0.0682107
+=std=bcl::model=> weighted auc for result # 0: 0.16525; 330.5 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.266297; 532.595 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.215977; 431.955 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.159556; 319.113 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0727819; 145.564 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.175973; 351.945 x the naive predictor result
+=crt=bcl::opti=> Iteration: 215 improved Result: 0.175973 Best: 0.175973
+=std=bcl::model=> Training relative RMSD for iteration 215: 0.0675763
+=std=bcl::model=> weighted auc for result # 0: 0.17043; 340.859 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.245558; 491.116 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.199582; 399.163 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.151392; 302.785 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0639692; 127.938 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.166186; 332.372 x the naive predictor result
+=crt=bcl::opti=> Iteration: 216 improved Result: 0.166186 Best: 0.166186
+=std=bcl::model=> Training relative RMSD for iteration 216: 0.067049
+=std=bcl::model=> weighted auc for result # 0: 0.158169; 316.338 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.260391; 520.783 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.201352; 402.704 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.14874; 297.48 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0690533; 138.107 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.167541; 335.082 x the naive predictor result
+=crt=bcl::opti=> Iteration: 217 improved Result: 0.167541 Best: 0.167541
+=std=bcl::model=> Training relative RMSD for iteration 217: 0.0672735
+=std=bcl::model=> weighted auc for result # 0: 0.151976; 303.951 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.243561; 487.122 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.215301; 430.601 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.171063; 342.126 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0702638; 140.528 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.170433; 340.866 x the naive predictor result
+=crt=bcl::opti=> Iteration: 218 improved Result: 0.170433 Best: 0.170433
+=std=bcl::model=> Training relative RMSD for iteration 218: 0.0683966
+=std=bcl::model=> weighted auc for result # 0: 0.155751; 311.502 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.256157; 512.314 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.207024; 414.047 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.149444; 298.888 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0697605; 139.521 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.167627; 335.254 x the naive predictor result
+=crt=bcl::opti=> Iteration: 219 improved Result: 0.167627 Best: 0.167627
+=std=bcl::model=> Training relative RMSD for iteration 219: 0.0666661
+=std=bcl::model=> weighted auc for result # 0: 0.161163; 322.326 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.259407; 518.813 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.203115; 406.23 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.160408; 320.815 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0702015; 140.403 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.170859; 341.717 x the naive predictor result
+=crt=bcl::opti=> Iteration: 220 improved Result: 0.170859 Best: 0.170859
+=std=bcl::model=> Training relative RMSD for iteration 220: 0.0675599
+=std=bcl::model=> weighted auc for result # 0: 0.175431; 350.862 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.263223; 526.445 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.20784; 415.68 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.148239; 296.479 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0706222; 141.244 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.173071; 346.142 x the naive predictor result
+=crt=bcl::opti=> Iteration: 221 improved Result: 0.173071 Best: 0.173071
+=std=bcl::model=> Training relative RMSD for iteration 221: 0.0675515
+=std=bcl::model=> weighted auc for result # 0: 0.179734; 359.468 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.273282; 546.564 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.208994; 417.988 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.147529; 295.057 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0710664; 142.133 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.176121; 352.242 x the naive predictor result
+=crt=bcl::opti=> Iteration: 222 improved Result: 0.176121 Best: 0.176121
+=std=bcl::model=> Training relative RMSD for iteration 222: 0.0671786
+=std=bcl::model=> weighted auc for result # 0: 0.176826; 353.652 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.264072; 528.144 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.191174; 382.348 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.132477; 264.954 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0621058; 124.212 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.165331; 330.662 x the naive predictor result
+=crt=bcl::opti=> Iteration: 223 improved Result: 0.165331 Best: 0.165331
+=std=bcl::model=> Training relative RMSD for iteration 223: 0.0667409
+=std=bcl::model=> weighted auc for result # 0: 0.171662; 343.324 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.256099; 512.198 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.209626; 419.253 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.146269; 292.539 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0662354; 132.471 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.169978; 339.957 x the naive predictor result
+=crt=bcl::opti=> Iteration: 224 improved Result: 0.169978 Best: 0.169978
+=std=bcl::model=> Training relative RMSD for iteration 224: 0.067399
+=std=bcl::model=> weighted auc for result # 0: 0.193548; 387.096 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.269451; 538.902 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.207624; 415.247 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.158237; 316.474 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0752211; 150.442 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.180816; 361.632 x the naive predictor result
+=crt=bcl::opti=> Iteration: 225 improved Result: 0.180816 Best: 0.180816
+=std=bcl::model=> Training relative RMSD for iteration 225: 0.0669847
+=std=bcl::model=> weighted auc for result # 0: 0.177914; 355.829 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.281796; 563.593 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.203734; 407.467 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.149106; 298.211 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0715612; 143.122 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.176822; 353.644 x the naive predictor result
+=crt=bcl::opti=> Iteration: 226 improved Result: 0.176822 Best: 0.176822
+=std=bcl::model=> Training relative RMSD for iteration 226: 0.0672289
+=std=bcl::model=> weighted auc for result # 0: 0.169192; 338.383 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.280738; 561.476 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.190095; 380.19 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.146811; 293.622 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0711914; 142.383 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.171605; 343.211 x the naive predictor result
+=crt=bcl::opti=> Iteration: 227 improved Result: 0.171605 Best: 0.171605
+=std=bcl::model=> Training relative RMSD for iteration 227: 0.0669882
+=std=bcl::model=> weighted auc for result # 0: 0.186216; 372.432 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.274672; 549.345 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.199848; 399.696 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.14235; 284.7 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0718133; 143.627 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.17498; 349.96 x the naive predictor result
+=crt=bcl::opti=> Iteration: 228 improved Result: 0.17498 Best: 0.17498
+=std=bcl::model=> Training relative RMSD for iteration 228: 0.0665188
+=std=bcl::model=> weighted auc for result # 0: 0.186906; 373.812 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.259575; 519.151 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.207453; 414.907 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.145629; 291.257 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.076182; 152.364 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.175149; 350.298 x the naive predictor result
+=crt=bcl::opti=> Iteration: 229 improved Result: 0.175149 Best: 0.175149
+=std=bcl::model=> Training relative RMSD for iteration 229: 0.0674142
+=std=bcl::model=> weighted auc for result # 0: 0.175537; 351.073 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.247914; 495.827 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.22049; 440.98 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.149862; 299.724 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0681367; 136.273 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.172388; 344.776 x the naive predictor result
+=crt=bcl::opti=> Iteration: 230 improved Result: 0.172388 Best: 0.172388
+=std=bcl::model=> Training relative RMSD for iteration 230: 0.0662723
+=std=bcl::model=> weighted auc for result # 0: 0.182441; 364.883 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.275525; 551.05 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.208614; 417.228 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.135226; 270.453 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0651956; 130.391 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.1734; 346.801 x the naive predictor result
+=crt=bcl::opti=> Iteration: 231 improved Result: 0.1734 Best: 0.1734
+=std=bcl::model=> Training relative RMSD for iteration 231: 0.0661058
+=std=bcl::model=> weighted auc for result # 0: 0.17089; 341.781 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.264542; 529.085 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.212968; 425.936 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.141508; 283.016 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0654718; 130.944 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.171076; 342.152 x the naive predictor result
+=crt=bcl::opti=> Iteration: 232 improved Result: 0.171076 Best: 0.171076
+=std=bcl::model=> Training relative RMSD for iteration 232: 0.0671969
+=std=bcl::model=> weighted auc for result # 0: 0.190569; 381.138 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.299947; 599.894 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.218628; 437.256 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.151383; 302.766 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0668116; 133.623 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.185468; 370.936 x the naive predictor result
+=crt=bcl::opti=> Iteration: 233 improved Result: 0.185468 Best: 0.185468
+=std=bcl::model=> Training relative RMSD for iteration 233: 0.0671146
+=std=bcl::model=> weighted auc for result # 0: 0.171975; 343.95 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.262066; 524.132 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.208982; 417.965 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.164634; 329.268 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0624526; 124.905 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.174022; 348.044 x the naive predictor result
+=crt=bcl::opti=> Iteration: 234 improved Result: 0.174022 Best: 0.174022
+=std=bcl::model=> Training relative RMSD for iteration 234: 0.0672855
+=std=bcl::model=> weighted auc for result # 0: 0.172677; 345.353 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.26853; 537.059 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.205427; 410.855 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.154585; 309.17 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0611832; 122.366 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.17248; 344.961 x the naive predictor result
+=crt=bcl::opti=> Iteration: 235 improved Result: 0.17248 Best: 0.17248
+=std=bcl::model=> Training relative RMSD for iteration 235: 0.0669464
+=std=bcl::model=> weighted auc for result # 0: 0.178785; 357.571 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.280638; 561.275 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.199398; 398.795 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.159984; 319.968 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.066371; 132.742 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.177035; 354.07 x the naive predictor result
+=crt=bcl::opti=> Iteration: 236 improved Result: 0.177035 Best: 0.177035
+=std=bcl::model=> Training relative RMSD for iteration 236: 0.0678009
+=std=bcl::model=> weighted auc for result # 0: 0.170647; 341.295 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.283095; 566.19 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.214758; 429.516 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.172995; 345.99 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0656881; 131.376 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.181437; 362.873 x the naive predictor result
+=crt=bcl::opti=> Iteration: 237 improved Result: 0.181437 Best: 0.181437
+=std=bcl::model=> Training relative RMSD for iteration 237: 0.0666795
+=std=bcl::model=> weighted auc for result # 0: 0.17546; 350.919 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.266359; 532.718 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.209332; 418.664 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.15593; 311.859 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0725007; 145.001 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.175916; 351.832 x the naive predictor result
+=crt=bcl::opti=> Iteration: 238 improved Result: 0.175916 Best: 0.175916
+=std=bcl::model=> Training relative RMSD for iteration 238: 0.0686671
+=std=bcl::model=> weighted auc for result # 0: 0.175918; 351.837 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.275406; 550.812 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.211884; 423.768 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.153765; 307.53 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0745974; 149.195 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.178314; 356.628 x the naive predictor result
+=crt=bcl::opti=> Iteration: 239 improved Result: 0.178314 Best: 0.178314
+=std=bcl::model=> Training relative RMSD for iteration 239: 0.0674109
+=std=bcl::model=> weighted auc for result # 0: 0.163673; 327.347 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.257589; 515.178 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.208936; 417.871 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.147022; 294.045 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0693749; 138.75 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.169319; 338.638 x the naive predictor result
+=crt=bcl::opti=> Iteration: 240 improved Result: 0.169319 Best: 0.169319
+=std=bcl::model=> Training relative RMSD for iteration 240: 0.0667956
+=std=bcl::model=> weighted auc for result # 0: 0.163411; 326.823 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.269402; 538.803 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.20811; 416.22 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.150782; 301.563 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0695237; 139.047 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.172246; 344.491 x the naive predictor result
+=crt=bcl::opti=> Iteration: 241 improved Result: 0.172246 Best: 0.172246
+=std=bcl::model=> Training relative RMSD for iteration 241: 0.0666384
+=std=bcl::model=> weighted auc for result # 0: 0.154768; 309.535 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.243715; 487.43 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.215322; 430.644 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.178073; 356.146 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0786026; 157.205 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.174096; 348.192 x the naive predictor result
+=crt=bcl::opti=> Iteration: 242 improved Result: 0.174096 Best: 0.174096
+=std=bcl::model=> Training relative RMSD for iteration 242: 0.0674097
+=std=bcl::model=> weighted auc for result # 0: 0.17768; 355.36 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.276399; 552.798 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.215495; 430.99 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.153564; 307.127 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0656322; 131.264 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.177754; 355.508 x the naive predictor result
+=crt=bcl::opti=> Iteration: 243 improved Result: 0.177754 Best: 0.177754
+=std=bcl::model=> Training relative RMSD for iteration 243: 0.0674311
+=std=bcl::model=> weighted auc for result # 0: 0.168404; 336.808 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.280166; 560.332 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.208776; 417.552 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.145513; 291.026 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0642365; 128.473 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.173419; 346.838 x the naive predictor result
+=crt=bcl::opti=> Iteration: 244 improved Result: 0.173419 Best: 0.173419
+=std=bcl::model=> Training relative RMSD for iteration 244: 0.0660429
+=std=bcl::model=> weighted auc for result # 0: 0.179919; 359.839 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.292151; 584.301 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.203114; 406.228 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.143175; 286.349 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0690518; 138.104 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.177482; 354.964 x the naive predictor result
+=crt=bcl::opti=> Iteration: 245 improved Result: 0.177482 Best: 0.177482
+=std=bcl::model=> Training relative RMSD for iteration 245: 0.0653264
+=std=bcl::model=> weighted auc for result # 0: 0.178165; 356.33 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.264491; 528.981 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.216545; 433.09 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.158794; 317.588 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0599985; 119.997 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.175599; 351.197 x the naive predictor result
+=crt=bcl::opti=> Iteration: 246 improved Result: 0.175599 Best: 0.175599
+=std=bcl::model=> Training relative RMSD for iteration 246: 0.0666818
+=std=bcl::model=> weighted auc for result # 0: 0.189401; 378.802 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.268602; 537.204 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.200568; 401.135 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.143867; 287.734 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0581429; 116.286 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.172116; 344.232 x the naive predictor result
+=crt=bcl::opti=> Iteration: 247 improved Result: 0.172116 Best: 0.172116
+=std=bcl::model=> Training relative RMSD for iteration 247: 0.0672484
+=std=bcl::model=> weighted auc for result # 0: 0.17117; 342.34 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.282133; 564.266 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.207711; 415.422 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.144646; 289.292 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0631029; 126.206 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.173753; 347.505 x the naive predictor result
+=crt=bcl::opti=> Iteration: 248 improved Result: 0.173753 Best: 0.173753
+=std=bcl::model=> Training relative RMSD for iteration 248: 0.0677184
+=std=bcl::model=> weighted auc for result # 0: 0.183419; 366.838 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.277898; 555.797 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.204682; 409.364 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.151355; 302.711 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0696009; 139.202 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.177391; 354.782 x the naive predictor result
+=crt=bcl::opti=> Iteration: 249 improved Result: 0.177391 Best: 0.177391
+=std=bcl::model=> Training relative RMSD for iteration 249: 0.0668139
+=std=bcl::model=> weighted auc for result # 0: 0.175636; 351.271 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.26704; 534.08 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.214695; 429.39 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.155234; 310.468 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0710938; 142.188 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.17674; 353.479 x the naive predictor result
+=crt=bcl::opti=> Iteration: 250 improved Result: 0.17674 Best: 0.17674
+=std=bcl::app=> approximator training total: 174 [sec]
+=std=bcl::app=> monitoring dataset score:0.17674
+=std=bcl::model=> weighted auc for result # 0: 0.175636; 351.271 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 1: 0.26704; 534.08 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 2: 0.214695; 429.39 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 3: 0.155234; 310.468 x the naive predictor result
+=std=bcl::model=> weighted auc for result # 4: 0.0710938; 142.188 x the naive predictor result
+=std=bcl::model=> average weighted auc: 0.17674; 353.479 x the naive predictor result
+=std=bcl::app=> independent data: final score (AucRocCurve): 0.17674 time: 0 [sec]
+=std=bcl::app=> Final model written (key = 000002) ... done
+=std=bcl::app=> Independent Predictions written ... done
+
+========================================================================================================================
+=slt=bcl=> bcl has run for 00:02:54, peak virtual memory used: 136 MB, peak physical RAM used: 93 MB

@@ -1,0 +1,1994 @@
+core.chemical.bcl.util: BCL message level set at Standard
+core.init: Checking for fconfig files in pwd and ./rosetta/flags 
+core.init: Rosetta version: 2021.50.post.dev+12.brownbp1.bclsubmoduleupdate12022021.89f7e5154b1 89f7e5154b10e97edfb436ee91836b362b0d68ef https://github.com/RosettaCommons/main.git 2021-12-27T12:18:48
+core.init: command: /home/ben/workspace/Rosetta/main/source/bin/rosetta_scripts.bcl.linuxgccrelease -parser:protocol /home/ben/Projects/BCL_Workshop_2022/Tutorial_7/scripts/AffinityDesignD4.LIG.xml -in:file:s /home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/receptors/DRD4.LIG.receptor.pdb /home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/ligands/LIG_0001.fa.pdb -parser:script_vars prefix=output/AffinityDesignD4/LIG_CORE_RINGSWAP_AT_ -parser:script_vars rotamer_library=/home/ben/workspace/bcl/rotamer_library -parser:script_vars mutfrag=/home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/ligands/LIG.sdf -parser:script_vars rings=/home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/rings -extra_res_fa /home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/ligands/LIG.fa.params -out:prefix output/AffinityDesignD4/LIG_CORE_RINGSWAP_AT_ -out:pdb false -out:pdb_gz false -nstruct 10 -in:file:fullatom -restore_talaris_behavior -ignore_zero_occupancy false -linmem_ig 10 -constant_seed -overwrite
+basic.random.init_random_generator: Constant seed mode, seed=1111111 seed_offset=0 real_seed=1111111
+basic.random.init_random_generator: RandomGenerator:init: Normal mode, seed=1111111 RG_type=mt19937
+core.init: Resolved executable path: /home/ben/workspace/Rosetta/main/source/build/src/release/linux/5.10/64/x86/gcc/9/bcl/rosetta_scripts.bcl.linuxgccrelease
+core.init: Looking for database based on location of executable: /home/ben/workspace/Rosetta/main/database/
+core.chemical.bcl.util: Resolved executable path: /home/ben/workspace/Rosetta/main/source/build/src/release/linux/5.10/64/x86/gcc/9/bcl/rosetta_scripts.bcl.linuxgccrelease
+core.chemical.bcl.util: Looking for bcl based on location of executable: /home/ben/workspace/Rosetta/main/source/external/bcl/
+core.chemical.bcl.util: Found BCL submodule path located at: /home/ben/workspace/Rosetta/main/source/external/bcl/
+core.chemical.bcl.util: Externals directory: /home/ben/workspace/Rosetta/main/source/external/bcl/../
+core.chemical.bcl.util: BCL rotamer library directory: /home/ben/workspace/Rosetta/main/source/external/bcl/rotamer_library/
+core.chemical.bcl.util: BCL model directory: /home/ben/workspace/Rosetta/main/source/external/bcl/model/
+core.chemical.bcl.util: BCL model directory passed to commandline: 
+=crt=bcl::random=> Seed was set to 5489!
+=crt=bcl::random=> Seed was set to 5489!
+
+core.chemical.bcl.util: Initializing BCL random number generator with seed: 1111111
+protocols.jd2.PDBJobInputter: Instantiate PDBJobInputter
+protocols.jd2.PDBJobInputter: PDBJobInputter::fill_jobs
+protocols.jd2.PDBJobInputter: pushed /home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/receptors/DRD4.LIG.receptor.pdb /home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/ligands/LIG_0001.fa.pdb nstruct indices 1 - 10
+protocols.evaluation.ChiWellRmsdEvaluatorCreator: Evaluation Creator active ... 
+protocols.jd2.PDBJobInputter: PDBJobInputter::pose_from_job
+protocols.jd2.PDBJobInputter: filling pose from PDB /home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/receptors/DRD4.LIG.receptor.pdb /home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/ligands/LIG_0001.fa.pdb
+core.chemical.GlobalResidueTypeSet: Finished initializing fa_standard residue type set.  Created 545 residue types
+core.chemical.GlobalResidueTypeSet: Total time to initialize 0.328964 seconds.
+core.import_pose.import_pose: File '/home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/receptors/DRD4.LIG.receptor.pdb /home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/ligands/LIG_0001.fa.pdb' automatically determined to be of type PDB
+core.conformation.Conformation: Found disulfide between residues 75 152
+core.conformation.Conformation: current variant for 75 CYS
+core.conformation.Conformation: current variant for 152 CYS
+core.conformation.Conformation: current variant for 75 CYD
+core.conformation.Conformation: current variant for 152 CYD
+core.conformation.Conformation: Found disulfide between residues 232 235
+core.conformation.Conformation: current variant for 232 CYS
+core.conformation.Conformation: current variant for 235 CYS
+core.conformation.Conformation: current variant for 232 CYD
+core.conformation.Conformation: current variant for 235 CYD
+protocols.rosetta_scripts.RosettaScriptsParser: dock_design_filename=/home/ben/Projects/BCL_Workshop_2022/Tutorial_7/scripts/AffinityDesignD4.LIG.xml
+protocols.rosetta_scripts.RosettaScriptsParser: Variable substitution will occur with the following values: '%%mutfrag%%'='/home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/ligands/LIG.sdf';  '%%prefix%%'='output/AffinityDesignD4/LIG_CORE_RINGSWAP_AT_';  '%%rings%%'='/home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/rings';  '%%rotamer_library%%'='/home/ben/workspace/bcl/rotamer_library';  
+protocols.rosetta_scripts.RosettaScriptsParser: Substituted script:
+<ROSETTASCRIPTS>
+    	<SCOREFXNS>
+		<ScoreFunction name="t14" weights="talaris2014"/>
+		<ScoreFunction name="t14w" weights="talaris2014">
+			<Reweight scoretype="coordinate_constraint" weight="1.0"/>
+		</ScoreFunction>
+    	</SCOREFXNS>
+        <RESIDUE_SELECTORS>
+                <Chain name="ligand" chains="X"/>
+                <Not name="receptor" selector="ligand"/> #Note: this selects the entire receptor
+                <Neighborhood name="interface" selector="ligand" distance="6"/> #Note: this selects the ligand AND surrounding residues
+                <Not name="not_interface" selector="interface"/> #Note: this selects only the parts of the protein far from the interface
+        </RESIDUE_SELECTORS>
+	<TASKOPERATIONS>
+                # Turn off design but allow repacking
+		<RestrictToRepacking name="rtrp"/>
+		# Include rotamer options from the command line
+		<InitializeFromCommandline name="ifcl" />
+	    	# Repack interface
+		<OperateOnResidueSubset name="repackonly_ligand" selector="ligand" >
+                        <RestrictToRepackingRLT/>
+                </OperateOnResidueSubset>
+                <OperateOnResidueSubset name="repack_interface" selector="interface" >
+                        <RestrictToRepackingRLT/>
+                </OperateOnResidueSubset>
+                <OperateOnResidueSubset name="fix_notinterface" selector="not_interface" >
+                        <PreventRepackingRLT/>
+                </OperateOnResidueSubset>
+	</TASKOPERATIONS>
+	<FILTERS>
+		# TARGET #
+		# D4 interaction energy filters
+		<LigInterfaceEnergy name="d4_ifscore" scorefxn="t14" include_cstE="0" energy_cutoff="0.0"/>
+		<IfThenFilter name="d4_ifscore_bounded" threshold="0">
+    			<IF testfilter="d4_ifscore" valuefilter="d4_ifscore"/>
+    			<ELSE value="0.0"/>
+		</IfThenFilter>
+	</FILTERS>
+        <SIMPLE_METRICS>
+		# Score poses
+		<InteractionEnergyMetric name="lig_ifscore" force_rescore="1" residue_selector="ligand" residue_selector2="receptor" scorefxn="t14" />
+        </SIMPLE_METRICS>
+	<MOVERS>
+		# Constraint movers
+        	<AddConstraintsToCurrentConformationMover name="cst" coord_dev="1.0" CA_only="0" bb_only="1"/>
+		<ClearConstraintsMover name="uncst"/>
+		<AtomCoordinateCstMover name="relax_cst" coord_dev="1.0" bounded="0" bound_width="0" 
+		sidechain="1" native="0" func_groups="0"/>
+	
+		# Minimization movers
+		<MinMover name="min" scorefxn="t14w" chi="1" bb="1" cartesian="0"/>
+		<ParsedProtocol name="min_cycle">
+                        <Add mover_name="cst"/>
+                        <Add mover_name="min"/>
+                        <Add mover_name="uncst"/>
+                </ParsedProtocol>	
+                
+		# Relax movers
+		<VirtualRoot name="root" removable="1" />
+		<VirtualRoot name="remove" remove="1" />
+		<FastRelax name="relax"  scorefxn="t14w" ramp_down_constraints="0" repeats="1" task_operations="rtrp,repack_interface,fix_notinterface"/>
+		<ParsedProtocol name="relax_cycle">
+			<Add mover_name="root"/>
+			<Add mover_name="relax_cst"/>
+			<Add mover_name="relax"/>
+			<Add mover_name="remove"/>
+			<Add mover_name="uncst"/>
+		</ParsedProtocol>
+	
+		#########################################################################
+		#			BCL drug design movers			          #
+		#########################################################################
+		
+		# Extend outward from the starting scaffold (i.e. grow the scaffold)
+
+		<BCLFragmentMutateMover name="add_medchem_east" 
+		ligand_chain="X" 
+		object_data_label="AddMedChem(
+		medchem_library=/home/ben/workspace/bcl/rotamer_library/medchem_fragments/bcl_buildfrag_0.sdf.gz, 
+		druglikeness_type=IsConstitutionDruglike,
+		mutable_atoms=0 1 2 3 4 5)"
+		/>
+
+		<BCLFragmentMutateMover name="add_medchem_west" 
+		ligand_chain="X" 
+		object_data_label="AddMedChem(
+		medchem_library=/home/ben/workspace/bcl/rotamer_library/medchem_fragments/bcl_buildfrag_0.sdf.gz, 
+		druglikeness_type=IsConstitutionDruglike,
+		mutable_atoms=14 15 16 17 18 19 20 21 22)"
+		/>
+
+		<BCLFragmentMutateMover name="alchemy" 
+		ligand_chain="X" 
+		object_data_label="Alchemy(
+		allowed_elements=C O H,restrict_to_bonded_h=1,
+		druglikeness_type=IsConstitutionDruglike,
+		mutable_atoms=14 15 16 17 18 19 20 21 22)"
+		/>
+		
+		<BCLFragmentMutateMover name="control" 
+		ligand_chain="X" 
+		object_data_label="Alchemy(
+		allowed_elements=H,restrict_to_bonded_h=1,
+		druglikeness_type=IsConstitutionDruglike)"
+		/>
+		
+		# Scaffold hopping
+		<BCLFragmentMutateMover name="ringswap_conservative_aro_east" 
+		ligand_chain="X" 
+		object_data_label="RingSwap(
+		ring_library=/home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/rings/alternative_rings.east.unbiased.sdf.gz, 
+		druglikeness_type=IsConstitutionDruglike,
+		conservative=1,restricted=0,
+		atom_comparison=ElementType,
+		bond_comparison=BondOrderOrAromaticWithRingness,
+		mutable_atoms=0 1 2 3 4 5,
+		ring_initiation_probability=0.5)"
+		/>
+
+		<BCLFragmentMutateMover name="ringswap_conservative_aro_west" 
+		ligand_chain="X" 
+		object_data_label="RingSwap(
+		ring_library=/home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/rings/alternative_rings.west.sdf.gz, 
+		druglikeness_type=IsConstitutionDruglike,
+		conservative=1,restricted=1,
+		atom_comparison=ElementType,
+		bond_comparison=BondOrderOrAromaticWithRingness,
+		mutable_atoms=14 15 16 17 18 19 20 21 22,
+		ring_initiation_probability=0.0)"
+		/>
+
+		<BCLFragmentMutateMover name="ringswap_conservative_core" 
+		ligand_chain="X" 
+		object_data_label="RingSwap(
+		ring_library=/home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/rings/alternative_rings.core.unbiased.sdf.gz, 
+		ring_initiation_probability=0.0,
+		restricted=0,conservative=1,refine_alignment=1,
+		atom_comparison=AtomType,
+		bond_comparison=BondOrderOrAromaticWithRingness,
+		druglikeness_type=IsConstitutionDruglike,
+		mutable_atoms=8 9 10 11 23)"
+		/>
+
+		<BCLFragmentMutateMover name="alchemy_core" 
+		ligand_chain="X" 
+		object_data_label="Alchemy(
+		allowed_elements=O,restrict_to_bonded_h=0,
+		druglikeness_type=IsConstitutionDruglike,
+		mutable_atoms=10 11 23)"
+		/>
+
+		<BCLFragmentMutateMover name="halogenate_east" 
+		ligand_chain="X" 
+		object_data_label="Halogenate(
+		druglikeness_type=IsConstitutionDruglike,
+		reversible=1,
+		allowed_halogens=F Cl Br,
+		mutable_atoms=0 1 2 3 4 5)" 
+		/>
+		
+		<BCLFragmentMutateMover name="halogenate_west" 
+		ligand_chain="X" 
+		object_data_label="Halogenate(
+		druglikeness_type=IsConstitutionDruglike,
+		reversible=1,
+		allowed_halogens=F Cl,
+		mutable_atoms=14 15 16 17 18 19 20 21 22)" 
+		/>
+		
+                <ParsedProtocol name="halogenate_east_cycle" mode="sequence">
+		        <Add mover_name="halogenate_east"/>
+        	        <Add mover_name="min_cycle"/>
+                </ParsedProtocol>
+
+	        <GenericMonteCarlo name="gmc_halogenate_east" mover_name="halogenate_east_cycle"
+		trials="10" sample_type="low" filter_name="d4_ifscore"
+		temperature="0.6" drift="1" recover_low="1" reset_baselines="0" 
+		adaptive_movers="0" preapply="1" />
+
+                <ParsedProtocol name="bcl_swap_core" mode="sequence">
+		        <Add mover_name="ringswap_conservative_core"/>
+        	        <Add mover_name="relax_cycle"/>
+                </ParsedProtocol>
+
+                <ParsedProtocol name="bcl_swap_east" mode="sequence">
+		        <Add mover_name="ringswap_conservative_aro_east"/>
+        	        <Add mover_name="relax_cycle"/>
+                </ParsedProtocol>
+
+                <ParsedProtocol name="bcl_swap_west" mode="sequence">
+		        <Add mover_name="ringswap_conservative_aro_west"/>
+        	        <Add mover_name="relax_cycle"/>
+                </ParsedProtocol>
+
+                <RandomMover name="bcl_opti_helper_east"
+                movers="add_medchem_east,halogenate_east"
+                weights="0.5,0.5"
+                />
+
+                <RandomMover name="bcl_opti_helper_west"
+                movers="add_medchem_west,halogenate_west"
+                weights="0.5,0.5"
+                />
+
+                <ParsedProtocol name="bcl_opti" mode="sequence">
+		        <Add mover_name="bcl_opti_helper_west"/>
+		        <Add mover_name="bcl_opti_helper_east"/>
+        	        <Add mover_name="relax_cycle"/>
+                </ParsedProtocol>
+
+                <RandomMover name="bcl_design"
+                movers="bcl_swap_core,bcl_swap_east,bcl_swap_west,bcl_opti"
+                weights="1.0,0.0,0.0,0.0"
+                />
+
+		<ParsedProtocol name="score_only" mode="sequence">
+        	        <Add mover_name="relax_cycle"/>
+                </ParsedProtocol>
+
+	</MOVERS>
+	<APPLY_TO_POSE>
+	</APPLY_TO_POSE>
+	<PROTOCOLS>
+		<Add mover_name="min_cycle"/>
+		<Add mover_name="bcl_design"/>
+		Add mover_name="score_only"/>
+        	<Add filter_name="d4_ifscore"/>
+		<Add metrics="lig_ifscore"/>
+	</PROTOCOLS>
+	<OUTPUT />
+</ROSETTASCRIPTS>
+protocols.rosetta_scripts.RosettaScriptsParser: Validating input script...
+protocols.rosetta_scripts.RosettaScriptsSchemaValidator: Generating XML Schema for rosetta_scripts...
+protocols.rosetta_scripts.RosettaScriptsSchemaValidator: ...done
+protocols.rosetta_scripts.RosettaScriptsSchemaValidator: Initializing schema validator...
+protocols.rosetta_scripts.RosettaScriptsSchemaValidator: ...done
+protocols.rosetta_scripts.RosettaScriptsParser: ...done
+protocols.rosetta_scripts.RosettaScriptsParser: Parsed script:
+<ROSETTASCRIPTS>
+	<SCOREFXNS>
+		<ScoreFunction name="t14" weights="talaris2014"/>
+		<ScoreFunction name="t14w" weights="talaris2014">
+			<Reweight scoretype="coordinate_constraint" weight="1.0"/>
+		</ScoreFunction>
+	</SCOREFXNS>
+	<RESIDUE_SELECTORS>
+		<Chain chains="X" name="ligand"/>
+		<Not name="receptor" selector="ligand"/>
+		<Neighborhood distance="6" name="interface" selector="ligand"/>
+		<Not name="not_interface" selector="interface"/>
+	</RESIDUE_SELECTORS>
+	<TASKOPERATIONS>
+		<RestrictToRepacking name="rtrp"/>
+		<InitializeFromCommandline name="ifcl"/>
+		<OperateOnResidueSubset name="repackonly_ligand" selector="ligand">
+			<RestrictToRepackingRLT/>
+		</OperateOnResidueSubset>
+		<OperateOnResidueSubset name="repack_interface" selector="interface">
+			<RestrictToRepackingRLT/>
+		</OperateOnResidueSubset>
+		<OperateOnResidueSubset name="fix_notinterface" selector="not_interface">
+			<PreventRepackingRLT/>
+		</OperateOnResidueSubset>
+	</TASKOPERATIONS>
+	<FILTERS>
+		<LigInterfaceEnergy energy_cutoff="0.0" include_cstE="0" name="d4_ifscore" scorefxn="t14"/>
+		<IfThenFilter name="d4_ifscore_bounded" threshold="0">
+			<IF testfilter="d4_ifscore" valuefilter="d4_ifscore"/>
+			<ELSE value="0.0"/>
+		</IfThenFilter>
+	</FILTERS>
+	<SIMPLE_METRICS>
+		<InteractionEnergyMetric force_rescore="1" name="lig_ifscore" residue_selector="ligand" residue_selector2="receptor" scorefxn="t14"/>
+	</SIMPLE_METRICS>
+	<MOVERS>
+		<AddConstraintsToCurrentConformationMover CA_only="0" bb_only="1" coord_dev="1.0" name="cst"/>
+		<ClearConstraintsMover name="uncst"/>
+		<AtomCoordinateCstMover bound_width="0" bounded="0" coord_dev="1.0" func_groups="0" name="relax_cst" native="0" sidechain="1"/>
+		<MinMover bb="1" cartesian="0" chi="1" name="min" scorefxn="t14w"/>
+		<ParsedProtocol name="min_cycle">
+			<Add mover_name="cst"/>
+			<Add mover_name="min"/>
+			<Add mover_name="uncst"/>
+		</ParsedProtocol>
+		<VirtualRoot name="root" removable="1"/>
+		<VirtualRoot name="remove" remove="1"/>
+		<FastRelax name="relax" ramp_down_constraints="0" repeats="1" scorefxn="t14w" task_operations="rtrp,repack_interface,fix_notinterface"/>
+		<ParsedProtocol name="relax_cycle">
+			<Add mover_name="root"/>
+			<Add mover_name="relax_cst"/>
+			<Add mover_name="relax"/>
+			<Add mover_name="remove"/>
+			<Add mover_name="uncst"/>
+		</ParsedProtocol>
+		<BCLFragmentMutateMover ligand_chain="X" name="add_medchem_east" object_data_label="AddMedChem(
+		medchem_library=/home/ben/workspace/bcl/rotamer_library/medchem_fragments/bcl_buildfrag_0.sdf.gz, 
+		druglikeness_type=IsConstitutionDruglike,
+		mutable_atoms=0 1 2 3 4 5)"/>
+		<BCLFragmentMutateMover ligand_chain="X" name="add_medchem_west" object_data_label="AddMedChem(
+		medchem_library=/home/ben/workspace/bcl/rotamer_library/medchem_fragments/bcl_buildfrag_0.sdf.gz, 
+		druglikeness_type=IsConstitutionDruglike,
+		mutable_atoms=14 15 16 17 18 19 20 21 22)"/>
+		<BCLFragmentMutateMover ligand_chain="X" name="alchemy" object_data_label="Alchemy(
+		allowed_elements=C O H,restrict_to_bonded_h=1,
+		druglikeness_type=IsConstitutionDruglike,
+		mutable_atoms=14 15 16 17 18 19 20 21 22)"/>
+		<BCLFragmentMutateMover ligand_chain="X" name="control" object_data_label="Alchemy(
+		allowed_elements=H,restrict_to_bonded_h=1,
+		druglikeness_type=IsConstitutionDruglike)"/>
+		<BCLFragmentMutateMover ligand_chain="X" name="ringswap_conservative_aro_east" object_data_label="RingSwap(
+		ring_library=/home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/rings/alternative_rings.east.unbiased.sdf.gz, 
+		druglikeness_type=IsConstitutionDruglike,
+		conservative=1,restricted=0,
+		atom_comparison=ElementType,
+		bond_comparison=BondOrderOrAromaticWithRingness,
+		mutable_atoms=0 1 2 3 4 5,
+		ring_initiation_probability=0.5)"/>
+		<BCLFragmentMutateMover ligand_chain="X" name="ringswap_conservative_aro_west" object_data_label="RingSwap(
+		ring_library=/home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/rings/alternative_rings.west.sdf.gz, 
+		druglikeness_type=IsConstitutionDruglike,
+		conservative=1,restricted=1,
+		atom_comparison=ElementType,
+		bond_comparison=BondOrderOrAromaticWithRingness,
+		mutable_atoms=14 15 16 17 18 19 20 21 22,
+		ring_initiation_probability=0.0)"/>
+		<BCLFragmentMutateMover ligand_chain="X" name="ringswap_conservative_core" object_data_label="RingSwap(
+		ring_library=/home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/rings/alternative_rings.core.unbiased.sdf.gz, 
+		ring_initiation_probability=0.0,
+		restricted=0,conservative=1,refine_alignment=1,
+		atom_comparison=AtomType,
+		bond_comparison=BondOrderOrAromaticWithRingness,
+		druglikeness_type=IsConstitutionDruglike,
+		mutable_atoms=8 9 10 11 23)"/>
+		<BCLFragmentMutateMover ligand_chain="X" name="alchemy_core" object_data_label="Alchemy(
+		allowed_elements=O,restrict_to_bonded_h=0,
+		druglikeness_type=IsConstitutionDruglike,
+		mutable_atoms=10 11 23)"/>
+		<BCLFragmentMutateMover ligand_chain="X" name="halogenate_east" object_data_label="Halogenate(
+		druglikeness_type=IsConstitutionDruglike,
+		reversible=1,
+		allowed_halogens=F Cl Br,
+		mutable_atoms=0 1 2 3 4 5)"/>
+		<BCLFragmentMutateMover ligand_chain="X" name="halogenate_west" object_data_label="Halogenate(
+		druglikeness_type=IsConstitutionDruglike,
+		reversible=1,
+		allowed_halogens=F Cl,
+		mutable_atoms=14 15 16 17 18 19 20 21 22)"/>
+		<ParsedProtocol mode="sequence" name="halogenate_east_cycle">
+			<Add mover_name="halogenate_east"/>
+			<Add mover_name="min_cycle"/>
+		</ParsedProtocol>
+		<GenericMonteCarlo adaptive_movers="0" drift="1" filter_name="d4_ifscore" mover_name="halogenate_east_cycle" name="gmc_halogenate_east" preapply="1" recover_low="1" reset_baselines="0" sample_type="low" temperature="0.6" trials="10"/>
+		<ParsedProtocol mode="sequence" name="bcl_swap_core">
+			<Add mover_name="ringswap_conservative_core"/>
+			<Add mover_name="relax_cycle"/>
+		</ParsedProtocol>
+		<ParsedProtocol mode="sequence" name="bcl_swap_east">
+			<Add mover_name="ringswap_conservative_aro_east"/>
+			<Add mover_name="relax_cycle"/>
+		</ParsedProtocol>
+		<ParsedProtocol mode="sequence" name="bcl_swap_west">
+			<Add mover_name="ringswap_conservative_aro_west"/>
+			<Add mover_name="relax_cycle"/>
+		</ParsedProtocol>
+		<RandomMover movers="add_medchem_east,halogenate_east" name="bcl_opti_helper_east" weights="0.5,0.5"/>
+		<RandomMover movers="add_medchem_west,halogenate_west" name="bcl_opti_helper_west" weights="0.5,0.5"/>
+		<ParsedProtocol mode="sequence" name="bcl_opti">
+			<Add mover_name="bcl_opti_helper_west"/>
+			<Add mover_name="bcl_opti_helper_east"/>
+			<Add mover_name="relax_cycle"/>
+		</ParsedProtocol>
+		<RandomMover movers="bcl_swap_core,bcl_swap_east,bcl_swap_west,bcl_opti" name="bcl_design" weights="1.0,0.0,0.0,0.0"/>
+		<ParsedProtocol mode="sequence" name="score_only">
+			<Add mover_name="relax_cycle"/>
+		</ParsedProtocol>
+	</MOVERS>
+	<APPLY_TO_POSE/>
+	<PROTOCOLS>
+		<Add mover_name="min_cycle"/>
+		<Add mover_name="bcl_design"/>
+		<Add filter_name="d4_ifscore"/>
+		<Add metrics="lig_ifscore"/>
+	</PROTOCOLS>
+	<OUTPUT/>
+</ROSETTASCRIPTS>
+core.scoring.ScoreFunctionFactory: SCOREFUNCTION: talaris2014.wts
+core.scoring.etable: Starting energy table calculation
+core.scoring.etable: smooth_etable: changing atr/rep split to bottom of energy well
+core.scoring.etable: smooth_etable: spline smoothing lj etables (maxdis = 6)
+core.scoring.etable: smooth_etable: spline smoothing solvation etables (max_dis = 6)
+core.scoring.etable: Finished calculating energy tables.
+basic.io.database: Database file opened: scoring/score_functions/hbonds/sp2_elec_params/HBPoly1D.csv
+basic.io.database: Database file opened: scoring/score_functions/hbonds/sp2_elec_params/HBFadeIntervals.csv
+basic.io.database: Database file opened: scoring/score_functions/hbonds/sp2_elec_params/HBEval.csv
+basic.io.database: Database file opened: scoring/score_functions/rama/Rama_smooth_dyn.dat_ss_6.4
+basic.io.database: Database file opened: scoring/score_functions/P_AA_pp/P_AA
+basic.io.database: Database file opened: scoring/score_functions/P_AA_pp/P_AA_n
+basic.io.database: Database file opened: scoring/score_functions/P_AA_pp/P_AA_pp
+core.scoring.etable: Using alternate parameters: LJ_RADIUS_SOFT in Etable construction.
+core.scoring.etable: Starting energy table calculation
+core.scoring.etable: smooth_etable: changing atr/rep split to bottom of energy well
+core.scoring.etable: smooth_etable: spline smoothing lj etables (maxdis = 6)
+core.scoring.etable: smooth_etable: spline smoothing solvation etables (max_dis = 6)
+core.scoring.etable: Finished calculating energy tables.
+basic.io.database: Database file opened: scoring/score_functions/PairEPotential/pdb_pair_stats_fine
+basic.io.database: Database file opened: scoring/score_functions/InterchainPotential/interchain_env_log.txt
+basic.io.database: Database file opened: scoring/score_functions/InterchainPotential/interchain_pair_log.txt
+basic.io.database: Database file opened: scoring/score_functions/EnvPairPotential/env_log.txt
+basic.io.database: Database file opened: scoring/score_functions/EnvPairPotential/cbeta_den.txt
+basic.io.database: Database file opened: scoring/score_functions/EnvPairPotential/pair_log.txt
+basic.io.database: Database file opened: scoring/score_functions/EnvPairPotential/cenpack_log.txt
+protocols.jd2.parser.ScoreFunctionLoader: defined score function "t14" with weights "talaris2014"
+protocols.jd2.parser.ScoreFunctionLoader: defined score function "t14w" with weights "talaris2014"
+protocols.jd2.parser.ScoreFunctionLoader:  setting t14w weight coordinate_constraint to 1
+protocols.jd2.parser.TaskOperationLoader: Defined TaskOperation named "rtrp" of type RestrictToRepacking
+protocols.jd2.parser.TaskOperationLoader: Defined TaskOperation named "ifcl" of type InitializeFromCommandline
+protocols.jd2.parser.TaskOperationLoader: Defined TaskOperation named "repackonly_ligand" of type OperateOnResidueSubset
+protocols.jd2.parser.TaskOperationLoader: Defined TaskOperation named "repack_interface" of type OperateOnResidueSubset
+protocols.jd2.parser.TaskOperationLoader: Defined TaskOperation named "fix_notinterface" of type OperateOnResidueSubset
+protocols.rosetta_scripts.RosettaScriptsParser: Defined filter named "d4_ifscore" of type LigInterfaceEnergy
+protocols.filters.Filter: IfThenFilter defined with 1 conditions and no  else filter and a upper threshold of 0
+protocols.rosetta_scripts.RosettaScriptsParser: Defined filter named "d4_ifscore_bounded" of type IfThenFilter
+core.scoring.ScoreFunctionFactory: SCOREFUNCTION: talaris2014.wts
+core.select.residue_selector.util: [ WARNING ] Selector name is empty!
+protocols.rosetta_scripts.RosettaScriptsParser: Defined mover named "cst" of type AddConstraintsToCurrentConformationMover
+protocols.rosetta_scripts.RosettaScriptsParser: Defined mover named "uncst" of type ClearConstraintsMover
+protocols.rosetta_scripts.RosettaScriptsParser: Defined mover named "relax_cst" of type AtomCoordinateCstMover
+protocols.minimization_packing.MinMover: Options chi, bb: 1, 1 omega: 1
+protocols.rosetta_scripts.RosettaScriptsParser: Defined mover named "min" of type MinMover
+protocols.rosetta_scripts.ParsedProtocol: ParsedProtocol mover with the following settings
+protocols.rosetta_scripts.ParsedProtocol: Added mover "cst"
+protocols.rosetta_scripts.ParsedProtocol: Added mover "min"
+protocols.rosetta_scripts.ParsedProtocol: Added mover "uncst"
+protocols.rosetta_scripts.RosettaScriptsParser: Defined mover named "min_cycle" of type ParsedProtocol
+protocols.rosetta_scripts.RosettaScriptsParser: Defined mover named "root" of type VirtualRoot
+protocols.rosetta_scripts.RosettaScriptsParser: Defined mover named "remove" of type VirtualRoot
+protocols.relax.RelaxScriptManager: Reading relax scripts list from database.
+core.scoring.ScoreFunctionFactory: SCOREFUNCTION: talaris2014.wts
+protocols.relax.RelaxScriptManager: Looking for MonomerRelax2019.txt
+protocols.relax.RelaxScriptManager: ================== Reading script file: /home/ben/workspace/Rosetta/main/database/sampling/relax_scripts/MonomerRelax2019.txt ==================
+protocols.relax.RelaxScriptManager: repeat %%nrepeats%%
+protocols.relax.RelaxScriptManager: coord_cst_weight 1.0
+protocols.relax.RelaxScriptManager: scale:fa_rep 0.040
+protocols.relax.RelaxScriptManager: repack
+protocols.relax.RelaxScriptManager: scale:fa_rep 0.051
+protocols.relax.RelaxScriptManager: min 0.01
+protocols.relax.RelaxScriptManager: coord_cst_weight 0.5
+protocols.relax.RelaxScriptManager: scale:fa_rep 0.265
+protocols.relax.RelaxScriptManager: repack
+protocols.relax.RelaxScriptManager: scale:fa_rep 0.280
+protocols.relax.RelaxScriptManager: min 0.01
+protocols.relax.RelaxScriptManager: coord_cst_weight 0.0
+protocols.relax.RelaxScriptManager: scale:fa_rep 0.559
+protocols.relax.RelaxScriptManager: repack
+protocols.relax.RelaxScriptManager: scale:fa_rep 0.581
+protocols.relax.RelaxScriptManager: min 0.01
+protocols.relax.RelaxScriptManager: coord_cst_weight 0.0
+protocols.relax.RelaxScriptManager: scale:fa_rep 1
+protocols.relax.RelaxScriptManager: repack
+protocols.relax.RelaxScriptManager: min 0.00001
+protocols.relax.RelaxScriptManager: accept_to_best
+protocols.relax.RelaxScriptManager: endrepeat
+core.pack.task.xml_util: Object relax reading the following task_operations: Adding the following task operations
+rtrp repack_interface fix_notinterface 
+protocols.rosetta_scripts.RosettaScriptsParser: Defined mover named "relax" of type FastRelax
+protocols.rosetta_scripts.ParsedProtocol: ParsedProtocol mover with the following settings
+protocols.rosetta_scripts.ParsedProtocol: Added mover "root"
+protocols.rosetta_scripts.ParsedProtocol: Added mover "relax_cst"
+protocols.rosetta_scripts.ParsedProtocol: Added mover "relax"
+protocols.rosetta_scripts.ParsedProtocol: Added mover "remove"
+protocols.rosetta_scripts.ParsedProtocol: Added mover "uncst"
+protocols.rosetta_scripts.RosettaScriptsParser: Defined mover named "relax_cycle" of type ParsedProtocol
+protocols.rosetta_scripts.RosettaScriptsParser: Defined mover named "add_medchem_east" of type BCLFragmentMutateMover
+protocols.rosetta_scripts.RosettaScriptsParser: Defined mover named "add_medchem_west" of type BCLFragmentMutateMover
+protocols.rosetta_scripts.RosettaScriptsParser: Defined mover named "alchemy" of type BCLFragmentMutateMover
+protocols.rosetta_scripts.RosettaScriptsParser: Defined mover named "control" of type BCLFragmentMutateMover
+protocols.rosetta_scripts.RosettaScriptsParser: Defined mover named "ringswap_conservative_aro_east" of type BCLFragmentMutateMover
+protocols.rosetta_scripts.RosettaScriptsParser: Defined mover named "ringswap_conservative_aro_west" of type BCLFragmentMutateMover
+protocols.rosetta_scripts.RosettaScriptsParser: Defined mover named "ringswap_conservative_core" of type BCLFragmentMutateMover
+protocols.rosetta_scripts.RosettaScriptsParser: Defined mover named "alchemy_core" of type BCLFragmentMutateMover
+protocols.rosetta_scripts.RosettaScriptsParser: Defined mover named "halogenate_east" of type BCLFragmentMutateMover
+protocols.rosetta_scripts.RosettaScriptsParser: Defined mover named "halogenate_west" of type BCLFragmentMutateMover
+protocols.rosetta_scripts.ParsedProtocol: ParsedProtocol mover with the following settings
+protocols.rosetta_scripts.ParsedProtocol: Added mover "halogenate_east"
+protocols.rosetta_scripts.ParsedProtocol: Added mover "min_cycle"
+protocols.rosetta_scripts.RosettaScriptsParser: Defined mover named "halogenate_east_cycle" of type ParsedProtocol
+protocols.rosetta_scripts.RosettaScriptsParser: Defined mover named "gmc_halogenate_east" of type GenericMonteCarlo
+protocols.rosetta_scripts.ParsedProtocol: ParsedProtocol mover with the following settings
+protocols.rosetta_scripts.ParsedProtocol: Added mover "ringswap_conservative_core"
+protocols.rosetta_scripts.ParsedProtocol: Added mover "relax_cycle"
+protocols.rosetta_scripts.RosettaScriptsParser: Defined mover named "bcl_swap_core" of type ParsedProtocol
+protocols.rosetta_scripts.ParsedProtocol: ParsedProtocol mover with the following settings
+protocols.rosetta_scripts.ParsedProtocol: Added mover "ringswap_conservative_aro_east"
+protocols.rosetta_scripts.ParsedProtocol: Added mover "relax_cycle"
+protocols.rosetta_scripts.RosettaScriptsParser: Defined mover named "bcl_swap_east" of type ParsedProtocol
+protocols.rosetta_scripts.ParsedProtocol: ParsedProtocol mover with the following settings
+protocols.rosetta_scripts.ParsedProtocol: Added mover "ringswap_conservative_aro_west"
+protocols.rosetta_scripts.ParsedProtocol: Added mover "relax_cycle"
+protocols.rosetta_scripts.RosettaScriptsParser: Defined mover named "bcl_swap_west" of type ParsedProtocol
+protocols.rosetta_scripts.RosettaScriptsParser: Defined mover named "bcl_opti_helper_east" of type RandomMover
+protocols.rosetta_scripts.RosettaScriptsParser: Defined mover named "bcl_opti_helper_west" of type RandomMover
+protocols.rosetta_scripts.ParsedProtocol: ParsedProtocol mover with the following settings
+protocols.rosetta_scripts.ParsedProtocol: Added mover "bcl_opti_helper_west"
+protocols.rosetta_scripts.ParsedProtocol: Added mover "bcl_opti_helper_east"
+protocols.rosetta_scripts.ParsedProtocol: Added mover "relax_cycle"
+protocols.rosetta_scripts.RosettaScriptsParser: Defined mover named "bcl_opti" of type ParsedProtocol
+protocols.rosetta_scripts.RosettaScriptsParser: Defined mover named "bcl_design" of type RandomMover
+protocols.rosetta_scripts.ParsedProtocol: ParsedProtocol mover with the following settings
+protocols.rosetta_scripts.ParsedProtocol: Added mover "relax_cycle"
+protocols.rosetta_scripts.RosettaScriptsParser: Defined mover named "score_only" of type ParsedProtocol
+protocols.rosetta_scripts.ParsedProtocol: ParsedProtocol mover with the following settings
+protocols.rosetta_scripts.ParsedProtocol: Added mover "min_cycle"
+protocols.rosetta_scripts.ParsedProtocol: Added mover "bcl_design"
+protocols.rosetta_scripts.ParsedProtocol: Added filter "d4_ifscore"
+core.simple_metrics.util: Added simple metric InteractionEnergyMetric.
+protocols.rosetta_scripts.ParsedProtocol: Added metrics: "lig_ifscore"
+protocols.jd2.PDBJobInputter: PDBJobInputter::pose_from_job
+protocols.jd2.PDBJobInputter: filling pose from saved copy /home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/receptors/DRD4.LIG.receptor.pdb /home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/ligands/LIG_0001.fa.pdb
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER ParsedProtocol - min_cycle=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER AddConstraintsToCurrentConformationMover - cst=======================
+protocols.constraint_movers.AddConstraintsToCurrentConformationMover: Using SOG function
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER MinMover - min=======================
+core.pack.dunbrack.RotamerLibrary: Using Dunbrack library binary file '/home/ben/workspace/Rosetta/main/database/rotamer/ExtendedOpt1-5/Dunbrack10.lib.bin'.
+core.pack.dunbrack.RotamerLibrary: Dunbrack 2010 library took 0.096125 seconds to load from binary
+core.optimization.Minimizer: [ WARNING ] LBFGS MAX CYCLES 200 EXCEEDED, BUT FUNC NOT CONVERGED!
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER ClearConstraintsMover - uncst=======================
+protocols.rosetta_scripts.ParsedProtocol: setting status to success
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER RandomMover - bcl_design=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER BCLFragmentMutateMover - ringswap_conservative_core=======================
+protocols.drug_design.bcl.BCLFragmentMutateMover: Ligand chain ID: X
+protocols.drug_design.bcl.BCLFragmentMutateMover: Ligand resnum: 275
+protocols.drug_design.bcl.BCLFragmentMutateMover: RingSwap
+protocols.drug_design.bcl.BCLFragmentMutateMover: Mutate trial: 1
+=std=bcl::chemistry=> RingSwap!
+=std=bcl::chemistry=> Pass drug-likeness filter!
+=std=bcl::chemistry=> Getting atom indices for conformer sampling...
+=std=bcl::chemistry=> SampleByParts with the following atom indices: 7 8 9 10 11 12 13 
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 4
+=std=bcl::chemistry=> Found 1 rotatable bonds, 1 flexible rings, 2 changeable bond angles; 
+=std=bcl::chemistry=> Found 2 isomorphisms for this molecule
+=std=bcl::util=> Clustering has run for 1.04396 seconds
+protocols.drug_design.bcl.BCLFragmentMutateMover: SampleByParts indices: 7 8 9 10 11 12 13 
+protocols.drug_design.bcl.BCLFragmentMutateMover: Generating conformers of the mutated fragment
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 4
+=std=bcl::chemistry=> Found 1 rotatable bonds, 1 flexible rings, 2 changeable bond angles; 
+=std=bcl::chemistry=> Found 2 isomorphisms for this molecule
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER ParsedProtocol - relax_cycle=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER VirtualRoot - root=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER AtomCoordinateCstMover - relax_cst=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER FastRelax - relax=======================
+protocols.relax.FastRelax: CMD: repeat  -369.856  0  0  0.55
+protocols.relax.FastRelax: CMD: coord_cst_weight  -369.856  0  0  0.55
+protocols.relax.FastRelax: CMD: scale:fa_rep  -477.997  0  0  0.022
+core.pack.rotamers.SingleLigandRotamerLibrary: Added 25 rotamers for LIGAND
+core.pack.pack_rotamers: built 68 rotamers at 3 positions.
+core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph
+protocols.relax.FastRelax: CMD: repack  -477.997  0  0  0.022
+protocols.relax.FastRelax: CMD: scale:fa_rep  -476.758  0  0  0.02805
+protocols.relax.FastRelax: CMD: min  -510.656  0.06398  0.06398  0.02805
+protocols.relax.FastRelax: CMD: coord_cst_weight  -510.656  0.06398  0.06398  0.02805
+protocols.relax.FastRelax: CMD: scale:fa_rep  -465.334  0.06398  0.06398  0.14575
+core.pack.rotamers.SingleLigandRotamerLibrary: Added 25 rotamers for LIGAND
+core.pack.pack_rotamers: built 61 rotamers at 3 positions.
+core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph
+protocols.relax.FastRelax: CMD: repack  -465.334  0.06398  0.06398  0.14575
+protocols.relax.FastRelax: CMD: scale:fa_rep  -462.158  0.06398  0.06398  0.154
+protocols.relax.FastRelax: CMD: min  -468.516  0.0508105  0.0508105  0.154
+protocols.relax.FastRelax: CMD: coord_cst_weight  -468.516  0.0508105  0.0508105  0.154
+protocols.relax.FastRelax: CMD: scale:fa_rep  -422.172  0.0508105  0.0508105  0.30745
+core.pack.rotamers.SingleLigandRotamerLibrary: Added 25 rotamers for LIGAND
+core.pack.pack_rotamers: built 53 rotamers at 3 positions.
+core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph
+protocols.relax.FastRelax: CMD: repack  -422.172  0.0508105  0.0508105  0.30745
+protocols.relax.FastRelax: CMD: scale:fa_rep  -418.518  0.0508105  0.0508105  0.31955
+protocols.relax.FastRelax: CMD: min  -428.14  0.0410241  0.0410241  0.31955
+protocols.relax.FastRelax: CMD: coord_cst_weight  -428.14  0.0410241  0.0410241  0.31955
+protocols.relax.FastRelax: CMD: scale:fa_rep  -373.367  0.0410241  0.0410241  0.55
+core.pack.rotamers.SingleLigandRotamerLibrary: Added 25 rotamers for LIGAND
+core.pack.pack_rotamers: built 36 rotamers at 3 positions.
+core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph
+protocols.relax.FastRelax: CMD: repack  -373.367  0.0410241  0.0410241  0.55
+protocols.relax.FastRelax: CMD: min  -382.339  0.0406029  0.0406029  0.55
+protocols.relax.FastRelax: MRP: 0  -382.339  -382.339  0.0406029  0.0406029  
+protocols.relax.FastRelax: CMD: accept_to_best  -382.339  0.0406029  0.0406029  0.55
+protocols.relax.FastRelax: CMD: endrepeat  -382.339  0.0406029  0.0406029  0.55
+protocols::checkpoint: Deleting checkpoints of FastRelax
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER VirtualRoot - remove=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER ClearConstraintsMover - uncst=======================
+protocols.rosetta_scripts.ParsedProtocol: setting status to success
+protocols.rosetta_scripts.ParsedProtocol: setting status to success
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN FILTER d4_ifscore=======================
+protocols.enzdes.EnzFilters:  
+ 	 --------- computing  ---------- 
+ 	-------- ligand interface energies   --------
+ 	 	------------------- 
+
+protocols.enzdes.EnzFilters: Calculated Interface Energy is before cst correction is:-6.72098
+protocols.enzdes.EnzFilters: Calculated Interface Energy is -6.72098
+protocols.rosetta_scripts.ParsedProtocol: =======================END FILTER d4_ifscore=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN METRIC lig_ifscore=======================
+core.simple_metrics.metrics.InteractionEnergyMetric: [ WARNING ] ################ Cloning pose and Scoring! ##############################
+core.simple_metrics.metrics.InteractionEnergyMetric: [ WARNING ] Ensure that pose is scored 
+core.simple_metrics.metrics.InteractionEnergyMetric: [ WARNING ] before using InteractionEnergyMetric for maximum performance!
+core.simple_metrics.metrics.InteractionEnergyMetric: [ WARNING ] ##########################################################################
+core.simple_metrics.metrics.InteractionEnergyMetric: 
+core.simple_metrics.metrics.InteractionEnergyMetric: fa_atr 1
+core.simple_metrics.metrics.InteractionEnergyMetric: Unweighted: -13.2439
+core.simple_metrics.metrics.InteractionEnergyMetric: Weighted: -13.2439
+core.simple_metrics.metrics.InteractionEnergyMetric: 
+core.simple_metrics.metrics.InteractionEnergyMetric: fa_rep 0.55
+core.simple_metrics.metrics.InteractionEnergyMetric: Unweighted: 1.20661
+core.simple_metrics.metrics.InteractionEnergyMetric: Weighted: 0.663636
+core.simple_metrics.metrics.InteractionEnergyMetric: 
+core.simple_metrics.metrics.InteractionEnergyMetric: fa_sol 0.9375
+core.simple_metrics.metrics.InteractionEnergyMetric: Unweighted: 6.79026
+core.simple_metrics.metrics.InteractionEnergyMetric: Weighted: 6.36587
+core.simple_metrics.metrics.InteractionEnergyMetric: 
+core.simple_metrics.metrics.InteractionEnergyMetric: fa_elec 0.875
+core.simple_metrics.metrics.InteractionEnergyMetric: Unweighted: -0.578933
+core.simple_metrics.metrics.InteractionEnergyMetric: Weighted: -0.506567
+protocols.rosetta_scripts.ParsedProtocol: =======================END METRIC lig_ifscore=======================
+protocols.rosetta_scripts.ParsedProtocol: setting status to success
+protocols.enzdes.EnzFilters: Calculated Interface Energy is before cst correction is:-6.72098
+protocols.enzdes.EnzFilters: Calculated Interface Energy is -6.72098
+protocols.rosetta_scripts.ParsedProtocol.REPORT: ============Begin report for d4_ifscore==================
+protocols.rosetta_scripts.ParsedProtocol.REPORT: 
+    chain      res       AA    total  contact   fa_atr   fa_rep hb_bb_sc    hb_sc   fa_sol   fa_dun  fa_pair
+        t       54      VAL   -2.015    -2.820    -5.487     0.502     0.000     0.000     2.165     0.012     0.000
+        t       58      PHE   -3.187    -6.336    -9.654     0.656     0.000     0.000     2.661     2.610     0.000
+        t       61      SER   -1.520    -1.447    -5.301     0.263    -0.306     0.000     3.896     0.461     0.000
+        t       82      ASP   -1.421    -1.514    -6.113     0.339     0.000    -0.595     4.855     3.075     0.000
+        t      153      ARG    0.733    -0.773    -4.797     0.532    -0.314    -0.139     3.945     1.663     0.000
+        t      246      THR   -2.080    -2.102    -5.891     0.651     0.000     0.000     3.138     0.070     0.000
+        t      250      TYR   -2.774    -4.829    -8.633     0.964     0.000    -0.595     3.434     2.621     0.000
+        X      275      LIG   -3.298    -3.107    -6.622     0.332     0.000     0.000     3.183     0.000     0.000
+============End report for d4_ifscore==================
+protocols.jd2.JobDistributor: output/AffinityDesignD4/LIG_CORE_RINGSWAP_AT_DRD4.LIG.receptor_LIG_0001.fa_0001 reported success in 77 seconds
+protocols.jd2.PDBJobInputter: PDBJobInputter::pose_from_job
+protocols.jd2.PDBJobInputter: filling pose from saved copy /home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/receptors/DRD4.LIG.receptor.pdb /home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/ligands/LIG_0001.fa.pdb
+protocols.jd2.PDBJobInputter: PDBJobInputter::pose_from_job
+protocols.jd2.PDBJobInputter: filling pose from PDB /home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/receptors/DRD4.LIG.receptor.pdb /home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/ligands/LIG_0001.fa.pdb
+core.import_pose.import_pose: File '/home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/receptors/DRD4.LIG.receptor.pdb /home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/ligands/LIG_0001.fa.pdb' automatically determined to be of type PDB
+core.conformation.Conformation: Found disulfide between residues 75 152
+core.conformation.Conformation: current variant for 75 CYS
+core.conformation.Conformation: current variant for 152 CYS
+core.conformation.Conformation: current variant for 75 CYD
+core.conformation.Conformation: current variant for 152 CYD
+core.conformation.Conformation: Found disulfide between residues 232 235
+core.conformation.Conformation: current variant for 232 CYS
+core.conformation.Conformation: current variant for 235 CYS
+core.conformation.Conformation: current variant for 232 CYD
+core.conformation.Conformation: current variant for 235 CYD
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER ParsedProtocol - min_cycle=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER AddConstraintsToCurrentConformationMover - cst=======================
+protocols.constraint_movers.AddConstraintsToCurrentConformationMover: Using SOG function
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER MinMover - min=======================
+core.optimization.Minimizer: [ WARNING ] LBFGS MAX CYCLES 200 EXCEEDED, BUT FUNC NOT CONVERGED!
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER ClearConstraintsMover - uncst=======================
+protocols.rosetta_scripts.ParsedProtocol: setting status to success
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER RandomMover - bcl_design=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER BCLFragmentMutateMover - ringswap_conservative_core=======================
+protocols.drug_design.bcl.BCLFragmentMutateMover: Ligand chain ID: X
+protocols.drug_design.bcl.BCLFragmentMutateMover: Ligand resnum: 275
+protocols.drug_design.bcl.BCLFragmentMutateMover: RingSwap
+protocols.drug_design.bcl.BCLFragmentMutateMover: Mutate trial: 1
+=std=bcl::chemistry=> RingSwap!
+protocols.drug_design.bcl.BCLFragmentMutateMover: Mutate fragment returned null!
+protocols.drug_design.bcl.BCLFragmentMutateMover: Mutate trial: 2
+=std=bcl::chemistry=> RingSwap!
+=std=bcl::chemistry=> Pass drug-likeness filter!
+=std=bcl::chemistry=> Getting atom indices for conformer sampling...
+=std=bcl::chemistry=> SampleByParts with the following atom indices: 8 10 11 12 13 14 15 16 17 18 19 
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 0
+=std=bcl::chemistry=> Found 0 rotatable bonds, 0 flexible rings, 2 changeable bond angles; 
+=std=bcl::chemistry=> Found 4 isomorphisms for this molecule
+protocols.drug_design.bcl.BCLFragmentMutateMover: SampleByParts indices: 8 10 11 12 13 14 15 16 17 18 19 
+protocols.drug_design.bcl.BCLFragmentMutateMover: Generating conformers of the mutated fragment
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 0
+=std=bcl::chemistry=> Found 0 rotatable bonds, 0 flexible rings, 2 changeable bond angles; 
+=std=bcl::chemistry=> Found 4 isomorphisms for this molecule
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER ParsedProtocol - relax_cycle=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER VirtualRoot - root=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER AtomCoordinateCstMover - relax_cst=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER FastRelax - relax=======================
+protocols.relax.FastRelax: CMD: repeat  447.699  0  0  0.55
+protocols.relax.FastRelax: CMD: coord_cst_weight  447.699  0  0  0.55
+protocols.relax.FastRelax: CMD: scale:fa_rep  -442.325  0  0  0.022
+core.pack.rotamers.SingleLigandRotamerLibrary: Added 1 rotamers for LIGAND
+core.pack.pack_rotamers: built 39 rotamers at 2 positions.
+core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph
+protocols.relax.FastRelax: CMD: repack  -442.335  0  0  0.022
+protocols.relax.FastRelax: CMD: scale:fa_rep  -432.137  0  0  0.02805
+protocols.relax.FastRelax: CMD: min  -501.999  0.0659508  0.0659508  0.02805
+protocols.relax.FastRelax: CMD: coord_cst_weight  -501.999  0.0659508  0.0659508  0.02805
+protocols.relax.FastRelax: CMD: scale:fa_rep  -448.599  0.0659508  0.0659508  0.14575
+core.pack.rotamers.SingleLigandRotamerLibrary: Added 1 rotamers for LIGAND
+core.pack.pack_rotamers: built 39 rotamers at 2 positions.
+core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph
+protocols.relax.FastRelax: CMD: repack  -448.599  0.0659508  0.0659508  0.14575
+protocols.relax.FastRelax: CMD: scale:fa_rep  -444.856  0.0659508  0.0659508  0.154
+protocols.relax.FastRelax: CMD: min  -455.155  0.0549521  0.0549521  0.154
+protocols.relax.FastRelax: CMD: coord_cst_weight  -455.155  0.0549521  0.0549521  0.154
+protocols.relax.FastRelax: CMD: scale:fa_rep  -404.338  0.0549521  0.0549521  0.30745
+core.pack.rotamers.SingleLigandRotamerLibrary: Added 1 rotamers for LIGAND
+core.pack.pack_rotamers: built 39 rotamers at 2 positions.
+core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph
+protocols.relax.FastRelax: CMD: repack  -404.338  0.0549521  0.0549521  0.30745
+protocols.relax.FastRelax: CMD: scale:fa_rep  -400.331  0.0549521  0.0549521  0.31955
+protocols.relax.FastRelax: CMD: min  -410.205  0.0491273  0.0491273  0.31955
+protocols.relax.FastRelax: CMD: coord_cst_weight  -410.205  0.0491273  0.0491273  0.31955
+protocols.relax.FastRelax: CMD: scale:fa_rep  -350.857  0.0491273  0.0491273  0.55
+core.pack.rotamers.SingleLigandRotamerLibrary: Added 1 rotamers for LIGAND
+core.pack.pack_rotamers: built 21 rotamers at 2 positions.
+core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph
+protocols.relax.FastRelax: CMD: repack  -350.857  0.0491273  0.0491273  0.55
+protocols.relax.FastRelax: CMD: min  -364.483  0.0461462  0.0461462  0.55
+protocols.relax.FastRelax: MRP: 0  -364.483  -364.483  0.0461462  0.0461462  
+protocols.relax.FastRelax: CMD: accept_to_best  -364.483  0.0461462  0.0461462  0.55
+protocols.relax.FastRelax: CMD: endrepeat  -364.483  0.0461462  0.0461462  0.55
+protocols::checkpoint: Deleting checkpoints of FastRelax
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER VirtualRoot - remove=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER ClearConstraintsMover - uncst=======================
+protocols.rosetta_scripts.ParsedProtocol: setting status to success
+protocols.rosetta_scripts.ParsedProtocol: setting status to success
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN FILTER d4_ifscore=======================
+protocols.enzdes.EnzFilters:  
+ 	 --------- computing  ---------- 
+ 	-------- ligand interface energies   --------
+ 	 	------------------- 
+
+protocols.enzdes.EnzFilters: Calculated Interface Energy is before cst correction is:-1.41249
+protocols.enzdes.EnzFilters: Calculated Interface Energy is -1.41249
+protocols.rosetta_scripts.ParsedProtocol: =======================END FILTER d4_ifscore=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN METRIC lig_ifscore=======================
+core.simple_metrics.metrics.InteractionEnergyMetric: [ WARNING ] ################ Cloning pose and Scoring! ##############################
+core.simple_metrics.metrics.InteractionEnergyMetric: [ WARNING ] Ensure that pose is scored 
+core.simple_metrics.metrics.InteractionEnergyMetric: [ WARNING ] before using InteractionEnergyMetric for maximum performance!
+core.simple_metrics.metrics.InteractionEnergyMetric: [ WARNING ] ##########################################################################
+core.simple_metrics.metrics.InteractionEnergyMetric: 
+core.simple_metrics.metrics.InteractionEnergyMetric: fa_atr 1
+core.simple_metrics.metrics.InteractionEnergyMetric: Unweighted: -18.5852
+core.simple_metrics.metrics.InteractionEnergyMetric: Weighted: -18.5852
+core.simple_metrics.metrics.InteractionEnergyMetric: 
+core.simple_metrics.metrics.InteractionEnergyMetric: fa_rep 0.55
+core.simple_metrics.metrics.InteractionEnergyMetric: Unweighted: 7.39643
+core.simple_metrics.metrics.InteractionEnergyMetric: Weighted: 4.06804
+core.simple_metrics.metrics.InteractionEnergyMetric: 
+core.simple_metrics.metrics.InteractionEnergyMetric: fa_sol 0.9375
+core.simple_metrics.metrics.InteractionEnergyMetric: Unweighted: 14.537
+core.simple_metrics.metrics.InteractionEnergyMetric: Weighted: 13.6284
+core.simple_metrics.metrics.InteractionEnergyMetric: 
+core.simple_metrics.metrics.InteractionEnergyMetric: fa_elec 0.875
+core.simple_metrics.metrics.InteractionEnergyMetric: Unweighted: -0.598517
+core.simple_metrics.metrics.InteractionEnergyMetric: Weighted: -0.523703
+protocols.rosetta_scripts.ParsedProtocol: =======================END METRIC lig_ifscore=======================
+protocols.rosetta_scripts.ParsedProtocol: setting status to success
+protocols.enzdes.EnzFilters: Calculated Interface Energy is before cst correction is:-1.41249
+protocols.enzdes.EnzFilters: Calculated Interface Energy is -1.41249
+protocols.rosetta_scripts.ParsedProtocol.REPORT: ============Begin report for d4_ifscore==================
+protocols.rosetta_scripts.ParsedProtocol.REPORT: 
+    chain      res       AA    total  contact   fa_atr   fa_rep hb_bb_sc    hb_sc   fa_sol   fa_dun  fa_pair
+        t       58      PHE   -2.561    -5.771    -9.064     0.677     0.000     0.000     2.617     2.637     0.000
+        t       82      ASP    0.608    -1.108    -7.215     0.962     0.000    -0.593     5.739     4.228     0.000
+        t      153      ARG    1.078    -0.278    -5.120     0.543    -0.315    -0.143     4.757     1.649     0.000
+        t      222      PHE   -2.968    -4.886    -9.725     0.993     0.000     0.000     3.846     1.930     0.000
+        t      242      VAL   -1.473    -2.208    -5.314     0.268     0.000     0.000     2.838     0.013     0.000
+        t      246      THR   -1.937    -1.930    -5.991     0.822     0.000     0.000     3.239     0.062     0.000
+        X      275      LIG   -0.289    -0.444    -9.293     2.034     0.000     0.000     6.814     0.000     0.000
+============End report for d4_ifscore==================
+protocols.jd2.JobDistributor: output/AffinityDesignD4/LIG_CORE_RINGSWAP_AT_DRD4.LIG.receptor_LIG_0001.fa_0002 reported success in 52 seconds
+protocols.jd2.PDBJobInputter: PDBJobInputter::pose_from_job
+protocols.jd2.PDBJobInputter: filling pose from saved copy /home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/receptors/DRD4.LIG.receptor.pdb /home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/ligands/LIG_0001.fa.pdb
+protocols.jd2.PDBJobInputter: PDBJobInputter::pose_from_job
+protocols.jd2.PDBJobInputter: filling pose from PDB /home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/receptors/DRD4.LIG.receptor.pdb /home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/ligands/LIG_0001.fa.pdb
+core.import_pose.import_pose: File '/home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/receptors/DRD4.LIG.receptor.pdb /home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/ligands/LIG_0001.fa.pdb' automatically determined to be of type PDB
+core.conformation.Conformation: Found disulfide between residues 75 152
+core.conformation.Conformation: current variant for 75 CYS
+core.conformation.Conformation: current variant for 152 CYS
+core.conformation.Conformation: current variant for 75 CYD
+core.conformation.Conformation: current variant for 152 CYD
+core.conformation.Conformation: Found disulfide between residues 232 235
+core.conformation.Conformation: current variant for 232 CYS
+core.conformation.Conformation: current variant for 235 CYS
+core.conformation.Conformation: current variant for 232 CYD
+core.conformation.Conformation: current variant for 235 CYD
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER ParsedProtocol - min_cycle=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER AddConstraintsToCurrentConformationMover - cst=======================
+protocols.constraint_movers.AddConstraintsToCurrentConformationMover: Using SOG function
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER MinMover - min=======================
+core.optimization.Minimizer: [ WARNING ] LBFGS MAX CYCLES 200 EXCEEDED, BUT FUNC NOT CONVERGED!
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER ClearConstraintsMover - uncst=======================
+protocols.rosetta_scripts.ParsedProtocol: setting status to success
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER RandomMover - bcl_design=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER BCLFragmentMutateMover - ringswap_conservative_core=======================
+protocols.drug_design.bcl.BCLFragmentMutateMover: Ligand chain ID: X
+protocols.drug_design.bcl.BCLFragmentMutateMover: Ligand resnum: 275
+protocols.drug_design.bcl.BCLFragmentMutateMover: RingSwap
+protocols.drug_design.bcl.BCLFragmentMutateMover: Mutate trial: 1
+=std=bcl::chemistry=> RingSwap!
+=std=bcl::chemistry=> Pass drug-likeness filter!
+=std=bcl::chemistry=> Getting atom indices for conformer sampling...
+=std=bcl::chemistry=> Could not generate a valid conformer ensemble, returning null
+protocols.drug_design.bcl.BCLFragmentMutateMover: Mutate fragment returned null!
+protocols.drug_design.bcl.BCLFragmentMutateMover: Mutate trial: 2
+=std=bcl::chemistry=> RingSwap!
+=std=bcl::chemistry=> Pass drug-likeness filter!
+=std=bcl::chemistry=> Getting atom indices for conformer sampling...
+=std=bcl::chemistry=> SampleByParts with the following atom indices: 5 6 7 8 18 20 21 22 23 24 25 26 27 
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 13
+=std=bcl::chemistry=> # of dihedral angles not covered by existing knowledge-based potential: 1
+=std=bcl::chemistry=> Found 4 rotatable bonds, 0 flexible rings, 7 changeable bond angles; 
+=std=bcl::chemistry=> Found 4 isomorphisms for this molecule
+=std=bcl::util=> Clustering has run for 11.1789 seconds
+protocols.drug_design.bcl.BCLFragmentMutateMover: SampleByParts indices: 5 6 7 8 18 20 21 22 23 24 25 26 27 
+protocols.drug_design.bcl.BCLFragmentMutateMover: Generating conformers of the mutated fragment
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 13
+=std=bcl::chemistry=> # of dihedral angles not covered by existing knowledge-based potential: 1
+=std=bcl::chemistry=> Found 4 rotatable bonds, 0 flexible rings, 7 changeable bond angles; 
+=std=bcl::chemistry=> Found 4 isomorphisms for this molecule
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER ParsedProtocol - relax_cycle=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER VirtualRoot - root=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER AtomCoordinateCstMover - relax_cst=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER FastRelax - relax=======================
+protocols.relax.FastRelax: CMD: repeat  40.0289  0  0  0.55
+protocols.relax.FastRelax: CMD: coord_cst_weight  40.0289  0  0  0.55
+protocols.relax.FastRelax: CMD: scale:fa_rep  -469.068  0  0  0.022
+core.pack.rotamers.SingleLigandRotamerLibrary: Added 100 rotamers for LIGAND
+core.pack.pack_rotamers: built 58 rotamers at 4 positions.
+core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph
+protocols.relax.FastRelax: CMD: repack  -471.176  0  0  0.022
+protocols.relax.FastRelax: CMD: scale:fa_rep  -466.19  0  0  0.02805
+protocols.relax.FastRelax: CMD: min  -513.22  0.0648758  0.0648758  0.02805
+protocols.relax.FastRelax: CMD: coord_cst_weight  -513.22  0.0648758  0.0648758  0.02805
+protocols.relax.FastRelax: CMD: scale:fa_rep  -460.378  0.0648758  0.0648758  0.14575
+core.pack.rotamers.SingleLigandRotamerLibrary: Added 100 rotamers for LIGAND
+core.pack.pack_rotamers: built 42 rotamers at 4 positions.
+core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph
+protocols.relax.FastRelax: CMD: repack  -460.378  0.0648758  0.0648758  0.14575
+protocols.relax.FastRelax: CMD: scale:fa_rep  -456.674  0.0648758  0.0648758  0.154
+protocols.relax.FastRelax: CMD: min  -466.147  0.052042  0.052042  0.154
+protocols.relax.FastRelax: CMD: coord_cst_weight  -466.147  0.052042  0.052042  0.154
+protocols.relax.FastRelax: CMD: scale:fa_rep  -414.901  0.052042  0.052042  0.30745
+core.pack.rotamers.SingleLigandRotamerLibrary: Added 100 rotamers for LIGAND
+core.pack.pack_rotamers: built 38 rotamers at 4 positions.
+core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph
+protocols.relax.FastRelax: CMD: repack  -414.901  0.052042  0.052042  0.30745
+protocols.relax.FastRelax: CMD: scale:fa_rep  -410.86  0.052042  0.052042  0.31955
+protocols.relax.FastRelax: CMD: min  -420.847  0.0472979  0.0472979  0.31955
+protocols.relax.FastRelax: CMD: coord_cst_weight  -420.847  0.0472979  0.0472979  0.31955
+protocols.relax.FastRelax: CMD: scale:fa_rep  -360.424  0.0472979  0.0472979  0.55
+core.pack.rotamers.SingleLigandRotamerLibrary: Added 100 rotamers for LIGAND
+core.pack.pack_rotamers: built 15 rotamers at 3 positions.
+core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph
+protocols.relax.FastRelax: CMD: repack  -360.424  0.0472979  0.0472979  0.55
+protocols.relax.FastRelax: CMD: min  -372.654  0.0454692  0.0454692  0.55
+protocols.relax.FastRelax: MRP: 0  -372.654  -372.654  0.0454692  0.0454692  
+protocols.relax.FastRelax: CMD: accept_to_best  -372.654  0.0454692  0.0454692  0.55
+protocols.relax.FastRelax: CMD: endrepeat  -372.654  0.0454692  0.0454692  0.55
+protocols::checkpoint: Deleting checkpoints of FastRelax
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER VirtualRoot - remove=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER ClearConstraintsMover - uncst=======================
+protocols.rosetta_scripts.ParsedProtocol: setting status to success
+protocols.rosetta_scripts.ParsedProtocol: setting status to success
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN FILTER d4_ifscore=======================
+protocols.enzdes.EnzFilters:  
+ 	 --------- computing  ---------- 
+ 	-------- ligand interface energies   --------
+ 	 	------------------- 
+
+protocols.enzdes.EnzFilters: Calculated Interface Energy is before cst correction is:-7.64776
+protocols.enzdes.EnzFilters: Calculated Interface Energy is -7.64776
+protocols.rosetta_scripts.ParsedProtocol: =======================END FILTER d4_ifscore=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN METRIC lig_ifscore=======================
+core.simple_metrics.metrics.InteractionEnergyMetric: [ WARNING ] ################ Cloning pose and Scoring! ##############################
+core.simple_metrics.metrics.InteractionEnergyMetric: [ WARNING ] Ensure that pose is scored 
+core.simple_metrics.metrics.InteractionEnergyMetric: [ WARNING ] before using InteractionEnergyMetric for maximum performance!
+core.simple_metrics.metrics.InteractionEnergyMetric: [ WARNING ] ##########################################################################
+core.simple_metrics.metrics.InteractionEnergyMetric: 
+core.simple_metrics.metrics.InteractionEnergyMetric: fa_atr 1
+core.simple_metrics.metrics.InteractionEnergyMetric: Unweighted: -25.9218
+core.simple_metrics.metrics.InteractionEnergyMetric: Weighted: -25.9218
+core.simple_metrics.metrics.InteractionEnergyMetric: 
+core.simple_metrics.metrics.InteractionEnergyMetric: fa_rep 0.55
+core.simple_metrics.metrics.InteractionEnergyMetric: Unweighted: 12.0442
+core.simple_metrics.metrics.InteractionEnergyMetric: Weighted: 6.62433
+core.simple_metrics.metrics.InteractionEnergyMetric: 
+core.simple_metrics.metrics.InteractionEnergyMetric: fa_sol 0.9375
+core.simple_metrics.metrics.InteractionEnergyMetric: Unweighted: 16.0938
+core.simple_metrics.metrics.InteractionEnergyMetric: Weighted: 15.088
+core.simple_metrics.metrics.InteractionEnergyMetric: 
+core.simple_metrics.metrics.InteractionEnergyMetric: fa_elec 0.875
+core.simple_metrics.metrics.InteractionEnergyMetric: Unweighted: -3.15368
+core.simple_metrics.metrics.InteractionEnergyMetric: Weighted: -2.75947
+core.simple_metrics.metrics.InteractionEnergyMetric: 
+core.simple_metrics.metrics.InteractionEnergyMetric: hbond_sc 1.1
+core.simple_metrics.metrics.InteractionEnergyMetric: Unweighted: -0.617042
+core.simple_metrics.metrics.InteractionEnergyMetric: Weighted: -0.678746
+protocols.rosetta_scripts.ParsedProtocol: =======================END METRIC lig_ifscore=======================
+protocols.rosetta_scripts.ParsedProtocol: setting status to success
+protocols.enzdes.EnzFilters: Calculated Interface Energy is before cst correction is:-7.64776
+protocols.enzdes.EnzFilters: Calculated Interface Energy is -7.64776
+protocols.rosetta_scripts.ParsedProtocol.REPORT: ============Begin report for d4_ifscore==================
+protocols.rosetta_scripts.ParsedProtocol.REPORT: 
+    chain      res       AA    total  contact   fa_atr   fa_rep hb_bb_sc    hb_sc   fa_sol   fa_dun  fa_pair
+        t       79      MET   -1.223    -2.708    -7.237     0.792     0.000     0.000     3.737     1.535     0.000
+        t       82      ASP   -1.131    -0.976    -6.911     1.077     0.000    -0.518     5.377     3.077     0.000
+        t       83      VAL   -2.862    -3.119    -6.406     0.468     0.000     0.000     2.819     0.013     0.000
+        t      153      ARG    2.059     0.407    -5.602     1.022    -0.289    -0.115     5.390     1.988     0.000
+        t      154      LEU    0.441    -1.529    -3.257     0.177     0.000     0.000     1.552     0.415     0.000
+        t      226      HIS   -0.096    -1.662    -7.080     1.218     0.000    -0.339     4.540     2.390     0.000
+        t      246      THR   -2.022    -2.047    -5.658     0.466     0.000     0.000     3.145     0.051     0.000
+        X      275      LIG   -3.544    -2.444   -12.961     3.312     0.000    -0.339     7.544     0.000     0.000
+============End report for d4_ifscore==================
+protocols.jd2.JobDistributor: output/AffinityDesignD4/LIG_CORE_RINGSWAP_AT_DRD4.LIG.receptor_LIG_0001.fa_0003 reported success in 82 seconds
+protocols.jd2.PDBJobInputter: PDBJobInputter::pose_from_job
+protocols.jd2.PDBJobInputter: filling pose from saved copy /home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/receptors/DRD4.LIG.receptor.pdb /home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/ligands/LIG_0001.fa.pdb
+protocols.jd2.PDBJobInputter: PDBJobInputter::pose_from_job
+protocols.jd2.PDBJobInputter: filling pose from PDB /home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/receptors/DRD4.LIG.receptor.pdb /home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/ligands/LIG_0001.fa.pdb
+core.import_pose.import_pose: File '/home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/receptors/DRD4.LIG.receptor.pdb /home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/ligands/LIG_0001.fa.pdb' automatically determined to be of type PDB
+core.conformation.Conformation: Found disulfide between residues 75 152
+core.conformation.Conformation: current variant for 75 CYS
+core.conformation.Conformation: current variant for 152 CYS
+core.conformation.Conformation: current variant for 75 CYD
+core.conformation.Conformation: current variant for 152 CYD
+core.conformation.Conformation: Found disulfide between residues 232 235
+core.conformation.Conformation: current variant for 232 CYS
+core.conformation.Conformation: current variant for 235 CYS
+core.conformation.Conformation: current variant for 232 CYD
+core.conformation.Conformation: current variant for 235 CYD
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER ParsedProtocol - min_cycle=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER AddConstraintsToCurrentConformationMover - cst=======================
+protocols.constraint_movers.AddConstraintsToCurrentConformationMover: Using SOG function
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER MinMover - min=======================
+core.optimization.Minimizer: [ WARNING ] LBFGS MAX CYCLES 200 EXCEEDED, BUT FUNC NOT CONVERGED!
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER ClearConstraintsMover - uncst=======================
+protocols.rosetta_scripts.ParsedProtocol: setting status to success
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER RandomMover - bcl_design=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER BCLFragmentMutateMover - ringswap_conservative_core=======================
+protocols.drug_design.bcl.BCLFragmentMutateMover: Ligand chain ID: X
+protocols.drug_design.bcl.BCLFragmentMutateMover: Ligand resnum: 275
+protocols.drug_design.bcl.BCLFragmentMutateMover: RingSwap
+protocols.drug_design.bcl.BCLFragmentMutateMover: Mutate trial: 1
+=std=bcl::chemistry=> RingSwap!
+=std=bcl::chemistry=> Pass drug-likeness filter!
+=std=bcl::chemistry=> Getting atom indices for conformer sampling...
+=std=bcl::chemistry=> SampleByParts with the following atom indices: 10 11 12 13 14 15 
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 1
+=std=bcl::chemistry=> Found 0 rotatable bonds, 1 flexible rings, 2 changeable bond angles; 
+=std=bcl::chemistry=> Found 4 isomorphisms for this molecule
+=std=bcl::util=> Clustering has run for 12.2136 seconds
+protocols.drug_design.bcl.BCLFragmentMutateMover: SampleByParts indices: 10 11 12 13 14 15 
+protocols.drug_design.bcl.BCLFragmentMutateMover: Generating conformers of the mutated fragment
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 1
+=std=bcl::chemistry=> Found 0 rotatable bonds, 1 flexible rings, 2 changeable bond angles; 
+=std=bcl::chemistry=> Found 4 isomorphisms for this molecule
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER ParsedProtocol - relax_cycle=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER VirtualRoot - root=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER AtomCoordinateCstMover - relax_cst=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER FastRelax - relax=======================
+protocols.relax.FastRelax: CMD: repeat  -369.954  0  0  0.55
+protocols.relax.FastRelax: CMD: coord_cst_weight  -369.954  0  0  0.55
+protocols.relax.FastRelax: CMD: scale:fa_rep  -477.439  0  0  0.022
+core.pack.rotamers.SingleLigandRotamerLibrary: Added 2 rotamers for LIGAND
+core.pack.pack_rotamers: built 47 rotamers at 3 positions.
+core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph
+protocols.relax.FastRelax: CMD: repack  -477.439  0  0  0.022
+protocols.relax.FastRelax: CMD: scale:fa_rep  -476.207  0  0  0.02805
+protocols.relax.FastRelax: CMD: min  -510.387  0.0641724  0.0641724  0.02805
+protocols.relax.FastRelax: CMD: coord_cst_weight  -510.387  0.0641724  0.0641724  0.02805
+protocols.relax.FastRelax: CMD: scale:fa_rep  -465.123  0.0641724  0.0641724  0.14575
+core.pack.rotamers.SingleLigandRotamerLibrary: Added 2 rotamers for LIGAND
+core.pack.pack_rotamers: built 45 rotamers at 3 positions.
+core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph
+protocols.relax.FastRelax: CMD: repack  -465.123  0.0641724  0.0641724  0.14575
+protocols.relax.FastRelax: CMD: scale:fa_rep  -461.95  0.0641724  0.0641724  0.154
+protocols.relax.FastRelax: CMD: min  -468.428  0.0501284  0.0501284  0.154
+protocols.relax.FastRelax: CMD: coord_cst_weight  -468.428  0.0501284  0.0501284  0.154
+protocols.relax.FastRelax: CMD: scale:fa_rep  -421.926  0.0501284  0.0501284  0.30745
+core.pack.rotamers.SingleLigandRotamerLibrary: Added 2 rotamers for LIGAND
+core.pack.pack_rotamers: built 42 rotamers at 3 positions.
+core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph
+protocols.relax.FastRelax: CMD: repack  -421.926  0.0501284  0.0501284  0.30745
+protocols.relax.FastRelax: CMD: scale:fa_rep  -418.259  0.0501284  0.0501284  0.31955
+protocols.relax.FastRelax: CMD: min  -427.594  0.0417378  0.0417378  0.31955
+protocols.relax.FastRelax: CMD: coord_cst_weight  -427.594  0.0417378  0.0417378  0.31955
+protocols.relax.FastRelax: CMD: scale:fa_rep  -372.416  0.0417378  0.0417378  0.55
+core.pack.rotamers.SingleLigandRotamerLibrary: Added 2 rotamers for LIGAND
+core.pack.pack_rotamers: built 27 rotamers at 3 positions.
+core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph
+protocols.relax.FastRelax: CMD: repack  -372.416  0.0417378  0.0417378  0.55
+protocols.relax.FastRelax: CMD: min  -382.143  0.0406505  0.0406505  0.55
+protocols.relax.FastRelax: MRP: 0  -382.143  -382.143  0.0406505  0.0406505  
+protocols.relax.FastRelax: CMD: accept_to_best  -382.143  0.0406505  0.0406505  0.55
+protocols.relax.FastRelax: CMD: endrepeat  -382.143  0.0406505  0.0406505  0.55
+protocols::checkpoint: Deleting checkpoints of FastRelax
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER VirtualRoot - remove=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER ClearConstraintsMover - uncst=======================
+protocols.rosetta_scripts.ParsedProtocol: setting status to success
+protocols.rosetta_scripts.ParsedProtocol: setting status to success
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN FILTER d4_ifscore=======================
+protocols.enzdes.EnzFilters:  
+ 	 --------- computing  ---------- 
+ 	-------- ligand interface energies   --------
+ 	 	------------------- 
+
+protocols.enzdes.EnzFilters: Calculated Interface Energy is before cst correction is:-6.73438
+protocols.enzdes.EnzFilters: Calculated Interface Energy is -6.73438
+protocols.rosetta_scripts.ParsedProtocol: =======================END FILTER d4_ifscore=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN METRIC lig_ifscore=======================
+core.simple_metrics.metrics.InteractionEnergyMetric: [ WARNING ] ################ Cloning pose and Scoring! ##############################
+core.simple_metrics.metrics.InteractionEnergyMetric: [ WARNING ] Ensure that pose is scored 
+core.simple_metrics.metrics.InteractionEnergyMetric: [ WARNING ] before using InteractionEnergyMetric for maximum performance!
+core.simple_metrics.metrics.InteractionEnergyMetric: [ WARNING ] ##########################################################################
+core.simple_metrics.metrics.InteractionEnergyMetric: 
+core.simple_metrics.metrics.InteractionEnergyMetric: fa_atr 1
+core.simple_metrics.metrics.InteractionEnergyMetric: Unweighted: -14.1806
+core.simple_metrics.metrics.InteractionEnergyMetric: Weighted: -14.1806
+core.simple_metrics.metrics.InteractionEnergyMetric: 
+core.simple_metrics.metrics.InteractionEnergyMetric: fa_rep 0.55
+core.simple_metrics.metrics.InteractionEnergyMetric: Unweighted: 0.857477
+core.simple_metrics.metrics.InteractionEnergyMetric: Weighted: 0.471613
+core.simple_metrics.metrics.InteractionEnergyMetric: 
+core.simple_metrics.metrics.InteractionEnergyMetric: fa_sol 0.9375
+core.simple_metrics.metrics.InteractionEnergyMetric: Unweighted: 8.4578
+core.simple_metrics.metrics.InteractionEnergyMetric: Weighted: 7.92918
+core.simple_metrics.metrics.InteractionEnergyMetric: 
+core.simple_metrics.metrics.InteractionEnergyMetric: fa_elec 0.875
+core.simple_metrics.metrics.InteractionEnergyMetric: Unweighted: -1.09099
+core.simple_metrics.metrics.InteractionEnergyMetric: Weighted: -0.95462
+protocols.rosetta_scripts.ParsedProtocol: =======================END METRIC lig_ifscore=======================
+protocols.rosetta_scripts.ParsedProtocol: setting status to success
+protocols.enzdes.EnzFilters: Calculated Interface Energy is before cst correction is:-6.73438
+protocols.enzdes.EnzFilters: Calculated Interface Energy is -6.73438
+protocols.rosetta_scripts.ParsedProtocol.REPORT: ============Begin report for d4_ifscore==================
+protocols.rosetta_scripts.ParsedProtocol.REPORT: 
+    chain      res       AA    total  contact   fa_atr   fa_rep hb_bb_sc    hb_sc   fa_sol   fa_dun  fa_pair
+        t       58      PHE   -3.144    -6.308    -9.574     0.608     0.000     0.000     2.657     2.611     0.000
+        t       79      MET   -1.280    -2.722    -7.065     0.517     0.000     0.000     3.826     1.466     0.000
+        t       82      ASP   -1.491    -1.604    -6.030     0.334     0.000    -0.617     4.708     3.110     0.000
+        t      153      ARG    0.998    -0.443    -5.356     0.559    -0.313    -0.132     4.800     1.666     0.000
+        t      246      THR   -2.058    -2.094    -5.917     0.638     0.000     0.000     3.186     0.081     0.000
+        X      275      LIG   -3.137    -2.890    -7.090     0.236     0.000     0.000     3.965     0.000     0.000
+============End report for d4_ifscore==================
+protocols.jd2.JobDistributor: output/AffinityDesignD4/LIG_CORE_RINGSWAP_AT_DRD4.LIG.receptor_LIG_0001.fa_0004 reported success in 57 seconds
+protocols.jd2.PDBJobInputter: PDBJobInputter::pose_from_job
+protocols.jd2.PDBJobInputter: filling pose from saved copy /home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/receptors/DRD4.LIG.receptor.pdb /home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/ligands/LIG_0001.fa.pdb
+protocols.jd2.PDBJobInputter: PDBJobInputter::pose_from_job
+protocols.jd2.PDBJobInputter: filling pose from PDB /home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/receptors/DRD4.LIG.receptor.pdb /home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/ligands/LIG_0001.fa.pdb
+core.import_pose.import_pose: File '/home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/receptors/DRD4.LIG.receptor.pdb /home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/ligands/LIG_0001.fa.pdb' automatically determined to be of type PDB
+core.conformation.Conformation: Found disulfide between residues 75 152
+core.conformation.Conformation: current variant for 75 CYS
+core.conformation.Conformation: current variant for 152 CYS
+core.conformation.Conformation: current variant for 75 CYD
+core.conformation.Conformation: current variant for 152 CYD
+core.conformation.Conformation: Found disulfide between residues 232 235
+core.conformation.Conformation: current variant for 232 CYS
+core.conformation.Conformation: current variant for 235 CYS
+core.conformation.Conformation: current variant for 232 CYD
+core.conformation.Conformation: current variant for 235 CYD
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER ParsedProtocol - min_cycle=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER AddConstraintsToCurrentConformationMover - cst=======================
+protocols.constraint_movers.AddConstraintsToCurrentConformationMover: Using SOG function
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER MinMover - min=======================
+core.optimization.Minimizer: [ WARNING ] LBFGS MAX CYCLES 200 EXCEEDED, BUT FUNC NOT CONVERGED!
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER ClearConstraintsMover - uncst=======================
+protocols.rosetta_scripts.ParsedProtocol: setting status to success
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER RandomMover - bcl_design=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER BCLFragmentMutateMover - ringswap_conservative_core=======================
+protocols.drug_design.bcl.BCLFragmentMutateMover: Ligand chain ID: X
+protocols.drug_design.bcl.BCLFragmentMutateMover: Ligand resnum: 275
+protocols.drug_design.bcl.BCLFragmentMutateMover: RingSwap
+protocols.drug_design.bcl.BCLFragmentMutateMover: Mutate trial: 1
+=std=bcl::chemistry=> RingSwap!
+=std=bcl::chemistry=> Pass drug-likeness filter!
+=std=bcl::chemistry=> Getting atom indices for conformer sampling...
+=std=bcl::chemistry=> SampleByParts with the following atom indices: 7 8 9 10 11 12 13 14 15 16 
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 3
+=std=bcl::chemistry=> Found 1 rotatable bonds, 0 flexible rings, 2 changeable bond angles; 
+=std=bcl::chemistry=> Found 2 isomorphisms for this molecule
+=std=bcl::util=> Clustering has run for 13.5982 seconds
+protocols.drug_design.bcl.BCLFragmentMutateMover: SampleByParts indices: 7 8 9 10 11 12 13 14 15 16 
+protocols.drug_design.bcl.BCLFragmentMutateMover: Generating conformers of the mutated fragment
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 3
+=std=bcl::chemistry=> Found 1 rotatable bonds, 0 flexible rings, 2 changeable bond angles; 
+=std=bcl::chemistry=> Found 2 isomorphisms for this molecule
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER ParsedProtocol - relax_cycle=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER VirtualRoot - root=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER AtomCoordinateCstMover - relax_cst=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER FastRelax - relax=======================
+protocols.relax.FastRelax: CMD: repeat  838.501  0  0  0.55
+protocols.relax.FastRelax: CMD: coord_cst_weight  838.501  0  0  0.55
+protocols.relax.FastRelax: CMD: scale:fa_rep  -425.545  0  0  0.022
+core.pack.rotamers.SingleLigandRotamerLibrary: Added 20 rotamers for LIGAND
+core.pack.pack_rotamers: built 45 rotamers at 2 positions.
+core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph
+protocols.relax.FastRelax: CMD: repack  -441.755  0  0  0.022
+protocols.relax.FastRelax: CMD: scale:fa_rep  -437.467  0  0  0.02805
+protocols.relax.FastRelax: CMD: min  -500.342  0.0671276  0.0671276  0.02805
+protocols.relax.FastRelax: CMD: coord_cst_weight  -500.342  0.0671276  0.0671276  0.02805
+protocols.relax.FastRelax: CMD: scale:fa_rep  -449.371  0.0671276  0.0671276  0.14575
+core.pack.rotamers.SingleLigandRotamerLibrary: Added 20 rotamers for LIGAND
+core.pack.pack_rotamers: built 45 rotamers at 2 positions.
+core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph
+protocols.relax.FastRelax: CMD: repack  -449.371  0.0671276  0.0671276  0.14575
+protocols.relax.FastRelax: CMD: scale:fa_rep  -445.798  0.0671276  0.0671276  0.154
+protocols.relax.FastRelax: CMD: min  -455.907  0.056357  0.056357  0.154
+protocols.relax.FastRelax: CMD: coord_cst_weight  -455.907  0.056357  0.056357  0.154
+protocols.relax.FastRelax: CMD: scale:fa_rep  -407.838  0.056357  0.056357  0.30745
+core.pack.rotamers.SingleLigandRotamerLibrary: Added 20 rotamers for LIGAND
+core.pack.pack_rotamers: built 45 rotamers at 2 positions.
+core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph
+protocols.relax.FastRelax: CMD: repack  -407.838  0.056357  0.056357  0.30745
+protocols.relax.FastRelax: CMD: scale:fa_rep  -404.047  0.056357  0.056357  0.31955
+protocols.relax.FastRelax: CMD: min  -415.318  0.0470167  0.0470167  0.31955
+protocols.relax.FastRelax: CMD: coord_cst_weight  -415.318  0.0470167  0.0470167  0.31955
+protocols.relax.FastRelax: CMD: scale:fa_rep  -360.502  0.0470167  0.0470167  0.55
+core.pack.rotamers.SingleLigandRotamerLibrary: Added 20 rotamers for LIGAND
+core.pack.pack_rotamers: built 24 rotamers at 2 positions.
+core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph
+protocols.relax.FastRelax: CMD: repack  -360.502  0.0470167  0.0470167  0.55
+protocols.relax.FastRelax: CMD: min  -364.314  0.0487785  0.0487785  0.55
+protocols.relax.FastRelax: MRP: 0  -364.314  -364.314  0.0487785  0.0487785  
+protocols.relax.FastRelax: CMD: accept_to_best  -364.314  0.0487785  0.0487785  0.55
+protocols.relax.FastRelax: CMD: endrepeat  -364.314  0.0487785  0.0487785  0.55
+protocols::checkpoint: Deleting checkpoints of FastRelax
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER VirtualRoot - remove=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER ClearConstraintsMover - uncst=======================
+protocols.rosetta_scripts.ParsedProtocol: setting status to success
+protocols.rosetta_scripts.ParsedProtocol: setting status to success
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN FILTER d4_ifscore=======================
+protocols.enzdes.EnzFilters:  
+ 	 --------- computing  ---------- 
+ 	-------- ligand interface energies   --------
+ 	 	------------------- 
+
+protocols.enzdes.EnzFilters: Calculated Interface Energy is before cst correction is:-3.29252
+protocols.enzdes.EnzFilters: Calculated Interface Energy is -3.29252
+protocols.rosetta_scripts.ParsedProtocol: =======================END FILTER d4_ifscore=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN METRIC lig_ifscore=======================
+core.simple_metrics.metrics.InteractionEnergyMetric: [ WARNING ] ################ Cloning pose and Scoring! ##############################
+core.simple_metrics.metrics.InteractionEnergyMetric: [ WARNING ] Ensure that pose is scored 
+core.simple_metrics.metrics.InteractionEnergyMetric: [ WARNING ] before using InteractionEnergyMetric for maximum performance!
+core.simple_metrics.metrics.InteractionEnergyMetric: [ WARNING ] ##########################################################################
+core.simple_metrics.metrics.InteractionEnergyMetric: 
+core.simple_metrics.metrics.InteractionEnergyMetric: fa_atr 1
+core.simple_metrics.metrics.InteractionEnergyMetric: Unweighted: -15.8295
+core.simple_metrics.metrics.InteractionEnergyMetric: Weighted: -15.8295
+core.simple_metrics.metrics.InteractionEnergyMetric: 
+core.simple_metrics.metrics.InteractionEnergyMetric: fa_rep 0.55
+core.simple_metrics.metrics.InteractionEnergyMetric: Unweighted: 5.33746
+core.simple_metrics.metrics.InteractionEnergyMetric: Weighted: 2.9356
+core.simple_metrics.metrics.InteractionEnergyMetric: 
+core.simple_metrics.metrics.InteractionEnergyMetric: fa_sol 0.9375
+core.simple_metrics.metrics.InteractionEnergyMetric: Unweighted: 9.21286
+core.simple_metrics.metrics.InteractionEnergyMetric: Weighted: 8.63706
+core.simple_metrics.metrics.InteractionEnergyMetric: 
+core.simple_metrics.metrics.InteractionEnergyMetric: fa_elec 0.875
+core.simple_metrics.metrics.InteractionEnergyMetric: Unweighted: 1.10211
+core.simple_metrics.metrics.InteractionEnergyMetric: Weighted: 0.964347
+protocols.rosetta_scripts.ParsedProtocol: =======================END METRIC lig_ifscore=======================
+protocols.rosetta_scripts.ParsedProtocol: setting status to success
+protocols.enzdes.EnzFilters: Calculated Interface Energy is before cst correction is:-3.29252
+protocols.enzdes.EnzFilters: Calculated Interface Energy is -3.29252
+protocols.rosetta_scripts.ParsedProtocol.REPORT: ============Begin report for d4_ifscore==================
+protocols.rosetta_scripts.ParsedProtocol.REPORT: 
+    chain      res       AA    total  contact   fa_atr   fa_rep hb_bb_sc    hb_sc   fa_sol   fa_dun  fa_pair
+        t       58      PHE   -3.108    -6.274    -9.558     0.635     0.000     0.000     2.650     2.607     0.000
+        t       79      MET   -1.326    -2.547    -6.742     0.499     0.000     0.000     3.696     1.457     0.000
+        t       82      ASP    1.479    -0.555    -6.848     1.521     0.000    -0.597     5.369     4.373     0.000
+        t      153      ARG    1.119    -0.609    -4.840     0.624    -0.310    -0.093     4.009     1.615     0.000
+        t      222      PHE   -3.398    -5.116    -9.840     0.860     0.000     0.000     3.865     1.822     0.000
+        t      242      VAL   -1.472    -2.226    -5.351     0.273     0.000     0.000     2.852     0.015     0.000
+        t      246      THR   -2.046    -2.167    -5.959     0.630     0.000     0.000     3.162     0.106     0.000
+        X      275      LIG   -1.506    -2.128    -7.915     1.468     0.000     0.000     4.319     0.000     0.000
+============End report for d4_ifscore==================
+protocols.jd2.JobDistributor: output/AffinityDesignD4/LIG_CORE_RINGSWAP_AT_DRD4.LIG.receptor_LIG_0001.fa_0005 reported success in 48 seconds
+protocols.jd2.PDBJobInputter: PDBJobInputter::pose_from_job
+protocols.jd2.PDBJobInputter: filling pose from saved copy /home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/receptors/DRD4.LIG.receptor.pdb /home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/ligands/LIG_0001.fa.pdb
+protocols.jd2.PDBJobInputter: PDBJobInputter::pose_from_job
+protocols.jd2.PDBJobInputter: filling pose from PDB /home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/receptors/DRD4.LIG.receptor.pdb /home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/ligands/LIG_0001.fa.pdb
+core.import_pose.import_pose: File '/home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/receptors/DRD4.LIG.receptor.pdb /home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/ligands/LIG_0001.fa.pdb' automatically determined to be of type PDB
+core.conformation.Conformation: Found disulfide between residues 75 152
+core.conformation.Conformation: current variant for 75 CYS
+core.conformation.Conformation: current variant for 152 CYS
+core.conformation.Conformation: current variant for 75 CYD
+core.conformation.Conformation: current variant for 152 CYD
+core.conformation.Conformation: Found disulfide between residues 232 235
+core.conformation.Conformation: current variant for 232 CYS
+core.conformation.Conformation: current variant for 235 CYS
+core.conformation.Conformation: current variant for 232 CYD
+core.conformation.Conformation: current variant for 235 CYD
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER ParsedProtocol - min_cycle=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER AddConstraintsToCurrentConformationMover - cst=======================
+protocols.constraint_movers.AddConstraintsToCurrentConformationMover: Using SOG function
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER MinMover - min=======================
+core.optimization.Minimizer: [ WARNING ] LBFGS MAX CYCLES 200 EXCEEDED, BUT FUNC NOT CONVERGED!
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER ClearConstraintsMover - uncst=======================
+protocols.rosetta_scripts.ParsedProtocol: setting status to success
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER RandomMover - bcl_design=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER BCLFragmentMutateMover - ringswap_conservative_core=======================
+protocols.drug_design.bcl.BCLFragmentMutateMover: Ligand chain ID: X
+protocols.drug_design.bcl.BCLFragmentMutateMover: Ligand resnum: 275
+protocols.drug_design.bcl.BCLFragmentMutateMover: RingSwap
+protocols.drug_design.bcl.BCLFragmentMutateMover: Mutate trial: 1
+=std=bcl::chemistry=> RingSwap!
+protocols.drug_design.bcl.BCLFragmentMutateMover: Mutate fragment returned null!
+protocols.drug_design.bcl.BCLFragmentMutateMover: Mutate trial: 2
+=std=bcl::chemistry=> RingSwap!
+=std=bcl::chemistry=> Fail drug-likeness filter!
+protocols.drug_design.bcl.BCLFragmentMutateMover: Mutate fragment returned null!
+protocols.drug_design.bcl.BCLFragmentMutateMover: Mutate trial: 3
+=std=bcl::chemistry=> RingSwap!
+=std=bcl::chemistry=> Pass drug-likeness filter!
+=std=bcl::chemistry=> Getting atom indices for conformer sampling...
+=std=bcl::chemistry=> SampleByParts with the following atom indices: 5 6 7 18 19 20 21 22 23 24 25 26 27 28 
+=std=bcl::util=> FindFrags has run for 1.27392 seconds
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 7
+=std=bcl::chemistry=> # of dihedral angles not covered by existing knowledge-based potential: 1
+=std=bcl::chemistry=> Found 3 rotatable bonds, 0 flexible rings, 6 changeable bond angles; 
+=std=bcl::chemistry=> Found 4 isomorphisms for this molecule
+=std=bcl::util=> Clustering has run for 20.8225 seconds
+protocols.drug_design.bcl.BCLFragmentMutateMover: SampleByParts indices: 5 6 7 18 19 20 21 22 23 24 25 26 27 28 
+protocols.drug_design.bcl.BCLFragmentMutateMover: Generating conformers of the mutated fragment
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 7
+=std=bcl::chemistry=> # of dihedral angles not covered by existing knowledge-based potential: 1
+=std=bcl::chemistry=> Found 3 rotatable bonds, 0 flexible rings, 6 changeable bond angles; 
+=std=bcl::chemistry=> Found 4 isomorphisms for this molecule
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER ParsedProtocol - relax_cycle=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER VirtualRoot - root=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER AtomCoordinateCstMover - relax_cst=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER FastRelax - relax=======================
+protocols.relax.FastRelax: CMD: repeat  1093.06  0  0  0.55
+protocols.relax.FastRelax: CMD: coord_cst_weight  1093.06  0  0  0.55
+protocols.relax.FastRelax: CMD: scale:fa_rep  -426.428  0  0  0.022
+core.pack.rotamers.SingleLigandRotamerLibrary: Added 100 rotamers for LIGAND
+core.pack.pack_rotamers: built 22 rotamers at 3 positions.
+core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph
+protocols.relax.FastRelax: CMD: repack  -433.028  0  0  0.022
+protocols.relax.FastRelax: CMD: scale:fa_rep  -417.815  0  0  0.02805
+core.pose.util: [ WARNING ] Unable to find atom_tree atom for this Rosetta chi angle: residue 275 CHI 3
+protocols.relax.FastRelax: CMD: min  -501.692  0.0671163  0.0671163  0.02805
+protocols.relax.FastRelax: CMD: coord_cst_weight  -501.692  0.0671163  0.0671163  0.02805
+protocols.relax.FastRelax: CMD: scale:fa_rep  -431.462  0.0671163  0.0671163  0.14575
+core.pack.rotamers.SingleLigandRotamerLibrary: Added 100 rotamers for LIGAND
+core.pack.pack_rotamers: built 15 rotamers at 3 positions.
+core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph
+protocols.relax.FastRelax: CMD: repack  -431.462  0.0671163  0.0671163  0.14575
+protocols.relax.FastRelax: CMD: scale:fa_rep  -426.539  0.0671163  0.0671163  0.154
+core.pose.util: [ WARNING ] Unable to find atom_tree atom for this Rosetta chi angle: residue 275 CHI 3
+protocols.relax.FastRelax: CMD: min  -447.903  0.0580253  0.0580253  0.154
+protocols.relax.FastRelax: CMD: coord_cst_weight  -447.903  0.0580253  0.0580253  0.154
+protocols.relax.FastRelax: CMD: scale:fa_rep  -394.027  0.0580253  0.0580253  0.30745
+core.pack.rotamers.SingleLigandRotamerLibrary: Added 100 rotamers for LIGAND
+core.pack.pack_rotamers: built 16 rotamers at 3 positions.
+core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph
+protocols.relax.FastRelax: CMD: repack  -394.027  0.0580253  0.0580253  0.30745
+protocols.relax.FastRelax: CMD: scale:fa_rep  -389.778  0.0580253  0.0580253  0.31955
+core.pose.util: [ WARNING ] Unable to find atom_tree atom for this Rosetta chi angle: residue 275 CHI 3
+protocols.relax.FastRelax: CMD: min  -395.21  0.0604509  0.0604509  0.31955
+protocols.relax.FastRelax: CMD: coord_cst_weight  -395.21  0.0604509  0.0604509  0.31955
+protocols.relax.FastRelax: CMD: scale:fa_rep  -326.422  0.0604509  0.0604509  0.55
+core.pack.rotamers.SingleLigandRotamerLibrary: Added 100 rotamers for LIGAND
+core.pack.pack_rotamers: built 16 rotamers at 3 positions.
+core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph
+protocols.relax.FastRelax: CMD: repack  -326.422  0.0604509  0.0604509  0.55
+core.pose.util: [ WARNING ] Unable to find atom_tree atom for this Rosetta chi angle: residue 275 CHI 3
+protocols.relax.FastRelax: CMD: min  -345.893  0.0565586  0.0565586  0.55
+protocols.relax.FastRelax: MRP: 0  -345.893  -345.893  0.0565586  0.0565586  
+protocols.relax.FastRelax: CMD: accept_to_best  -345.893  0.0565586  0.0565586  0.55
+protocols.relax.FastRelax: CMD: endrepeat  -345.893  0.0565586  0.0565586  0.55
+protocols::checkpoint: Deleting checkpoints of FastRelax
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER VirtualRoot - remove=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER ClearConstraintsMover - uncst=======================
+protocols.rosetta_scripts.ParsedProtocol: setting status to success
+protocols.rosetta_scripts.ParsedProtocol: setting status to success
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN FILTER d4_ifscore=======================
+protocols.enzdes.EnzFilters:  
+ 	 --------- computing  ---------- 
+ 	-------- ligand interface energies   --------
+ 	 	------------------- 
+
+protocols.enzdes.EnzFilters: Calculated Interface Energy is before cst correction is:-3.79724
+protocols.enzdes.EnzFilters: Calculated Interface Energy is -3.79724
+protocols.rosetta_scripts.ParsedProtocol: =======================END FILTER d4_ifscore=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN METRIC lig_ifscore=======================
+core.simple_metrics.metrics.InteractionEnergyMetric: [ WARNING ] ################ Cloning pose and Scoring! ##############################
+core.simple_metrics.metrics.InteractionEnergyMetric: [ WARNING ] Ensure that pose is scored 
+core.simple_metrics.metrics.InteractionEnergyMetric: [ WARNING ] before using InteractionEnergyMetric for maximum performance!
+core.simple_metrics.metrics.InteractionEnergyMetric: [ WARNING ] ##########################################################################
+core.simple_metrics.metrics.InteractionEnergyMetric: 
+core.simple_metrics.metrics.InteractionEnergyMetric: fa_atr 1
+core.simple_metrics.metrics.InteractionEnergyMetric: Unweighted: -26.0377
+core.simple_metrics.metrics.InteractionEnergyMetric: Weighted: -26.0377
+core.simple_metrics.metrics.InteractionEnergyMetric: 
+core.simple_metrics.metrics.InteractionEnergyMetric: fa_rep 0.55
+core.simple_metrics.metrics.InteractionEnergyMetric: Unweighted: 18.6353
+core.simple_metrics.metrics.InteractionEnergyMetric: Weighted: 10.2494
+core.simple_metrics.metrics.InteractionEnergyMetric: 
+core.simple_metrics.metrics.InteractionEnergyMetric: fa_sol 0.9375
+core.simple_metrics.metrics.InteractionEnergyMetric: Unweighted: 13.7147
+core.simple_metrics.metrics.InteractionEnergyMetric: Weighted: 12.8575
+core.simple_metrics.metrics.InteractionEnergyMetric: 
+core.simple_metrics.metrics.InteractionEnergyMetric: fa_elec 0.875
+core.simple_metrics.metrics.InteractionEnergyMetric: Unweighted: -0.990337
+core.simple_metrics.metrics.InteractionEnergyMetric: Weighted: -0.866545
+protocols.rosetta_scripts.ParsedProtocol: =======================END METRIC lig_ifscore=======================
+protocols.rosetta_scripts.ParsedProtocol: setting status to success
+protocols.enzdes.EnzFilters: Calculated Interface Energy is before cst correction is:-3.79724
+protocols.enzdes.EnzFilters: Calculated Interface Energy is -3.79724
+protocols.rosetta_scripts.ParsedProtocol.REPORT: ============Begin report for d4_ifscore==================
+protocols.rosetta_scripts.ParsedProtocol.REPORT: 
+    chain      res       AA    total  contact   fa_atr   fa_rep hb_bb_sc    hb_sc   fa_sol   fa_dun  fa_pair
+        t       54      VAL   -1.385    -2.361    -5.394     0.840     0.000     0.000     2.193     0.058     0.000
+        t       79      MET   -1.524    -2.831    -7.471     0.732     0.000     0.000     3.908     1.489     0.000
+        t       82      ASP    0.376    -0.533    -6.704     1.492     0.000    -0.557     5.235     3.957     0.000
+        t       83      VAL   -1.097    -1.531    -6.273     1.234     0.000     0.000     3.508     0.027     0.000
+        t       86      CYS    0.243    -1.267    -4.240     0.222     0.000     0.000     2.751     0.915     0.000
+        X      275      LIG   -0.500    -1.465   -13.019     5.125     0.000     0.000     6.429     0.000     0.000
+============End report for d4_ifscore==================
+protocols.jd2.JobDistributor: output/AffinityDesignD4/LIG_CORE_RINGSWAP_AT_DRD4.LIG.receptor_LIG_0001.fa_0006 reported success in 73 seconds
+protocols.jd2.PDBJobInputter: PDBJobInputter::pose_from_job
+protocols.jd2.PDBJobInputter: filling pose from saved copy /home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/receptors/DRD4.LIG.receptor.pdb /home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/ligands/LIG_0001.fa.pdb
+protocols.jd2.PDBJobInputter: PDBJobInputter::pose_from_job
+protocols.jd2.PDBJobInputter: filling pose from PDB /home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/receptors/DRD4.LIG.receptor.pdb /home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/ligands/LIG_0001.fa.pdb
+core.import_pose.import_pose: File '/home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/receptors/DRD4.LIG.receptor.pdb /home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/ligands/LIG_0001.fa.pdb' automatically determined to be of type PDB
+core.conformation.Conformation: Found disulfide between residues 75 152
+core.conformation.Conformation: current variant for 75 CYS
+core.conformation.Conformation: current variant for 152 CYS
+core.conformation.Conformation: current variant for 75 CYD
+core.conformation.Conformation: current variant for 152 CYD
+core.conformation.Conformation: Found disulfide between residues 232 235
+core.conformation.Conformation: current variant for 232 CYS
+core.conformation.Conformation: current variant for 235 CYS
+core.conformation.Conformation: current variant for 232 CYD
+core.conformation.Conformation: current variant for 235 CYD
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER ParsedProtocol - min_cycle=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER AddConstraintsToCurrentConformationMover - cst=======================
+protocols.constraint_movers.AddConstraintsToCurrentConformationMover: Using SOG function
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER MinMover - min=======================
+core.optimization.Minimizer: [ WARNING ] LBFGS MAX CYCLES 200 EXCEEDED, BUT FUNC NOT CONVERGED!
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER ClearConstraintsMover - uncst=======================
+protocols.rosetta_scripts.ParsedProtocol: setting status to success
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER RandomMover - bcl_design=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER BCLFragmentMutateMover - ringswap_conservative_core=======================
+protocols.drug_design.bcl.BCLFragmentMutateMover: Ligand chain ID: X
+protocols.drug_design.bcl.BCLFragmentMutateMover: Ligand resnum: 275
+protocols.drug_design.bcl.BCLFragmentMutateMover: RingSwap
+protocols.drug_design.bcl.BCLFragmentMutateMover: Mutate trial: 1
+=std=bcl::chemistry=> RingSwap!
+=std=bcl::chemistry=> Pass drug-likeness filter!
+=std=bcl::chemistry=> Getting atom indices for conformer sampling...
+=std=bcl::chemistry=> SampleByParts with the following atom indices: 18 19 20 21 22 23 24 25 26 27 
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 1
+=std=bcl::chemistry=> Found 0 rotatable bonds, 1 flexible rings, 3 changeable bond angles; 
+=std=bcl::chemistry=> Chirality messed up by bond angles 22 bcl::linal::Matrix<double>
+  1	  3
+  0.529445	0.593212	0.606455	
+=std=bcl::chemistry=> Chirality messed up by bond angles 22 bcl::linal::Matrix<double>
+  1	  3
+  0.529445	0.593212	0.606455	
+=std=bcl::chemistry=> Found 4 isomorphisms for this molecule
+=std=bcl::util=> Clustering has run for 22.2817 seconds
+protocols.drug_design.bcl.BCLFragmentMutateMover: SampleByParts indices: 18 19 20 21 22 23 24 25 26 27 
+protocols.drug_design.bcl.BCLFragmentMutateMover: Generating conformers of the mutated fragment
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 1
+=std=bcl::chemistry=> Found 0 rotatable bonds, 1 flexible rings, 3 changeable bond angles; 
+=std=bcl::chemistry=> Found 4 isomorphisms for this molecule
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER ParsedProtocol - relax_cycle=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER VirtualRoot - root=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER AtomCoordinateCstMover - relax_cst=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER FastRelax - relax=======================
+protocols.relax.FastRelax: CMD: repeat  -329.841  0  0  0.55
+protocols.relax.FastRelax: CMD: coord_cst_weight  -329.841  0  0  0.55
+protocols.relax.FastRelax: CMD: scale:fa_rep  -485.494  0  0  0.022
+core.pack.rotamers.SingleLigandRotamerLibrary: Added 9 rotamers for LIGAND
+core.pack.pack_rotamers: built 13 rotamers at 2 positions.
+core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph
+protocols.relax.FastRelax: CMD: repack  -485.494  0  0  0.022
+protocols.relax.FastRelax: CMD: scale:fa_rep  -483.71  0  0  0.02805
+core.pose.util: [ WARNING ] Unable to find atom_tree atom for this Rosetta chi angle: residue 275 CHI 3
+protocols.relax.FastRelax: CMD: min  -518.817  0.06459  0.06459  0.02805
+protocols.relax.FastRelax: CMD: coord_cst_weight  -518.817  0.06459  0.06459  0.02805
+protocols.relax.FastRelax: CMD: scale:fa_rep  -469.821  0.06459  0.06459  0.14575
+core.pack.rotamers.SingleLigandRotamerLibrary: Added 9 rotamers for LIGAND
+core.pack.pack_rotamers: built 8 rotamers at 2 positions.
+core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph
+protocols.relax.FastRelax: CMD: repack  -469.821  0.06459  0.06459  0.14575
+protocols.relax.FastRelax: CMD: scale:fa_rep  -466.387  0.06459  0.06459  0.154
+core.pose.util: [ WARNING ] Unable to find atom_tree atom for this Rosetta chi angle: residue 275 CHI 3
+protocols.relax.FastRelax: CMD: min  -472.413  0.0552466  0.0552466  0.154
+protocols.relax.FastRelax: CMD: coord_cst_weight  -472.413  0.0552466  0.0552466  0.154
+protocols.relax.FastRelax: CMD: scale:fa_rep  -420.536  0.0552466  0.0552466  0.30745
+core.pack.rotamers.SingleLigandRotamerLibrary: Added 9 rotamers for LIGAND
+core.pack.pack_rotamers: built 8 rotamers at 2 positions.
+core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph
+protocols.relax.FastRelax: CMD: repack  -420.536  0.0552466  0.0552466  0.30745
+protocols.relax.FastRelax: CMD: scale:fa_rep  -416.445  0.0552466  0.0552466  0.31955
+core.pose.util: [ WARNING ] Unable to find atom_tree atom for this Rosetta chi angle: residue 275 CHI 3
+protocols.relax.FastRelax: CMD: min  -432.083  0.0436785  0.0436785  0.31955
+protocols.relax.FastRelax: CMD: coord_cst_weight  -432.083  0.0436785  0.0436785  0.31955
+protocols.relax.FastRelax: CMD: scale:fa_rep  -375.438  0.0436785  0.0436785  0.55
+core.pack.rotamers.SingleLigandRotamerLibrary: Added 9 rotamers for LIGAND
+core.pack.pack_rotamers: built 8 rotamers at 2 positions.
+core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph
+protocols.relax.FastRelax: CMD: repack  -375.438  0.0436785  0.0436785  0.55
+core.pose.util: [ WARNING ] Unable to find atom_tree atom for this Rosetta chi angle: residue 275 CHI 3
+protocols.relax.FastRelax: CMD: min  -383.802  0.0435577  0.0435577  0.55
+protocols.relax.FastRelax: MRP: 0  -383.802  -383.802  0.0435577  0.0435577  
+protocols.relax.FastRelax: CMD: accept_to_best  -383.802  0.0435577  0.0435577  0.55
+protocols.relax.FastRelax: CMD: endrepeat  -383.802  0.0435577  0.0435577  0.55
+protocols::checkpoint: Deleting checkpoints of FastRelax
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER VirtualRoot - remove=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER ClearConstraintsMover - uncst=======================
+protocols.rosetta_scripts.ParsedProtocol: setting status to success
+protocols.rosetta_scripts.ParsedProtocol: setting status to success
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN FILTER d4_ifscore=======================
+protocols.enzdes.EnzFilters:  
+ 	 --------- computing  ---------- 
+ 	-------- ligand interface energies   --------
+ 	 	------------------- 
+
+protocols.enzdes.EnzFilters: Calculated Interface Energy is before cst correction is:-13.0175
+protocols.enzdes.EnzFilters: Calculated Interface Energy is -13.0175
+protocols.rosetta_scripts.ParsedProtocol: =======================END FILTER d4_ifscore=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN METRIC lig_ifscore=======================
+core.simple_metrics.metrics.InteractionEnergyMetric: [ WARNING ] ################ Cloning pose and Scoring! ##############################
+core.simple_metrics.metrics.InteractionEnergyMetric: [ WARNING ] Ensure that pose is scored 
+core.simple_metrics.metrics.InteractionEnergyMetric: [ WARNING ] before using InteractionEnergyMetric for maximum performance!
+core.simple_metrics.metrics.InteractionEnergyMetric: [ WARNING ] ##########################################################################
+core.simple_metrics.metrics.InteractionEnergyMetric: 
+core.simple_metrics.metrics.InteractionEnergyMetric: fa_atr 1
+core.simple_metrics.metrics.InteractionEnergyMetric: Unweighted: -27.8246
+core.simple_metrics.metrics.InteractionEnergyMetric: Weighted: -27.8246
+core.simple_metrics.metrics.InteractionEnergyMetric: 
+core.simple_metrics.metrics.InteractionEnergyMetric: fa_rep 0.55
+core.simple_metrics.metrics.InteractionEnergyMetric: Unweighted: 8.24336
+core.simple_metrics.metrics.InteractionEnergyMetric: Weighted: 4.53385
+core.simple_metrics.metrics.InteractionEnergyMetric: 
+core.simple_metrics.metrics.InteractionEnergyMetric: fa_sol 0.9375
+core.simple_metrics.metrics.InteractionEnergyMetric: Unweighted: 14.3973
+core.simple_metrics.metrics.InteractionEnergyMetric: Weighted: 13.4975
+core.simple_metrics.metrics.InteractionEnergyMetric: 
+core.simple_metrics.metrics.InteractionEnergyMetric: fa_elec 0.875
+core.simple_metrics.metrics.InteractionEnergyMetric: Unweighted: -3.07297
+core.simple_metrics.metrics.InteractionEnergyMetric: Weighted: -2.68884
+core.simple_metrics.metrics.InteractionEnergyMetric: 
+core.simple_metrics.metrics.InteractionEnergyMetric: hbond_sc 1.1
+core.simple_metrics.metrics.InteractionEnergyMetric: Unweighted: -0.486784
+core.simple_metrics.metrics.InteractionEnergyMetric: Weighted: -0.535463
+protocols.rosetta_scripts.ParsedProtocol: =======================END METRIC lig_ifscore=======================
+protocols.rosetta_scripts.ParsedProtocol: setting status to success
+protocols.enzdes.EnzFilters: Calculated Interface Energy is before cst correction is:-13.0175
+protocols.enzdes.EnzFilters: Calculated Interface Energy is -13.0175
+protocols.rosetta_scripts.ParsedProtocol.REPORT: ============Begin report for d4_ifscore==================
+protocols.rosetta_scripts.ParsedProtocol.REPORT: 
+    chain      res       AA    total  contact   fa_atr   fa_rep hb_bb_sc    hb_sc   fa_sol   fa_dun  fa_pair
+        t       79      MET   -1.233    -2.637    -6.930     0.498     0.000     0.000     3.795     1.462     0.000
+        t       82      ASP   -2.319    -1.964    -7.155     0.464     0.000    -0.890     5.617     3.542     0.000
+        t       83      VAL   -2.910    -3.115    -6.403     0.351     0.000     0.000     2.937    -0.005     0.000
+        t       86      CYS    0.252    -1.322    -4.648     0.348     0.000     0.000     2.977     0.908     0.000
+        t      153      ARG    2.350     0.357    -5.483     1.434    -0.270    -0.112     4.788     2.194     0.000
+        t      222      PHE   -3.612    -5.513   -10.248     1.008     0.000     0.000     3.728     1.999     0.000
+        t      226      HIS    0.323    -2.132    -7.082     0.747     0.000     0.000     4.203     2.850     0.000
+        t      246      THR   -2.194    -2.238    -5.926     0.512     0.000     0.000     3.176     0.093     0.000
+        X      275      LIG   -6.414    -5.164   -13.912     2.267     0.000    -0.268     6.749     0.000     0.000
+============End report for d4_ifscore==================
+protocols.jd2.JobDistributor: output/AffinityDesignD4/LIG_CORE_RINGSWAP_AT_DRD4.LIG.receptor_LIG_0001.fa_0007 reported success in 51 seconds
+protocols.jd2.PDBJobInputter: PDBJobInputter::pose_from_job
+protocols.jd2.PDBJobInputter: filling pose from saved copy /home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/receptors/DRD4.LIG.receptor.pdb /home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/ligands/LIG_0001.fa.pdb
+protocols.jd2.PDBJobInputter: PDBJobInputter::pose_from_job
+protocols.jd2.PDBJobInputter: filling pose from PDB /home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/receptors/DRD4.LIG.receptor.pdb /home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/ligands/LIG_0001.fa.pdb
+core.import_pose.import_pose: File '/home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/receptors/DRD4.LIG.receptor.pdb /home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/ligands/LIG_0001.fa.pdb' automatically determined to be of type PDB
+core.conformation.Conformation: Found disulfide between residues 75 152
+core.conformation.Conformation: current variant for 75 CYS
+core.conformation.Conformation: current variant for 152 CYS
+core.conformation.Conformation: current variant for 75 CYD
+core.conformation.Conformation: current variant for 152 CYD
+core.conformation.Conformation: Found disulfide between residues 232 235
+core.conformation.Conformation: current variant for 232 CYS
+core.conformation.Conformation: current variant for 235 CYS
+core.conformation.Conformation: current variant for 232 CYD
+core.conformation.Conformation: current variant for 235 CYD
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER ParsedProtocol - min_cycle=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER AddConstraintsToCurrentConformationMover - cst=======================
+protocols.constraint_movers.AddConstraintsToCurrentConformationMover: Using SOG function
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER MinMover - min=======================
+core.optimization.Minimizer: [ WARNING ] LBFGS MAX CYCLES 200 EXCEEDED, BUT FUNC NOT CONVERGED!
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER ClearConstraintsMover - uncst=======================
+protocols.rosetta_scripts.ParsedProtocol: setting status to success
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER RandomMover - bcl_design=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER BCLFragmentMutateMover - ringswap_conservative_core=======================
+protocols.drug_design.bcl.BCLFragmentMutateMover: Ligand chain ID: X
+protocols.drug_design.bcl.BCLFragmentMutateMover: Ligand resnum: 275
+protocols.drug_design.bcl.BCLFragmentMutateMover: RingSwap
+protocols.drug_design.bcl.BCLFragmentMutateMover: Mutate trial: 1
+=std=bcl::chemistry=> RingSwap!
+=std=bcl::chemistry=> Pass drug-likeness filter!
+=std=bcl::chemistry=> Getting atom indices for conformer sampling...
+=std=bcl::chemistry=> SampleByParts with the following atom indices: 7 8 18 20 21 22 23 24 25 26 27 28 
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 5
+=std=bcl::chemistry=> Found 2 rotatable bonds, 1 flexible rings, 5 changeable bond angles; 
+=std=bcl::chemistry=> Found 4 isomorphisms for this molecule
+=std=bcl::util=> Clustering has run for 29.7187 seconds
+protocols.drug_design.bcl.BCLFragmentMutateMover: SampleByParts indices: 7 8 18 20 21 22 23 24 25 26 27 28 
+protocols.drug_design.bcl.BCLFragmentMutateMover: Generating conformers of the mutated fragment
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 5
+=std=bcl::chemistry=> Found 2 rotatable bonds, 1 flexible rings, 5 changeable bond angles; 
+=std=bcl::chemistry=> Found 4 isomorphisms for this molecule
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER ParsedProtocol - relax_cycle=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER VirtualRoot - root=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER AtomCoordinateCstMover - relax_cst=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER FastRelax - relax=======================
+protocols.relax.FastRelax: CMD: repeat  -112.723  0  0  0.55
+protocols.relax.FastRelax: CMD: coord_cst_weight  -112.723  0  0  0.55
+protocols.relax.FastRelax: CMD: scale:fa_rep  -477.605  0  0  0.022
+core.pack.rotamers.SingleLigandRotamerLibrary: Added 100 rotamers for LIGAND
+core.pack.pack_rotamers: built 22 rotamers at 2 positions.
+core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph
+protocols.relax.FastRelax: CMD: repack  -477.605  0  0  0.022
+protocols.relax.FastRelax: CMD: scale:fa_rep  -473.424  0  0  0.02805
+core.pose.util: [ WARNING ] Unable to find atom_tree atom for this Rosetta chi angle: residue 275 CHI 3
+protocols.relax.FastRelax: CMD: min  -516.579  0.0655378  0.0655378  0.02805
+protocols.relax.FastRelax: CMD: coord_cst_weight  -516.579  0.0655378  0.0655378  0.02805
+protocols.relax.FastRelax: CMD: scale:fa_rep  -461.762  0.0655378  0.0655378  0.14575
+core.pack.rotamers.SingleLigandRotamerLibrary: Added 100 rotamers for LIGAND
+core.pack.pack_rotamers: built 10 rotamers at 2 positions.
+core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph
+protocols.relax.FastRelax: CMD: repack  -461.762  0.0655378  0.0655378  0.14575
+protocols.relax.FastRelax: CMD: scale:fa_rep  -457.919  0.0655378  0.0655378  0.154
+core.pose.util: [ WARNING ] Unable to find atom_tree atom for this Rosetta chi angle: residue 275 CHI 3
+protocols.relax.FastRelax: CMD: min  -466.693  0.0586928  0.0586928  0.154
+protocols.relax.FastRelax: CMD: coord_cst_weight  -466.693  0.0586928  0.0586928  0.154
+protocols.relax.FastRelax: CMD: scale:fa_rep  -412.516  0.0586928  0.0586928  0.30745
+core.pack.rotamers.SingleLigandRotamerLibrary: Added 100 rotamers for LIGAND
+core.pack.pack_rotamers: built 10 rotamers at 2 positions.
+core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph
+protocols.relax.FastRelax: CMD: repack  -412.516  0.0586928  0.0586928  0.30745
+protocols.relax.FastRelax: CMD: scale:fa_rep  -408.244  0.0586928  0.0586928  0.31955
+core.pose.util: [ WARNING ] Unable to find atom_tree atom for this Rosetta chi angle: residue 275 CHI 3
+protocols.relax.FastRelax: CMD: min  -425.15  0.0464779  0.0464779  0.31955
+protocols.relax.FastRelax: CMD: coord_cst_weight  -425.15  0.0464779  0.0464779  0.31955
+protocols.relax.FastRelax: CMD: scale:fa_rep  -366.782  0.0464779  0.0464779  0.55
+core.pack.rotamers.SingleLigandRotamerLibrary: Added 100 rotamers for LIGAND
+core.pack.pack_rotamers: built 8 rotamers at 2 positions.
+core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph
+protocols.relax.FastRelax: CMD: repack  -366.782  0.0464779  0.0464779  0.55
+core.pose.util: [ WARNING ] Unable to find atom_tree atom for this Rosetta chi angle: residue 275 CHI 3
+protocols.relax.FastRelax: CMD: min  -372.358  0.0503087  0.0503087  0.55
+protocols.relax.FastRelax: MRP: 0  -372.358  -372.358  0.0503087  0.0503087  
+protocols.relax.FastRelax: CMD: accept_to_best  -372.358  0.0503087  0.0503087  0.55
+protocols.relax.FastRelax: CMD: endrepeat  -372.358  0.0503087  0.0503087  0.55
+protocols::checkpoint: Deleting checkpoints of FastRelax
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER VirtualRoot - remove=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER ClearConstraintsMover - uncst=======================
+protocols.rosetta_scripts.ParsedProtocol: setting status to success
+protocols.rosetta_scripts.ParsedProtocol: setting status to success
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN FILTER d4_ifscore=======================
+protocols.enzdes.EnzFilters:  
+ 	 --------- computing  ---------- 
+ 	-------- ligand interface energies   --------
+ 	 	------------------- 
+
+protocols.enzdes.EnzFilters: Calculated Interface Energy is before cst correction is:-9.02082
+protocols.enzdes.EnzFilters: Calculated Interface Energy is -9.02082
+protocols.rosetta_scripts.ParsedProtocol: =======================END FILTER d4_ifscore=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN METRIC lig_ifscore=======================
+core.simple_metrics.metrics.InteractionEnergyMetric: [ WARNING ] ################ Cloning pose and Scoring! ##############################
+core.simple_metrics.metrics.InteractionEnergyMetric: [ WARNING ] Ensure that pose is scored 
+core.simple_metrics.metrics.InteractionEnergyMetric: [ WARNING ] before using InteractionEnergyMetric for maximum performance!
+core.simple_metrics.metrics.InteractionEnergyMetric: [ WARNING ] ##########################################################################
+core.simple_metrics.metrics.InteractionEnergyMetric: 
+core.simple_metrics.metrics.InteractionEnergyMetric: fa_atr 1
+core.simple_metrics.metrics.InteractionEnergyMetric: Unweighted: -27.6071
+core.simple_metrics.metrics.InteractionEnergyMetric: Weighted: -27.6071
+core.simple_metrics.metrics.InteractionEnergyMetric: 
+core.simple_metrics.metrics.InteractionEnergyMetric: fa_rep 0.55
+core.simple_metrics.metrics.InteractionEnergyMetric: Unweighted: 12.991
+core.simple_metrics.metrics.InteractionEnergyMetric: Weighted: 7.14506
+core.simple_metrics.metrics.InteractionEnergyMetric: 
+core.simple_metrics.metrics.InteractionEnergyMetric: fa_sol 0.9375
+core.simple_metrics.metrics.InteractionEnergyMetric: Unweighted: 13.6008
+core.simple_metrics.metrics.InteractionEnergyMetric: Weighted: 12.7508
+core.simple_metrics.metrics.InteractionEnergyMetric: 
+core.simple_metrics.metrics.InteractionEnergyMetric: fa_elec 0.875
+core.simple_metrics.metrics.InteractionEnergyMetric: Unweighted: -1.49669
+core.simple_metrics.metrics.InteractionEnergyMetric: Weighted: -1.3096
+protocols.rosetta_scripts.ParsedProtocol: =======================END METRIC lig_ifscore=======================
+protocols.rosetta_scripts.ParsedProtocol: setting status to success
+protocols.enzdes.EnzFilters: Calculated Interface Energy is before cst correction is:-9.02082
+protocols.enzdes.EnzFilters: Calculated Interface Energy is -9.02082
+protocols.rosetta_scripts.ParsedProtocol.REPORT: ============Begin report for d4_ifscore==================
+protocols.rosetta_scripts.ParsedProtocol.REPORT: 
+    chain      res       AA    total  contact   fa_atr   fa_rep hb_bb_sc    hb_sc   fa_sol   fa_dun  fa_pair
+        t       58      PHE   -2.860    -6.017   -10.062     1.337     0.000     0.000     2.708     2.661     0.000
+        t       79      MET   -1.356    -2.600    -6.821     0.487     0.000     0.000     3.734     1.461     0.000
+        t       82      ASP   -0.278    -0.872    -6.608     1.087     0.000    -0.595     5.244     3.653     0.000
+        t       83      VAL   -2.722    -2.950    -6.046     0.268     0.000     0.000     2.827    -0.010     0.000
+        t       86      CYS    0.152    -1.383    -4.553     0.256     0.000     0.000     2.914     0.881     0.000
+        t      153      ARG    0.709    -0.915    -5.509     0.756    -0.299    -0.097     4.234     1.750     0.000
+        t      222      PHE   -3.181    -5.139   -10.408     1.343     0.000     0.000     3.926     2.041     0.000
+        t      226      HIS    0.605    -1.944    -7.361     0.978     0.000     0.000     4.439     2.989     0.000
+        t      246      THR   -2.123    -2.212    -5.677     0.399     0.000     0.000     3.066     0.110     0.000
+        X      275      LIG   -4.405    -3.856   -13.804     3.573     0.000     0.000     6.375     0.000     0.000
+============End report for d4_ifscore==================
+protocols.jd2.JobDistributor: output/AffinityDesignD4/LIG_CORE_RINGSWAP_AT_DRD4.LIG.receptor_LIG_0001.fa_0008 reported success in 59 seconds
+protocols.jd2.PDBJobInputter: PDBJobInputter::pose_from_job
+protocols.jd2.PDBJobInputter: filling pose from saved copy /home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/receptors/DRD4.LIG.receptor.pdb /home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/ligands/LIG_0001.fa.pdb
+protocols.jd2.PDBJobInputter: PDBJobInputter::pose_from_job
+protocols.jd2.PDBJobInputter: filling pose from PDB /home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/receptors/DRD4.LIG.receptor.pdb /home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/ligands/LIG_0001.fa.pdb
+core.import_pose.import_pose: File '/home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/receptors/DRD4.LIG.receptor.pdb /home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/ligands/LIG_0001.fa.pdb' automatically determined to be of type PDB
+core.conformation.Conformation: Found disulfide between residues 75 152
+core.conformation.Conformation: current variant for 75 CYS
+core.conformation.Conformation: current variant for 152 CYS
+core.conformation.Conformation: current variant for 75 CYD
+core.conformation.Conformation: current variant for 152 CYD
+core.conformation.Conformation: Found disulfide between residues 232 235
+core.conformation.Conformation: current variant for 232 CYS
+core.conformation.Conformation: current variant for 235 CYS
+core.conformation.Conformation: current variant for 232 CYD
+core.conformation.Conformation: current variant for 235 CYD
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER ParsedProtocol - min_cycle=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER AddConstraintsToCurrentConformationMover - cst=======================
+protocols.constraint_movers.AddConstraintsToCurrentConformationMover: Using SOG function
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER MinMover - min=======================
+core.optimization.Minimizer: [ WARNING ] LBFGS MAX CYCLES 200 EXCEEDED, BUT FUNC NOT CONVERGED!
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER ClearConstraintsMover - uncst=======================
+protocols.rosetta_scripts.ParsedProtocol: setting status to success
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER RandomMover - bcl_design=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER BCLFragmentMutateMover - ringswap_conservative_core=======================
+protocols.drug_design.bcl.BCLFragmentMutateMover: Ligand chain ID: X
+protocols.drug_design.bcl.BCLFragmentMutateMover: Ligand resnum: 275
+protocols.drug_design.bcl.BCLFragmentMutateMover: RingSwap
+protocols.drug_design.bcl.BCLFragmentMutateMover: Mutate trial: 1
+=std=bcl::chemistry=> RingSwap!
+protocols.drug_design.bcl.BCLFragmentMutateMover: Mutate fragment returned null!
+protocols.drug_design.bcl.BCLFragmentMutateMover: Mutate trial: 2
+=std=bcl::chemistry=> RingSwap!
+=std=bcl::chemistry=> Pass drug-likeness filter!
+=std=bcl::chemistry=> Getting atom indices for conformer sampling...
+=std=bcl::chemistry=> SampleByParts with the following atom indices: 8 18 19 20 21 22 23 
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 1
+=std=bcl::chemistry=> Found 1 rotatable bonds, 0 flexible rings, 3 changeable bond angles; 
+=crt=bcl::chemistry=> No conformations were sampled, outputting the input conformation
+protocols.drug_design.bcl.BCLFragmentMutateMover: Mutate fragment returned null!
+protocols.drug_design.bcl.BCLFragmentMutateMover: Mutate trial: 3
+=std=bcl::chemistry=> RingSwap!
+=std=bcl::chemistry=> Pass drug-likeness filter!
+=std=bcl::chemistry=> Getting atom indices for conformer sampling...
+=std=bcl::chemistry=> SampleByParts with the following atom indices: 7 20 21 22 23 24 25 
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 2
+=std=bcl::chemistry=> Found 1 rotatable bonds, 0 flexible rings, 4 changeable bond angles; 
+=std=bcl::chemistry=> Found 4 isomorphisms for this molecule
+=std=bcl::util=> Clustering has run for 31.823 seconds
+protocols.drug_design.bcl.BCLFragmentMutateMover: SampleByParts indices: 7 20 21 22 23 24 25 
+protocols.drug_design.bcl.BCLFragmentMutateMover: Generating conformers of the mutated fragment
+=std=bcl::util=> FindFrags has run for 2.30933 seconds
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 2
+=std=bcl::chemistry=> Found 1 rotatable bonds, 0 flexible rings, 4 changeable bond angles; 
+=std=bcl::chemistry=> Found 4 isomorphisms for this molecule
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER ParsedProtocol - relax_cycle=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER VirtualRoot - root=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER AtomCoordinateCstMover - relax_cst=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER FastRelax - relax=======================
+protocols.relax.FastRelax: CMD: repeat  -360.005  0  0  0.55
+protocols.relax.FastRelax: CMD: coord_cst_weight  -360.005  0  0  0.55
+protocols.relax.FastRelax: CMD: scale:fa_rep  -483.858  0  0  0.022
+core.pack.rotamers.SingleLigandRotamerLibrary: Added 25 rotamers for LIGAND
+core.pack.pack_rotamers: built 30 rotamers at 3 positions.
+core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph
+protocols.relax.FastRelax: CMD: repack  -483.858  0  0  0.022
+protocols.relax.FastRelax: CMD: scale:fa_rep  -482.438  0  0  0.02805
+core.pose.util: [ WARNING ] Unable to find atom_tree atom for this Rosetta chi angle: residue 275 CHI 3
+protocols.relax.FastRelax: CMD: min  -516.61  0.0642325  0.0642325  0.02805
+protocols.relax.FastRelax: CMD: coord_cst_weight  -516.61  0.0642325  0.0642325  0.02805
+protocols.relax.FastRelax: CMD: scale:fa_rep  -469.008  0.0642325  0.0642325  0.14575
+core.pack.rotamers.SingleLigandRotamerLibrary: Added 25 rotamers for LIGAND
+core.pack.pack_rotamers: built 7 rotamers at 2 positions.
+core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph
+protocols.relax.FastRelax: CMD: repack  -469.008  0.0642325  0.0642325  0.14575
+protocols.relax.FastRelax: CMD: scale:fa_rep  -465.671  0.0642325  0.0642325  0.154
+core.pose.util: [ WARNING ] Unable to find atom_tree atom for this Rosetta chi angle: residue 275 CHI 3
+protocols.relax.FastRelax: CMD: min  -473.27  0.0507996  0.0507996  0.154
+protocols.relax.FastRelax: CMD: coord_cst_weight  -473.27  0.0507996  0.0507996  0.154
+protocols.relax.FastRelax: CMD: scale:fa_rep  -425.796  0.0507996  0.0507996  0.30745
+core.pack.rotamers.SingleLigandRotamerLibrary: Added 25 rotamers for LIGAND
+core.pack.pack_rotamers: built 7 rotamers at 2 positions.
+core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph
+protocols.relax.FastRelax: CMD: repack  -425.796  0.0507996  0.0507996  0.30745
+protocols.relax.FastRelax: CMD: scale:fa_rep  -422.053  0.0507996  0.0507996  0.31955
+core.pose.util: [ WARNING ] Unable to find atom_tree atom for this Rosetta chi angle: residue 275 CHI 3
+protocols.relax.FastRelax: CMD: min  -431.751  0.0423845  0.0423845  0.31955
+protocols.relax.FastRelax: CMD: coord_cst_weight  -431.751  0.0423845  0.0423845  0.31955
+protocols.relax.FastRelax: CMD: scale:fa_rep  -376.237  0.0423845  0.0423845  0.55
+core.pack.rotamers.SingleLigandRotamerLibrary: Added 25 rotamers for LIGAND
+core.pack.pack_rotamers: built 7 rotamers at 2 positions.
+core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph
+protocols.relax.FastRelax: CMD: repack  -376.237  0.0423845  0.0423845  0.55
+core.pose.util: [ WARNING ] Unable to find atom_tree atom for this Rosetta chi angle: residue 275 CHI 3
+protocols.relax.FastRelax: CMD: min  -384.981  0.0418667  0.0418667  0.55
+protocols.relax.FastRelax: MRP: 0  -384.981  -384.981  0.0418667  0.0418667  
+protocols.relax.FastRelax: CMD: accept_to_best  -384.981  0.0418667  0.0418667  0.55
+protocols.relax.FastRelax: CMD: endrepeat  -384.981  0.0418667  0.0418667  0.55
+protocols::checkpoint: Deleting checkpoints of FastRelax
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER VirtualRoot - remove=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER ClearConstraintsMover - uncst=======================
+protocols.rosetta_scripts.ParsedProtocol: setting status to success
+protocols.rosetta_scripts.ParsedProtocol: setting status to success
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN FILTER d4_ifscore=======================
+protocols.enzdes.EnzFilters:  
+ 	 --------- computing  ---------- 
+ 	-------- ligand interface energies   --------
+ 	 	------------------- 
+
+protocols.enzdes.EnzFilters: Calculated Interface Energy is before cst correction is:-12.26
+protocols.enzdes.EnzFilters: Calculated Interface Energy is -12.26
+protocols.rosetta_scripts.ParsedProtocol: =======================END FILTER d4_ifscore=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN METRIC lig_ifscore=======================
+core.simple_metrics.metrics.InteractionEnergyMetric: [ WARNING ] ################ Cloning pose and Scoring! ##############################
+core.simple_metrics.metrics.InteractionEnergyMetric: [ WARNING ] Ensure that pose is scored 
+core.simple_metrics.metrics.InteractionEnergyMetric: [ WARNING ] before using InteractionEnergyMetric for maximum performance!
+core.simple_metrics.metrics.InteractionEnergyMetric: [ WARNING ] ##########################################################################
+core.simple_metrics.metrics.InteractionEnergyMetric: 
+core.simple_metrics.metrics.InteractionEnergyMetric: fa_atr 1
+core.simple_metrics.metrics.InteractionEnergyMetric: Unweighted: -26.0075
+core.simple_metrics.metrics.InteractionEnergyMetric: Weighted: -26.0075
+core.simple_metrics.metrics.InteractionEnergyMetric: 
+core.simple_metrics.metrics.InteractionEnergyMetric: fa_rep 0.55
+core.simple_metrics.metrics.InteractionEnergyMetric: Unweighted: 4.08173
+core.simple_metrics.metrics.InteractionEnergyMetric: Weighted: 2.24495
+core.simple_metrics.metrics.InteractionEnergyMetric: 
+core.simple_metrics.metrics.InteractionEnergyMetric: fa_sol 0.9375
+core.simple_metrics.metrics.InteractionEnergyMetric: Unweighted: 13.3113
+core.simple_metrics.metrics.InteractionEnergyMetric: Weighted: 12.4794
+core.simple_metrics.metrics.InteractionEnergyMetric: 
+core.simple_metrics.metrics.InteractionEnergyMetric: fa_elec 0.875
+core.simple_metrics.metrics.InteractionEnergyMetric: Unweighted: -1.11635
+core.simple_metrics.metrics.InteractionEnergyMetric: Weighted: -0.976805
+protocols.rosetta_scripts.ParsedProtocol: =======================END METRIC lig_ifscore=======================
+protocols.rosetta_scripts.ParsedProtocol: setting status to success
+protocols.enzdes.EnzFilters: Calculated Interface Energy is before cst correction is:-12.26
+protocols.enzdes.EnzFilters: Calculated Interface Energy is -12.26
+protocols.rosetta_scripts.ParsedProtocol.REPORT: ============Begin report for d4_ifscore==================
+protocols.rosetta_scripts.ParsedProtocol.REPORT: 
+    chain      res       AA    total  contact   fa_atr   fa_rep hb_bb_sc    hb_sc   fa_sol   fa_dun  fa_pair
+        t       79      MET   -1.169    -2.582    -6.989     0.501     0.000     0.000     3.906     1.473     0.000
+        t       82      ASP   -1.077    -1.543    -6.703     0.446     0.000    -0.622     5.337     3.615     0.000
+        t       83      VAL   -2.956    -3.121    -6.549     0.319     0.000     0.000     3.109    -0.008     0.000
+        t       86      CYS    0.152    -1.492    -4.637     0.274     0.000     0.000     2.870     0.931     0.000
+        t      153      ARG    1.065    -0.381    -5.548     0.713    -0.305    -0.113     4.872     1.679     0.000
+        t      154      LEU    0.259    -1.689    -3.447     0.189     0.000     0.000     1.569     0.407     0.000
+        t      226      HIS   -0.198    -2.529    -6.735     0.269     0.000     0.000     3.936     2.801     0.000
+        t      246      THR   -2.025    -1.984    -5.896     0.755     0.000     0.000     3.157     0.048     0.000
+        X      275      LIG   -5.531    -5.642   -13.004     1.122     0.000     0.000     6.240     0.000     0.000
+============End report for d4_ifscore==================
+protocols.jd2.JobDistributor: output/AffinityDesignD4/LIG_CORE_RINGSWAP_AT_DRD4.LIG.receptor_LIG_0001.fa_0009 reported success in 46 seconds
+protocols.jd2.PDBJobInputter: PDBJobInputter::pose_from_job
+protocols.jd2.PDBJobInputter: filling pose from saved copy /home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/receptors/DRD4.LIG.receptor.pdb /home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/ligands/LIG_0001.fa.pdb
+protocols.jd2.PDBJobInputter: PDBJobInputter::pose_from_job
+protocols.jd2.PDBJobInputter: filling pose from PDB /home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/receptors/DRD4.LIG.receptor.pdb /home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/ligands/LIG_0001.fa.pdb
+core.import_pose.import_pose: File '/home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/receptors/DRD4.LIG.receptor.pdb /home/ben/Projects/BCL_Workshop_2022/Tutorial_7/input/ligands/LIG_0001.fa.pdb' automatically determined to be of type PDB
+core.conformation.Conformation: Found disulfide between residues 75 152
+core.conformation.Conformation: current variant for 75 CYS
+core.conformation.Conformation: current variant for 152 CYS
+core.conformation.Conformation: current variant for 75 CYD
+core.conformation.Conformation: current variant for 152 CYD
+core.conformation.Conformation: Found disulfide between residues 232 235
+core.conformation.Conformation: current variant for 232 CYS
+core.conformation.Conformation: current variant for 235 CYS
+core.conformation.Conformation: current variant for 232 CYD
+core.conformation.Conformation: current variant for 235 CYD
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER ParsedProtocol - min_cycle=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER AddConstraintsToCurrentConformationMover - cst=======================
+protocols.constraint_movers.AddConstraintsToCurrentConformationMover: Using SOG function
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER MinMover - min=======================
+core.optimization.Minimizer: [ WARNING ] LBFGS MAX CYCLES 200 EXCEEDED, BUT FUNC NOT CONVERGED!
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER ClearConstraintsMover - uncst=======================
+protocols.rosetta_scripts.ParsedProtocol: setting status to success
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER RandomMover - bcl_design=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER BCLFragmentMutateMover - ringswap_conservative_core=======================
+protocols.drug_design.bcl.BCLFragmentMutateMover: Ligand chain ID: X
+protocols.drug_design.bcl.BCLFragmentMutateMover: Ligand resnum: 275
+protocols.drug_design.bcl.BCLFragmentMutateMover: RingSwap
+protocols.drug_design.bcl.BCLFragmentMutateMover: Mutate trial: 1
+=std=bcl::chemistry=> RingSwap!
+=std=bcl::chemistry=> Pass drug-likeness filter!
+=std=bcl::chemistry=> Getting atom indices for conformer sampling...
+=std=bcl::chemistry=> SampleByParts with the following atom indices: 20 21 22 23 24 25 26 27 28 
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 1
+=std=bcl::chemistry=> Found 0 rotatable bonds, 1 flexible rings, 3 changeable bond angles; 
+=std=bcl::chemistry=>  # rejected due to severe clashes: 2114
+=std=bcl::chemistry=> Found 4 isomorphisms for this molecule
+protocols.drug_design.bcl.BCLFragmentMutateMover: SampleByParts indices: 20 21 22 23 24 25 26 27 28 
+protocols.drug_design.bcl.BCLFragmentMutateMover: Generating conformers of the mutated fragment
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 1
+=std=bcl::chemistry=> Found 0 rotatable bonds, 1 flexible rings, 3 changeable bond angles; 
+=std=bcl::chemistry=>  # rejected due to severe clashes: 515
+=std=bcl::chemistry=> Found 4 isomorphisms for this molecule
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER ParsedProtocol - relax_cycle=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER VirtualRoot - root=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER AtomCoordinateCstMover - relax_cst=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER FastRelax - relax=======================
+protocols.relax.FastRelax: CMD: repeat  -372.73  0  0  0.55
+protocols.relax.FastRelax: CMD: coord_cst_weight  -372.73  0  0  0.55
+protocols.relax.FastRelax: CMD: scale:fa_rep  -483.626  0  0  0.022
+core.pack.rotamers.SingleLigandRotamerLibrary: Added 3 rotamers for LIGAND
+core.pack.pack_rotamers: built 4 rotamers at 1 positions.
+core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph
+protocols.relax.FastRelax: CMD: repack  -483.626  0  0  0.022
+protocols.relax.FastRelax: CMD: scale:fa_rep  -482.356  0  0  0.02805
+core.pose.util: [ WARNING ] Unable to find atom_tree atom for this Rosetta chi angle: residue 275 CHI 3
+protocols.relax.FastRelax: CMD: min  -516.375  0.0641306  0.0641306  0.02805
+protocols.relax.FastRelax: CMD: coord_cst_weight  -516.375  0.0641306  0.0641306  0.02805
+protocols.relax.FastRelax: CMD: scale:fa_rep  -470.172  0.0641306  0.0641306  0.14575
+core.pack.rotamers.SingleLigandRotamerLibrary: Added 3 rotamers for LIGAND
+core.pack.pack_rotamers: built 2 rotamers at 1 positions.
+core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph
+protocols.relax.FastRelax: CMD: repack  -470.172  0.0641306  0.0641306  0.14575
+protocols.relax.FastRelax: CMD: scale:fa_rep  -466.933  0.0641306  0.0641306  0.154
+core.pose.util: [ WARNING ] Unable to find atom_tree atom for this Rosetta chi angle: residue 275 CHI 3
+protocols.relax.FastRelax: CMD: min  -474.849  0.0491959  0.0491959  0.154
+protocols.relax.FastRelax: CMD: coord_cst_weight  -474.849  0.0491959  0.0491959  0.154
+protocols.relax.FastRelax: CMD: scale:fa_rep  -429.812  0.0491959  0.0491959  0.30745
+core.pack.rotamers.SingleLigandRotamerLibrary: Added 3 rotamers for LIGAND
+core.pack.pack_rotamers: built 2 rotamers at 1 positions.
+core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph
+protocols.relax.FastRelax: CMD: repack  -429.812  0.0491959  0.0491959  0.30745
+protocols.relax.FastRelax: CMD: scale:fa_rep  -426.261  0.0491959  0.0491959  0.31955
+core.pose.util: [ WARNING ] Unable to find atom_tree atom for this Rosetta chi angle: residue 275 CHI 3
+protocols.relax.FastRelax: CMD: min  -430.113  0.0446816  0.0446816  0.31955
+protocols.relax.FastRelax: CMD: coord_cst_weight  -430.113  0.0446816  0.0446816  0.31955
+protocols.relax.FastRelax: CMD: scale:fa_rep  -371.274  0.0446816  0.0446816  0.55
+core.pack.rotamers.SingleLigandRotamerLibrary: Added 3 rotamers for LIGAND
+core.pack.pack_rotamers: built 2 rotamers at 1 positions.
+core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph
+protocols.relax.FastRelax: CMD: repack  -371.274  0.0446816  0.0446816  0.55
+core.pose.util: [ WARNING ] Unable to find atom_tree atom for this Rosetta chi angle: residue 275 CHI 3
+protocols.relax.FastRelax: CMD: min  -384.309  0.0397693  0.0397693  0.55
+protocols.relax.FastRelax: MRP: 0  -384.309  -384.309  0.0397693  0.0397693  
+protocols.relax.FastRelax: CMD: accept_to_best  -384.309  0.0397693  0.0397693  0.55
+protocols.relax.FastRelax: CMD: endrepeat  -384.309  0.0397693  0.0397693  0.55
+protocols::checkpoint: Deleting checkpoints of FastRelax
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER VirtualRoot - remove=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN MOVER ClearConstraintsMover - uncst=======================
+protocols.rosetta_scripts.ParsedProtocol: setting status to success
+protocols.rosetta_scripts.ParsedProtocol: setting status to success
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN FILTER d4_ifscore=======================
+protocols.enzdes.EnzFilters:  
+ 	 --------- computing  ---------- 
+ 	-------- ligand interface energies   --------
+ 	 	------------------- 
+
+protocols.enzdes.EnzFilters: Calculated Interface Energy is before cst correction is:-12.8469
+protocols.enzdes.EnzFilters: Calculated Interface Energy is -12.8469
+protocols.rosetta_scripts.ParsedProtocol: =======================END FILTER d4_ifscore=======================
+protocols.rosetta_scripts.ParsedProtocol: =======================BEGIN METRIC lig_ifscore=======================
+core.simple_metrics.metrics.InteractionEnergyMetric: [ WARNING ] ################ Cloning pose and Scoring! ##############################
+core.simple_metrics.metrics.InteractionEnergyMetric: [ WARNING ] Ensure that pose is scored 
+core.simple_metrics.metrics.InteractionEnergyMetric: [ WARNING ] before using InteractionEnergyMetric for maximum performance!
+core.simple_metrics.metrics.InteractionEnergyMetric: [ WARNING ] ##########################################################################
+core.simple_metrics.metrics.InteractionEnergyMetric: 
+core.simple_metrics.metrics.InteractionEnergyMetric: fa_atr 1
+core.simple_metrics.metrics.InteractionEnergyMetric: Unweighted: -26.3255
+core.simple_metrics.metrics.InteractionEnergyMetric: Weighted: -26.3255
+core.simple_metrics.metrics.InteractionEnergyMetric: 
+core.simple_metrics.metrics.InteractionEnergyMetric: fa_rep 0.55
+core.simple_metrics.metrics.InteractionEnergyMetric: Unweighted: 4.28236
+core.simple_metrics.metrics.InteractionEnergyMetric: Weighted: 2.3553
+core.simple_metrics.metrics.InteractionEnergyMetric: 
+core.simple_metrics.metrics.InteractionEnergyMetric: fa_sol 0.9375
+core.simple_metrics.metrics.InteractionEnergyMetric: Unweighted: 14.9513
+core.simple_metrics.metrics.InteractionEnergyMetric: Weighted: 14.0168
+core.simple_metrics.metrics.InteractionEnergyMetric: 
+core.simple_metrics.metrics.InteractionEnergyMetric: fa_elec 0.875
+core.simple_metrics.metrics.InteractionEnergyMetric: Unweighted: -3.0322
+core.simple_metrics.metrics.InteractionEnergyMetric: Weighted: -2.65317
+core.simple_metrics.metrics.InteractionEnergyMetric: 
+core.simple_metrics.metrics.InteractionEnergyMetric: hbond_sc 1.1
+core.simple_metrics.metrics.InteractionEnergyMetric: Unweighted: -0.218564
+core.simple_metrics.metrics.InteractionEnergyMetric: Weighted: -0.24042
+protocols.rosetta_scripts.ParsedProtocol: =======================END METRIC lig_ifscore=======================
+protocols.rosetta_scripts.ParsedProtocol: setting status to success
+protocols.enzdes.EnzFilters: Calculated Interface Energy is before cst correction is:-12.8469
+protocols.enzdes.EnzFilters: Calculated Interface Energy is -12.8469
+protocols.rosetta_scripts.ParsedProtocol.REPORT: ============Begin report for d4_ifscore==================
+protocols.rosetta_scripts.ParsedProtocol.REPORT: 
+    chain      res       AA    total  contact   fa_atr   fa_rep hb_bb_sc    hb_sc   fa_sol   fa_dun  fa_pair
+        t       79      MET   -1.250    -2.621    -7.133     0.573     0.000     0.000     3.939     1.465     0.000
+        t       82      ASP   -2.053    -1.616    -7.184     0.562     0.000    -0.745     5.751     3.432     0.000
+        t       83      VAL   -2.874    -3.085    -6.404     0.459     0.000     0.000     2.859     0.005     0.000
+        t      153      ARG    0.915    -0.338    -5.562     0.614    -0.314    -0.118     5.042     1.696     0.000
+        t      154      LEU    0.309    -1.606    -3.408     0.193     0.000     0.000     1.609     0.385     0.000
+        t      222      PHE   -3.806    -5.551   -10.207     0.791     0.000     0.000     3.864     1.823     0.000
+        t      226      HIS    0.411    -1.962    -6.830     0.651     0.000     0.000     4.218     2.610     0.000
+        t      246      THR   -2.053    -2.092    -5.931     0.650     0.000     0.000     3.189     0.082     0.000
+        X      275      LIG   -4.787    -5.097   -13.163     1.178     0.000    -0.120     7.008     0.000     0.000
+============End report for d4_ifscore==================
+protocols.jd2.JobDistributor: output/AffinityDesignD4/LIG_CORE_RINGSWAP_AT_DRD4.LIG.receptor_LIG_0001.fa_0010 reported success in 45 seconds
+protocols.jd2.JobDistributor: no more batches to process... 
+protocols.jd2.JobDistributor: 10 jobs considered, 10 jobs attempted in 591 seconds
+protocols.jd2.JobDistributor: [ WARNING ] The following options have been set, but have not yet been used:
+	-packing:linmem_ig 10
+
+basic.citation_manager.CitationManager: 
+The following Rosetta modules were used during this run of Rosetta, and should be cited:
+
+rosetta_scripts Application's citation(s):
+Fleishman SJ, Leaver-Fay A, Corn JE, Strauch E-M, Khare SD, Koga N, Ashworth J, Murphy P, Richter F, Lemmon G, Meiler J, and Baker D.  (2011).  RosettaScripts: A Scripting Language Interface to the Rosetta Macromolecular Modeling Suite.  PLoS ONE 6(6):e20161.  doi: 10.1371/journal.pone.0020161.
+
+FastRelax Mover's citation(s):
+*Tyka MD, *Keedy DA, André I, Dimaio F, Song Y, Richardson DC, Richardson JS, and Baker D.  (2011).  Alternate states of proteins revealed by detailed energy landscape mapping.  J Mol Biol 405(2):607-18.  doi: 10.1016/j.jmb.2010.11.008.  (*Co-primary authors.)
+
+Khatib F, Cooper S, Tyka MD, Xu K, Makedon I, Popovic Z, Baker D, and Players F.  (2011).  Algorithm discovery by protein folding game players.  Proc Natl Acad Sci USA 108(47):18949-53.  doi: 10.1073/pnas.1115898108.
+
+Maguire JB, Haddox HK, Strickland D, Halabiya SF, Coventry B, Griffin JR, Pulavarti SVSRK, Cummins M, Thieker DF, Klavins E, Szyperski T, DiMaio F, Baker D, and Kuhlman B.  (2021).  Perturbing the energy landscape for improved packing during computational protein design.  Proteins 89(4):436-449.  doi: 10.1002/prot.26030.
+
+GenericMonteCarlo Mover's citation(s):
+Fleishman SJ, Leaver-Fay A, Corn JE, Strauch E-M, Khare SD, Koga N, Ashworth J, Murphy P, Richter F, Lemmon G, Meiler J, and Baker D.  (2011).  RosettaScripts: A Scripting Language Interface to the Rosetta Macromolecular Modeling Suite.  PLoS ONE 6(6):e20161.  doi: 10.1371/journal.pone.0020161.
+
+
+The following UNPUBLISHED Rosetta modules were used during this run of Rosetta.  Their authors should be included in the author list when this work is published:
+
+NeighborhoodResidueSelector ResidueSelector's author(s):
+Robert Lindner, Natural Sciences and Mathematics, Ruperto-Carola University, Heidelberg, Germany <rlindner@mpimf-heidelberg.mpg.de>
+Jared Adolf-Bryfogle, Schief lab, Scripps Research Institute <jadolfbr@gmail.com>
+Gerard Daniel, Institue for Protein Design, University of Washington <gerardda@uw.edu>
+
+InteractionEnergyMetric SimpleMetric's author(s):
+Jared Adolf-Bryfogle, Scripps Research Institute <jadolfbr@gmail.com>  (Wrote the InteractionEnergyMetric.)
+John Karanicolas, Department of Molecular Biosciences, University of Kansas <johnk@ku.edu>  (Original logic from InterfaceDeltaEnergetics.)
+Roland A. Pache, Department of Bioengineering and Therapeutic Sciences, University of California San Francisco <johnk@ku.edu>  (Original logic from InterfaceDeltaEnergetics.)
+
+BCLFragmentMutateMover Mover's author(s):
+Benjamin P. Brown, Vanderbilt University <benjamin.p.brown17@gmail.com>
+Jeffrey Mendenhall, Vanderbilt University <jeffreymendenhall@gmail.com>
+Jens Meiler, Vanderbilt University <jens@meilerlab.org>
+
+
+=std=bcl::util=> vdw score time has run for 0.002316 seconds
+=std=bcl::util=> Clustering has run for 32.5798 seconds
+=std=bcl::util=> Clash resolution (not counting clash scoring) has run for 8.77588 seconds
+=std=bcl::util=>   AtomClashScore ClashComputation has run for 3.81378 seconds
+=std=bcl::util=> Sampling Total has run for 32.7417 seconds
+=std=bcl::util=> bond_length_sampling has run for 0.073111 seconds
+=std=bcl::util=> bond_angle_setup has run for 3.4152 seconds
+=std=bcl::util=> bond_angles_sampling_for_ring_bonds has run for 1.57845 seconds
+=std=bcl::util=> bond_angle_sampling_for_2_bonded_atoms has run for 0.100295 seconds
+=std=bcl::util=> do_rotate_bond has run for 0.186082 seconds
+=std=bcl::util=> create_transformation_matrix has run for 1.01168 seconds
+=std=bcl::util=> mutate_chain has run for 1.60078 seconds
+=std=bcl::util=> mutate_ring has run for 7.76793 seconds
+=std=bcl::util=> MapFragmentIsomorphisms has run for 3.80898 seconds
+=std=bcl::util=> FindFrags has run for 2.40389 seconds
+=std=bcl::util=> RotamerLibraryFile reading files has run for 23.2033 seconds

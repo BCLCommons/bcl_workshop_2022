@@ -1,0 +1,75 @@
+=std=bcl::util=> Logger was changed to: File with identifier: ./log_files/pka_data.base.clean.3d.MendenhallVu_2DAMinimal_UMol2D.result_3.rand.2x256-32_005_025_005/log_merge.txt
+/home/ben/workspace/bcl/build/linux64_release/bin/bcl-apps-static.exe model:ComputeStatistics -message_level Verbose -input ./results/pka_data.base.clean.3d.MendenhallVu_2DAMinimal_UMol2D.result_3.rand.2x256-32_005_025_005/independent0-4_monitoring0-4_number0.gz.txt -logger File ./log_files/pka_data.base.clean.3d.MendenhallVu_2DAMinimal_UMol2D.result_3.rand.2x256-32_005_025_005/log_merge.txt -opencl Disable -filename_obj_function ./results/pka_data.base.clean.3d.MendenhallVu_2DAMinimal_UMol2D.result_3.rand.2x256-32_005_025_005/final_objective.ind_merged.txt -obj_function MAE_NMAD 
+BCL v4.1.0, r0, compiled on Mon Nov  8 09:34:06 2021
+=std=bcl=> executing application: model:ComputeStatistics
+=crt=bcl::random=> Seed was set to 5489!
+=crt=bcl::random=> Seed was set to 5489!
+
+========================================================================================================================
+
+BCL FLAGS
+
+-message_level set
+   <level> Verbose
+   <verbosity> Summary (default)
+-logger set
+   <> File
+   <identifier> ./log_files/pka_data.base.clean.3d.MendenhallVu_2DAMinimal_UMol2D.result_3.rand.2x256-32_005_025_005/log_merge.txt
+-help not set
+-readme not set
+-file_compressed_alternatives not set
+-file_compression not set
+   <compression_type> Uncompressed (default)
+-enums_files not set
+-random_seed not set
+   <seed> 5489 (default)
+-model_path not set
+   <model_path_name> /home/ben/workspace/bcl/model/ (default)
+-histogram_path not set
+   <path> /home/ben/workspace/bcl/histogram/ (default)
+-opencl set
+   <platform> Disable
+-scheduler not set
+   <scheduler> Serial (default)
+   <number_cpus> 1 (default)
+
+========================================================================================================================
+
+APPLICATION FLAGS
+
+-help not set
+-readme not set
+-input set
+   <filename> ./results/pka_data.base.clean.3d.MendenhallVu_2DAMinimal_UMol2D.result_3.rand.2x256-32_005_025_005/independent0-4_monitoring0-4_number0.gz.txt
+-consensus_size_limit not set
+   <consensus_size_limit> 18446744073709551615 (default)
+-table_name not set
+   <table_name> table.txt (default)
+-sort_by not set
+   <sort_by> RMSD (default)
+-plot_x not set
+-plot_log_x not set
+-plot_y not set
+-no_plot not set
+-take_log10 not set
+   <take_log10>  (default)
+-correlation not set
+-potency_cutoff not set
+   <potency_cutoff>  (default)
+-actives_below_cutoff not set
+-output_directory not set
+   <output_directory> ./ (default)
+-obj_function set
+   <obj_function> MAE_NMAD
+-filename_obj_function set
+   <filename_obj_function> ./results/pka_data.base.clean.3d.MendenhallVu_2DAMinimal_UMol2D.result_3.rand.2x256-32_005_025_005/final_objective.ind_merged.txt
+-image_format not set
+   <format> png (default)
+
+========================================================================================================================
+
+=std=bcl::app=> Output path set to./results/pka_data.base.clean.3d.MendenhallVu_2DAMinimal_UMol2D.result_3.rand.2x256-32_005_025_005/
+=std=bcl::model=> MAE Detail Result Index: 0 MAE: 0.960462 MAD: 2.67284 MAE_NormByMAD: 0.359342
+
+========================================================================================================================
+=slt=bcl=> bcl has run for 00:00:00, peak virtual memory used: 110 MB, peak physical RAM used: 70 MB

@@ -1,0 +1,260 @@
+Largest isolated from 44436307
+HTcorina  11172118093D 1   1.00000     0.00000 
+CORINA 4.3.0 0026  30.10.2019
+ 53 56  0  0  0  0  0  0  0  0999 V2000
+    9.1255    0.5425  -11.1181 Cl  0  0  0  1  0  0  0  0  0  0  0  0
+   -0.6204    1.0583    0.7188 O   0  0  0  1  0  0  0  0  0  0  0  0
+    4.6453   -0.3718   -3.8752 N   0  0  0  1  0  0  0  0  0  0  0  0
+    6.2152   -0.9252   -6.1848 N   0  0  0  1  0  0  0  0  0  0  0  0
+    0.8619    0.0651   -0.6930 N   0  0  0  1  0  0  0  0  0  0  0  0
+    4.0454   -0.3358   -5.2163 C   0  0  0  1  0  0  0  0  0  0  0  0
+    6.0644    0.0065   -3.9258 C   0  0  0  1  0  0  0  0  0  0  0  0
+    3.9216    0.5757   -2.9943 C   0  0  0  1  0  0  0  0  0  0  0  0
+    4.7961   -1.3035   -6.1342 C   0  0  0  1  0  0  0  0  0  0  0  0
+    6.8151   -0.9612   -4.8437 C   0  0  0  1  0  0  0  0  0  0  0  0
+    3.8933    0.1846   -1.5326 C   0  0  0  1  0  0  0  0  0  0  0  0
+    3.0936    1.1918   -0.7205 C   0  0  0  1  0  0  0  0  0  0  0  0
+    1.6332    1.2383   -1.0961 C   0  0  0  1  0  0  0  0  0  0  0  0
+    6.9103   -0.5738   -7.3655 C   0  0  0  1  0  0  0  0  0  0  0  0
+    1.0957   -1.3096   -1.1498 C   0  0  0  1  0  0  0  0  0  0  0  0
+    0.0533   -2.1629   -0.4715 C   0  0  0  1  0  0  0  0  0  0  0  0
+   -0.1789    0.0668    0.1575 C   0  0  0  1  0  0  0  0  0  0  0  0
+   -0.7120   -1.2997    0.3166 C   0  0  0  1  0  0  0  0  0  0  0  0
+    7.1001   -1.5158   -8.3646 C   0  0  0  1  0  0  0  0  0  0  0  0
+    7.4003    0.7089   -7.5233 C   0  0  0  1  0  0  0  0  0  0  0  0
+   -0.2296   -3.5085   -0.5036 C   0  0  0  1  0  0  0  0  0  0  0  0
+   -1.7672   -1.8155    1.0709 C   0  0  0  1  0  0  0  0  0  0  0  0
+    7.7839   -1.1739   -9.5161 C   0  0  0  1  0  0  0  0  0  0  0  0
+    8.0862    1.0519   -8.6780 C   0  0  0  1  0  0  0  0  0  0  0  0
+   -1.2779   -4.0130    0.2481 C   0  0  0  1  0  0  0  0  0  0  0  0
+   -2.0422   -3.1671    1.0318 C   0  0  0  1  0  0  0  0  0  0  0  0
+    8.2753    0.1126   -9.6740 C   0  0  0  1  0  0  0  0  0  0  0  0
+    3.0174   -0.6263   -5.1555 H   0  0  0  1  0  0  0  0  0  0  0  0
+    4.1134    0.6563   -5.6114 H   0  0  0  1  0  0  0  0  0  0  0  0
+    6.1551    1.0024   -4.3064 H   0  0  0  1  0  0  0  0  0  0  0  0
+    6.4813   -0.0391   -2.9415 H   0  0  0  1  0  0  0  0  0  0  0  0
+    2.9114    0.6466   -3.3399 H   0  0  0  1  0  0  0  0  0  0  0  0
+    4.3944    1.5322   -3.0742 H   0  0  0  1  0  0  0  0  0  0  0  0
+    4.7054   -2.2994   -5.7537 H   0  0  0  1  0  0  0  0  0  0  0  0
+    4.3791   -1.2579   -7.1186 H   0  0  0  1  0  0  0  0  0  0  0  0
+    7.8431   -0.6707   -4.9045 H   0  0  0  1  0  0  0  0  0  0  0  0
+    6.7471   -1.9533   -4.4487 H   0  0  0  1  0  0  0  0  0  0  0  0
+    4.8954    0.1495   -1.1594 H   0  0  0  1  0  0  0  0  0  0  0  0
+    3.4422   -0.7809   -1.4364 H   0  0  0  1  0  0  0  0  0  0  0  0
+    3.5148    2.1632   -0.8752 H   0  0  0  1  0  0  0  0  0  0  0  0
+    3.1697    0.9302    0.3142 H   0  0  0  1  0  0  0  0  0  0  0  0
+    1.1974    2.0989   -0.6331 H   0  0  0  1  0  0  0  0  0  0  0  0
+    1.5656    1.3323   -2.1598 H   0  0  0  1  0  0  0  0  0  0  0  0
+    0.9894   -1.3699   -2.2128 H   0  0  0  1  0  0  0  0  0  0  0  0
+    2.0771   -1.6312   -0.8702 H   0  0  0  1  0  0  0  0  0  0  0  0
+    6.7279   -2.4798   -8.2478 H   0  0  0  1  0  0  0  0  0  0  0  0
+    7.2545    1.4168   -6.7755 H   0  0  0  1  0  0  0  0  0  0  0  0
+    0.3433   -4.1468   -1.0919 H   0  0  0  1  0  0  0  0  0  0  0  0
+   -2.3445   -1.1828    1.6608 H   0  0  0  1  0  0  0  0  0  0  0  0
+    7.9298   -1.8818  -10.2639 H   0  0  0  1  0  0  0  0  0  0  0  0
+    8.4584    2.0160   -8.7949 H   0  0  0  1  0  0  0  0  0  0  0  0
+   -1.4911   -5.0306    0.2232 H   0  0  0  1  0  0  0  0  0  0  0  0
+   -2.8279   -3.5518    1.5943 H   0  0  0  1  0  0  0  0  0  0  0  0
+  1 27  1  0  0  0  0
+  2 17  2  0  0  0  0
+  3  6  1  0  0  0  0
+  3  7  1  0  0  0  0
+  3  8  1  0  0  0  0
+  4  9  1  0  0  0  0
+  4 10  1  0  0  0  0
+  4 14  1  0  0  0  0
+  5 13  1  0  0  0  0
+  5 15  1  0  0  0  0
+  5 17  1  0  0  0  0
+  6  9  1  0  0  0  0
+  6 28  1  0  0  0  0
+  6 29  1  0  0  0  0
+  7 10  1  0  0  0  0
+  7 30  1  0  0  0  0
+  7 31  1  0  0  0  0
+  8 11  1  0  0  0  0
+  8 32  1  0  0  0  0
+  8 33  1  0  0  0  0
+  9 34  1  0  0  0  0
+  9 35  1  0  0  0  0
+ 10 36  1  0  0  0  0
+ 10 37  1  0  0  0  0
+ 11 12  1  0  0  0  0
+ 11 38  1  0  0  0  0
+ 11 39  1  0  0  0  0
+ 12 13  1  0  0  0  0
+ 12 40  1  0  0  0  0
+ 12 41  1  0  0  0  0
+ 13 42  1  0  0  0  0
+ 13 43  1  0  0  0  0
+ 14 19  2  0  0  0  0
+ 14 20  1  0  0  0  0
+ 15 16  1  0  0  0  0
+ 15 44  1  0  0  0  0
+ 15 45  1  0  0  0  0
+ 16 18  1  0  0  0  0
+ 16 21  2  0  0  0  0
+ 17 18  1  0  0  0  0
+ 18 22  2  0  0  0  0
+ 19 23  1  0  0  0  0
+ 19 46  1  0  0  0  0
+ 20 24  2  0  0  0  0
+ 20 47  1  0  0  0  0
+ 21 25  1  0  0  0  0
+ 21 48  1  0  0  0  0
+ 22 26  1  0  0  0  0
+ 22 49  1  0  0  0  0
+ 23 27  2  0  0  0  0
+ 23 50  1  0  0  0  0
+ 24 27  1  0  0  0  0
+ 24 51  1  0  0  0  0
+ 25 26  2  0  0  0  0
+ 25 52  1  0  0  0  0
+ 26 53  1  0  0  0  0
+M  END
+> <ConfClashScore>
+0 
+
+> <ConfOneFourInteractionScore>
+-0.994591 
+
+> <ConfScore>
+0.996314 
+
+> <ConfScorePBest>
+0.00102612 
+
+> <ConfTolerance>
+1.0933 
+
+> <DRD3_Activity_uM>
+0.66
+
+> <DRD5_Activity_uM>
+0.0336
+
+> <Index>
+174
+
+> <MCS_TANI>
+0.375
+
+> <PUBCHEM_ATOM_DEF_STEREO_COUNT>
+0
+
+> <PUBCHEM_ATOM_UDEF_STEREO_COUNT>
+0
+
+> <PUBCHEM_BONDANNOTATIONS>
+14  19  8
+14  20  8
+16  18  8
+16  21  8
+18  22  8
+19  23  8
+20  24  8
+21  25  8
+22  26  8
+23  27  8
+24  27  8
+25  26  8
+
+> <PUBCHEM_BOND_DEF_STEREO_COUNT>
+0
+
+> <PUBCHEM_BOND_UDEF_STEREO_COUNT>
+0
+
+> <PUBCHEM_CACTVS_COMPLEXITY>
+486
+
+> <PUBCHEM_CACTVS_HBOND_ACCEPTOR>
+3
+
+> <PUBCHEM_CACTVS_HBOND_DONOR>
+0
+
+> <PUBCHEM_CACTVS_ROTATABLE_BOND>
+6
+
+> <PUBCHEM_CACTVS_SUBSKEYS>
+AAADceB7IAAEAAAAAAAAAAAAAAAAAWAAAAA8YIAAAAAAAFgBQAAAHgIAAAAADArBmCQwwIMAAACIAiVSUACCAAAlBwAIiAEIZsgIYDLBl5GUIQhghgDIyYcciICOgABAAAAQAAAAAIAAACAAAAAAAAAAAA==
+
+> <PUBCHEM_CACTVS_TAUTO_COUNT>
+-1
+
+> <PUBCHEM_CACTVS_TPSA>
+26.8
+
+> <PUBCHEM_COMPONENT_COUNT>
+1
+
+> <PUBCHEM_COMPOUND_CANONICALIZED>
+1
+
+> <PUBCHEM_COMPOUND_CID>
+44436307
+
+> <PUBCHEM_COORDINATE_TYPE>
+1
+5
+255
+
+> <PUBCHEM_EXACT_MASS>
+383.1764402
+
+> <PUBCHEM_HEAVY_ATOM_COUNT>
+27
+
+> <PUBCHEM_ISOTOPIC_ATOM_COUNT>
+0
+
+> <PUBCHEM_IUPAC_CAS_NAME>
+2-[4-[4-(4-chlorophenyl)-1-piperazinyl]butyl]-3H-isoindol-1-one
+
+> <PUBCHEM_IUPAC_INCHI>
+InChI=1S/C22H26ClN3O/c23-19-7-9-20(10-8-19)25-15-13-24(14-16-25)11-3-4-12-26-17-18-5-1-2-6-21(18)22(26)27/h1-2,5-10H,3-4,11-17H2
+
+> <PUBCHEM_IUPAC_INCHIKEY>
+NKVMKOOELRVUPV-UHFFFAOYSA-N
+
+> <PUBCHEM_IUPAC_NAME>
+2-[4-[4-(4-chlorophenyl)piperazin-1-yl]butyl]-3H-isoindol-1-one
+
+> <PUBCHEM_IUPAC_NAME_MARKUP>
+2-[4-[4-(4-chlorophenyl)piperazin-1-yl]butyl]-3<I>H</I>-isoindol-1-one
+
+> <PUBCHEM_IUPAC_OPENEYE_NAME>
+2-[4-[4-(4-chlorophenyl)piperazin-1-yl]butyl]isoindolin-1-one
+
+> <PUBCHEM_IUPAC_SYSTEMATIC_NAME>
+2-[4-[4-(4-chlorophenyl)piperazin-1-yl]butyl]-3H-isoindol-1-one
+
+> <PUBCHEM_IUPAC_TRADITIONAL_NAME>
+2-[4-[4-(4-chlorophenyl)piperazino]butyl]isoindolin-1-one
+
+> <PUBCHEM_MOLECULAR_FORMULA>
+C22H26ClN3O
+
+> <PUBCHEM_MOLECULAR_WEIGHT>
+383.9
+
+> <PUBCHEM_MONOISOTOPIC_WEIGHT>
+383.1764402
+
+> <PUBCHEM_OPENEYE_CAN_SMILES>
+C1CN(CCN1CCCCN2CC3=CC=CC=C3C2=O)C4=CC=C(C=C4)Cl
+
+> <PUBCHEM_OPENEYE_ISO_SMILES>
+C1CN(CCN1CCCCN2CC3=CC=CC=C3C2=O)C4=CC=C(C=C4)Cl
+
+> <PUBCHEM_TOTAL_CHARGE>
+0
+
+> <PUBCHEM_XLOGP3_AA>
+3.9
+
+> <PropertyFieldDistance>
+3.01
+
+$$$$

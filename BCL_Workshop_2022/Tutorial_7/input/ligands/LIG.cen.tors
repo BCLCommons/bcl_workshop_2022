@@ -1,0 +1,16 @@
+LIG  C15  C1   C13  C14  0  80  2
+LIG  C18  C2   C8   C22  0  80  2
+LIG  C11  C4   C22  C8   0  80  2
+LIG  C5   C6   C19  C18  0  80  2
+LIG  C5   C6   C19  N1   0  80  2
+LIG  C18  C6   C19  N1   0  80  2
+LIG  C1   C9   C15  C10  0  80  2
+LIG  C1   C9   C15  C21  0  80  2
+LIG  C10  C9   C15  C21  0  80  2
+LIG  C9   C10  C14  C13  0  80  2
+LIG  C2   C11  C18  C4   0  80  2
+LIG  C2   C11  C18  C6   0  80  2
+LIG  C2   C11  C18  N1   0  80  2
+LIG  C4   C11  C18  C6   0  80  2
+LIG  C4   C11  C18  N1   0  80  2
+LIG  C6   C11  C18  N1   0  80  2
