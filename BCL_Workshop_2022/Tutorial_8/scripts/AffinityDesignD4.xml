@@ -1,0 +1,188 @@
+<ROSETTASCRIPTS>
+    	<SCOREFXNS>
+		<ScoreFunction name="t14" weights="talaris2014"/>
+		<ScoreFunction name="t14w" weights="talaris2014">
+			<Reweight scoretype="coordinate_constraint" weight="1.0"/>
+		</ScoreFunction>
+    	</SCOREFXNS>
+        <RESIDUE_SELECTORS>
+                <Chain name="ligand" chains="X"/>
+                <Not name="receptor" selector="ligand"/> #Note: this selects the entire receptor
+                <Neighborhood name="interface" selector="ligand" distance="6"/> #Note: this selects the ligand AND surrounding residues
+                <Not name="not_interface" selector="interface"/> #Note: this selects only the parts of the protein far from the interface
+        </RESIDUE_SELECTORS>
+	<TASKOPERATIONS>
+                # Turn off design but allow repacking
+		<RestrictToRepacking name="rtrp"/>
+		# Include rotamer options from the command line
+		<InitializeFromCommandline name="ifcl" />
+	    	# Repack interface
+		<OperateOnResidueSubset name="repackonly_ligand" selector="ligand" >
+                        <RestrictToRepackingRLT/>
+                </OperateOnResidueSubset>
+                <OperateOnResidueSubset name="repack_interface" selector="interface" >
+                        <RestrictToRepackingRLT/>
+                </OperateOnResidueSubset>
+                <OperateOnResidueSubset name="fix_notinterface" selector="not_interface" >
+                        <PreventRepackingRLT/>
+                </OperateOnResidueSubset>
+	</TASKOPERATIONS>
+	<FILTERS>
+                <LigInterfaceEnergy name="ifscore" scorefxn="t14" include_cstE="0" energy_cutoff="0.0"/> 
+                <IfThenFilter name="ifscore_bounded" threshold="0"> 
+                        <IF testfilter="ifscore" valuefilter="ifscore"/> 
+                        <ELSE value="0.0"/> 
+                </IfThenFilter>
+	</FILTERS>
+        <SIMPLE_METRICS>
+		# Score poses
+		<InteractionEnergyMetric name="lig_ifscore" force_rescore="true" residue_selector="ligand" residue_selector2="receptor" scorefxn="t14" />
+        </SIMPLE_METRICS>
+	<MOVERS>
+		# Constraint movers
+        	<AddConstraintsToCurrentConformationMover name="cst" coord_dev="1.0" CA_only="0" bb_only="1"/>
+		<ClearConstraintsMover name="uncst"/>
+		<AtomCoordinateCstMover name="relax_cst" coord_dev="1.0" bounded="false" bound_width="0" 
+		sidechain="true" native="false" func_groups="false"/>
+	
+		# Minimization movers
+		<MinMover name="min_soft_initial" scorefxn="t14w" chi="true" bb="true" cartesian="false"/>
+		<ParsedProtocol name="min_cycle_soft_initial">
+                        <Add mover_name="cst"/>
+                        <Add mover_name="min_soft_initial"/>
+                        <Add mover_name="uncst"/>
+                </ParsedProtocol>	
+                
+		# Relax movers
+		<VirtualRoot name="root" removable="1" />
+		<VirtualRoot name="remove" remove="1" />
+		<FastRelax name="relax"  scorefxn="t14w" ramp_down_constraints="false" repeats="1" task_operations="rtrp,repack_interface,fix_notinterface"/>
+		<ParsedProtocol name="relax_cycle">
+			<Add mover_name="root"/>
+			<Add mover_name="relax_cst"/>
+			<Add mover_name="relax"/>
+			<Add mover_name="remove"/>
+			<Add mover_name="uncst"/>
+		</ParsedProtocol>
+	
+		#########################################################################
+		#			Start BCL drug design movers			#
+		#########################################################################
+		
+		# Extend outward from the starting scaffold (i.e. grow the scaffold)
+		<BCLFragmentMutateMover name="ewl_out" 
+		ligand_chain="X" 
+		object_data_label="ExtendWithLinker(
+		ring_library=%%rotamer_library%%/ring_libraries/drug_ring_database.simple.aro.sdf.gz, 
+		direct_link_prob=1000,amide_link_prob=1000,single_element_link_prob=1000,
+		extend_within_prob=0.0,
+		druglikeness_type=IsConstitutionDruglike,
+		mutable_atoms=10 11 12 13 14 15)"
+		/>
+
+		<BCLFragmentMutateMover name="ewl_in" 
+		ligand_chain="X"
+		object_data_label="ExtendWithLinker(
+		ring_library=%%rotamer_library%%/ring_libraries/drug_ring_database.simple.aro.sdf.gz, 
+		extend_within_prob=1.0,
+		druglikeness_type=IsConstitutionDruglike,
+		mutable_atoms=9)"
+		/>
+
+		<BCLFragmentMutateMover name="amc" 
+		ligand_chain="X" 
+		object_data_label="AddMedChem(
+		medchem_library=%%rotamer_library%%/medchem_fragments/bcl_buildfrag_0.sdf.gz, 
+		druglikeness_type=IsConstitutionDruglike,
+		mutable_atoms=10 11 12 13 14 15)"
+		/>
+
+		<BCLFragmentMutateMover name="alc" 
+		ligand_chain="X" 
+		object_data_label="Alchemy(
+		allowed_elements=C O H,restrict_to_bonded_h=true,
+		druglikeness_type=IsConstitutionDruglike,
+		mutable_atoms=10 11 12 13 14 15)"
+		/>
+
+		<BCLFragmentMutateMover name="rs" 
+		ligand_chain="X" 
+		object_data_label="RingSwap(
+		ring_library=%%rotamer_library%%/ring_libraries/drug_ring_database.simple.aro.sdf.gz, 
+		druglikeness_type=IsConstitutionDruglike,conservative=true,
+		mutable_atoms=10 11 12 13 14 15,
+		ring_initiation_probability=0.0)"
+		/>
+
+		<BCLFragmentMutateMover name="hal" 
+		ligand_chain="X" 
+		object_data_label="Halogenate(
+		druglikeness_type=IsConstitutionDruglike,
+		reversible=true,
+		allowed_halogens=F Cl Br,
+		mutable_atoms=10 11 12 13 14 15)" 
+		/>
+
+		<BCLFragmentMutateMover name="nothing" 
+		ligand_chain="X" 
+		object_data_label="Alchemy(
+		allowed_elements=H,restrict_to_bonded_h=true,
+		druglikeness_type=None,
+		mutable_atoms=10 11 12 13 14 15)"
+		/>
+
+		#########################################################################
+		#			End BCL drug design movers			#
+		#########################################################################
+
+
+		# Create independent probabilities for each mutate
+                <RandomMover name="rs_prob" movers="rs,nothing" weights="1.0,0.00"/>
+                <RandomMover name="ewl_in_prob" movers="ewl_in,nothing" weights="1.0,0.0"/>
+                <RandomMover name="amc_prob" movers="amc,nothing" weights="0.25,0.75"/>
+                <RandomMover name="alc_prob" movers="alc,nothing" weights="0.50,0.50"/>
+                <RandomMover name="hal_prob" movers="hal,nothing" weights="0.75,0.25"/>
+                <RandomMover name="ewl_out_prob" movers="ewl_out,nothing" weights="0.50,0.50"/>
+
+		# Create a few logical sets
+                <ParsedProtocol name="bcl_set_1" mode="sequence">
+		        <Add mover_name="amc_prob"/>
+		        <Add mover_name="alc_prob"/>
+		        <Add mover_name="hal_prob"/>
+		        <Add mover_name="ewl_out_prob"/>
+                </ParsedProtocol>
+
+                <ParsedProtocol name="bcl_set_2" mode="sequence">
+		        <Add mover_name="amc_prob"/>
+		        <Add mover_name="alc_prob"/>
+		        <Add mover_name="hal_prob"/>
+		        <Add mover_name="ewl_out_prob"/>
+                </ParsedProtocol>
+
+		# Randomly select one of the sets
+                <RandomMover name="bcl_design" movers="rs_prob,ewl_in_prob,bcl_set_1,bcl_set_2" weights="0.25,0.25,0.25,0.25"/>
+
+		# MCM-ish
+	        <GenericMonteCarlo name="gmc_hal" mover_name="hal_prob"
+		trials="20" sample_type="low" scorefxn_name="t14"
+		temperature="0.593" drift="1" recover_low="1" reset_baselines="0" 
+		adaptive_movers="0" preapply="1" />
+
+		# If you want to look at the input score, run this
+		<ParsedProtocol name="score_only" mode="sequence">
+        	        <Add mover_name="relax_cycle"/>
+                </ParsedProtocol>
+
+	</MOVERS>
+	<APPLY_TO_POSE>
+	</APPLY_TO_POSE>
+	<PROTOCOLS>
+		<Add mover_name="min_cycle_soft_initial"/>
+		<Add mover_name="bcl_design"/>
+		Add mover_name="score_only"/>
+        	<Add mover_name="relax_cycle"/>
+		<Add filter_name="ifscore_bounded"/>
+		<Add metrics="lig_ifscore"/>
+	</PROTOCOLS>
+	<OUTPUT />
+</ROSETTASCRIPTS>

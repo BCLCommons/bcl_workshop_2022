@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if [[ $# -eq 2 ]]; then
+  awk 'BEGIN{SUM=0.0}{SUM += $'$2'} END {print SUM/NR}' $1
+else
+  awk 'BEGIN{SUM=0.0}{SUM += $'$1'} END {print SUM/NR}'
+fi

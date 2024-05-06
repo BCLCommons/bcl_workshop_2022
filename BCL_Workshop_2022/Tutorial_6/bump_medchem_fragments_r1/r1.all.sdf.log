@@ -1,0 +1,199 @@
+core.chemical.bcl.util: BCL message level set at Standard
+core.init: Checking for fconfig files in pwd and ./rosetta/flags 
+core.init: Rosetta version: 2021.50.post.dev+12.brownbp1.bclsubmoduleupdate12022021.89f7e5154b1 89f7e5154b10e97edfb436ee91836b362b0d68ef https://github.com/RosettaCommons/main.git 2021-12-27T12:18:48
+core.init: command: /home/ben/workspace/Rosetta/main/source/bin/rosetta_scripts.bcl.linuxgccrelease -parser:protocol /home/ben/Projects/BCL_Workshop_2022/Tutorial_6/scripts/ChemoGeneticsDesign.gmc.xml -in:file:s /home/ben/Projects/BCL_Workshop_2022/Tutorial_6/BRD2.pdb /home/ben/Projects/BCL_Workshop_2022/Tutorial_6/XYZ.pdb -parser:script_vars prefix=bump_medchem_fragments_r1/r1.all.sdf -parser:script_vars resfile=/home/ben/Projects/BCL_Workshop_2022/Tutorial_6/resfiles/all.resfile -parser:script_vars methoxy_res= -parser:script_vars bump_r1=/home/ben/Projects/BCL_Workshop_2022/Tutorial_6/bump_medchem_fragments_r1/r1.all.sdf -parser:script_vars bump_r2=/home/ben/Projects/BCL_Workshop_2022/Tutorial_6/bump_medchem_fragments_r2/r2.all.sdf -parser:script_vars methoxy_scan_frag=/home/ben/Projects/BCL_Workshop_2022/Tutorial_6/methoxy_scan_fragment.sdf -extra_res_fa /home/ben/Projects/BCL_Workshop_2022/Tutorial_6/XYZ.params -out:prefix bump_medchem_fragments_r1/r1.all.sdf -out:pdb_gz true -nstruct 20 -in:file:fullatom -restore_pre_talaris_2013_behavior -score:weights ligand -ignore_zero_occupancy false -linmem_ig 10
+basic.random.init_random_generator: 'RNG device' seed mode, using '/dev/urandom', seed=701624558 seed_offset=0 real_seed=701624558
+basic.random.init_random_generator: RandomGenerator:init: Normal mode, seed=701624558 RG_type=mt19937
+core.init: Resolved executable path: /home/ben/workspace/Rosetta/main/source/build/src/release/linux/5.10/64/x86/gcc/9/bcl/rosetta_scripts.bcl.linuxgccrelease
+core.init: Looking for database based on location of executable: /home/ben/workspace/Rosetta/main/database/
+core.chemical.bcl.util: Resolved executable path: /home/ben/workspace/Rosetta/main/source/build/src/release/linux/5.10/64/x86/gcc/9/bcl/rosetta_scripts.bcl.linuxgccrelease
+core.chemical.bcl.util: Looking for bcl based on location of executable: /home/ben/workspace/Rosetta/main/source/external/bcl/
+core.chemical.bcl.util: Found BCL submodule path located at: /home/ben/workspace/Rosetta/main/source/external/bcl/
+core.chemical.bcl.util: Externals directory: /home/ben/workspace/Rosetta/main/source/external/bcl/../
+core.chemical.bcl.util: BCL rotamer library directory: /home/ben/workspace/Rosetta/main/source/external/bcl/rotamer_library/
+core.chemical.bcl.util: BCL model directory: /home/ben/workspace/Rosetta/main/source/external/bcl/model/
+core.chemical.bcl.util: BCL model directory passed to commandline: 
+=crt=bcl::random=> Seed was set to 5489!
+=crt=bcl::random=> Seed was set to 5489!
+
+core.chemical.bcl.util: Initializing BCL random number generator with seed: 701624558
+protocols.jd2.PDBJobInputter: Instantiate PDBJobInputter
+protocols.jd2.PDBJobInputter: PDBJobInputter::fill_jobs
+protocols.jd2.PDBJobInputter: pushed /home/ben/Projects/BCL_Workshop_2022/Tutorial_6/BRD2.pdb /home/ben/Projects/BCL_Workshop_2022/Tutorial_6/XYZ.pdb nstruct indices 1 - 20
+protocols.evaluation.ChiWellRmsdEvaluatorCreator: Evaluation Creator active ... 
+protocols.jd2.PDBJobInputter: PDBJobInputter::pose_from_job
+protocols.jd2.PDBJobInputter: filling pose from PDB /home/ben/Projects/BCL_Workshop_2022/Tutorial_6/BRD2.pdb /home/ben/Projects/BCL_Workshop_2022/Tutorial_6/XYZ.pdb
+core.chemical.GlobalResidueTypeSet: Finished initializing fa_standard residue type set.  Created 75 residue types
+core.chemical.GlobalResidueTypeSet: Total time to initialize 0.051592 seconds.
+core.import_pose.import_pose: File '/home/ben/Projects/BCL_Workshop_2022/Tutorial_6/BRD2.pdb /home/ben/Projects/BCL_Workshop_2022/Tutorial_6/XYZ.pdb' automatically determined to be of type PDB
+protocols.rosetta_scripts.RosettaScriptsParser: dock_design_filename=/home/ben/Projects/BCL_Workshop_2022/Tutorial_6/scripts/ChemoGeneticsDesign.gmc.xml
+protocols.rosetta_scripts.RosettaScriptsParser: Variable substitution will occur with the following values: '%%bump_r1%%'='/home/ben/Projects/BCL_Workshop_2022/Tutorial_6/bump_medchem_fragments_r1/r1.all.sdf';  '%%bump_r2%%'='/home/ben/Projects/BCL_Workshop_2022/Tutorial_6/bump_medchem_fragments_r2/r2.all.sdf';  '%%methoxy_res%%'='';  '%%methoxy_scan_frag%%'='/home/ben/Projects/BCL_Workshop_2022/Tutorial_6/methoxy_scan_fragment.sdf';  '%%prefix%%'='bump_medchem_fragments_r1/r1.all.sdf';  '%%resfile%%'='/home/ben/Projects/BCL_Workshop_2022/Tutorial_6/resfiles/all.resfile';  
+protocols.rosetta_scripts.RosettaScriptsParser: Substituted script:
+<ROSETTASCRIPTS>
+    	<SCOREFXNS>
+		<ScoreFunction name="ligand_soft_rep" weights="ligand_soft_rep">
+			<Reweight scoretype="fa_elec" weight="0.42"/>
+			<Reweight scoretype="hbond_bb_sc" weight="1.3"/>
+			<Reweight scoretype="hbond_sc" weight="1.3"/>
+			<Reweight scoretype="rama" weight="0.2"/>
+		</ScoreFunction>
+		<ScoreFunction name="hard_rep" weights="ligand">
+            		<Reweight scoretype="fa_intra_rep" weight="0.004"/>
+	            	<Reweight scoretype="fa_elec" weight="0.42"/>
+        	    	<Reweight scoretype="hbond_bb_sc" weight="1.3"/>
+            		<Reweight scoretype="hbond_sc" weight="1.3"/>
+	        	<Reweight scoretype="rama" weight="0.2"/>
+		</ScoreFunction>
+    	</SCOREFXNS>
+        <LIGAND_AREAS>
+        </LIGAND_AREAS>
+        <INTERFACE_BUILDERS>
+        </INTERFACE_BUILDERS>
+        <MOVEMAP_BUILDERS>
+        </MOVEMAP_BUILDERS>
+        <RESIDUE_SELECTORS>
+                <Chain name="ligand" chains="X"/>
+                <Not name="receptor" selector="ligand"/> #Note: this selects the entire receptor
+		<Index name="lig" resnums="114" />
+                <Not name="rec" selector="lig"/> #Note: this selects the entire receptor
+                <Neighborhood name="interface" selector="ligand" distance="6"/> #Note: this selects the ligand AND surrounding residues
+                <Not name="not_interface" selector="interface"/> #Note: this selects only the parts of the protein far from the interface
+        </RESIDUE_SELECTORS>
+	<TASKOPERATIONS>
+                # Turn off design but allow repacking
+		<RestrictToRepacking name="rtrp"/>
+		# Include rotamer options from the command line
+		<InitializeFromCommandline name="ifcl" />
+	    	# Design and repack residues based on resfile
+		<ReadResfile name="rrf" filename="/home/ben/Projects/BCL_Workshop_2022/Tutorial_6/resfiles/all.resfile"/>
+		<OperateOnResidueSubset name="repackonly_ligand" selector="ligand" >
+                        <RestrictToRepackingRLT/>
+                </OperateOnResidueSubset>
+                <OperateOnResidueSubset name="repack_interface" selector="interface" >
+                        <RestrictToRepackingRLT/>
+                </OperateOnResidueSubset>
+                <OperateOnResidueSubset name="fix_notinterface" selector="not_interface" >
+                        <PreventRepackingRLT/>
+                </OperateOnResidueSubset>
+	</TASKOPERATIONS>
+	<FILTERS>
+		<LigInterfaceEnergy name="ifscore" scorefxn="hard_rep" include_cstE="0" energy_cutoff="0.0"/>
+		<ScoreType name="score_filter" score_type="total_score" threshold="0.0" scorefxn="hard_rep" confidence="1.0"/>
+	</FILTERS>
+        <SIMPLE_METRICS>
+        </SIMPLE_METRICS>
+	<MOVERS>
+		# Score mover
+		<InterfaceScoreCalculator name="add_scores" chains="X" scorefxn="hard_rep" compute_grid_scores="0" />
+	
+		# Constraint movers
+        	<AddConstraintsToCurrentConformationMover name="cst" coord_dev="1.0" CA_only="0" bb_only="1"/>
+		<ClearConstraintsMover name="uncst"/>
+		<AtomCoordinateCstMover name="relax_cst" coord_dev="1.0" bounded="false" bound_width="0" 
+		sidechain="true" native="false" func_groups="false"/>
+	
+		# Minimization movers
+		<MinMover name="min_soft" scorefxn="ligand_soft_rep" chi="true" bb="true" cartesian="false" type="lbfgs_armijo_nonmonotone"/>
+		<MinMover name="min_hard" scorefxn="hard_rep" chi="true" bb="true" cartesian="false" type="lbfgs_armijo_nonmonotone"/>
+		<ParsedProtocol name="min_cycle_soft">
+                        <Add mover_name="cst"/>
+                        <Add mover_name="min_soft"/>
+                        <Add mover_name="uncst"/>
+                </ParsedProtocol>	
+		<ParsedProtocol name="min_cycle_hard">
+                        <Add mover_name="cst"/>
+                        <Add mover_name="min_hard"/>
+                        <Add mover_name="uncst"/>
+                </ParsedProtocol>	
+	
+		# Repack / design movers
+		<PackRotamersMover name="mutate" scorefxn="ligand_soft_rep" nloop="1" 
+		task_operations="ifcl,rrf"/>
+		<PackRotamersMover name="repack_interface" scorefxn="ligand_soft_rep" nloop="5" 
+		task_operations="rtrp,repack_interface,fix_notinterface"/>
+		
+		# Relax
+                <VirtualRoot name="root" removable="1" />
+                <VirtualRoot name="remove" remove="1" />
+		<FastRelax name="relax" scorefxn="hard_rep" ramp_down_constraints="false" repeats="2" task_operations="rtrp,repack_interface,fix_notinterface"/>
+		<ParsedProtocol name="relax_cycle">
+                        <Add mover_name="root"/>
+                        <Add mover_name="relax_cst"/>
+                        <Add mover_name="relax"/>
+                        <Add mover_name="remove"/>
+                        <Add mover_name="uncst"/>
+                </ParsedProtocol>	
+
+		# BCL drug design movers
+		<BCLFragmentMutateMover name="add_medchem_bump_r1" 
+		ligand_chain="X" 
+		object_data_label="AddMedChem(
+		ov_shuffle_h=false,ov_reverse=false,
+		medchem_library=/home/ben/Projects/BCL_Workshop_2022/Tutorial_6/bump_medchem_fragments_r1/r1.all.sdf, 
+		druglikeness_type=None,
+		mutable_atoms=0)"
+		/>
+
+		<BCLFragmentMutateMover name="add_medchem_bump_r2" 
+		ligand_chain="X" 
+		object_data_label="AddMedChem(
+		ov_shuffle_h=false,ov_reverse=false,
+		medchem_library=/home/ben/Projects/BCL_Workshop_2022/Tutorial_6/bump_medchem_fragments_r2/r2.all.sdf, 
+		druglikeness_type=None,
+		mutable_atoms=0)"
+		/>
+
+		<BCLFragmentMutateMover name="add_medchem_methoxy_scan" 
+		ligand_chain="X" 
+		object_data_label="AddMedChem(
+		ov_shuffle_h=false,ov_reverse=false,
+		medchem_library=/home/ben/Projects/BCL_Workshop_2022/Tutorial_6/methoxy_scan_fragment.sdf, 
+		druglikeness_type=None,
+		mutable_atoms=)"
+		/>
+
+                <ParsedProtocol name="run_a" mode="sequence">
+			<Add mover_name="mutate"/>
+        	        <Add mover_name="min_cycle_soft"/>
+        	        <Add mover_name="min_cycle_hard"/>
+		        <Add mover_name="add_medchem_methoxy_scan"/>
+		        <Add mover_name="add_medchem_bump_r2"/>
+		        <Add mover_name="add_medchem_bump_r1"/>
+        	        <Add mover_name="min_cycle_soft"/>
+        	        <Add mover_name="min_cycle_hard"/>
+        	        <Add mover_name="relax_cycle"/>
+                </ParsedProtocol>
+
+                <ParsedProtocol name="run_b" mode="sequence">
+			<Add mover_name="mutate"/>
+			<Add mover_name="min_cycle_soft"/>
+			<Add mover_name="min_cycle_hard"/>
+		        <Add mover_name="add_medchem_methoxy_scan"/>
+		        <Add mover_name="add_medchem_bump_r2"/>
+        	        <Add mover_name="min_cycle_soft"/>
+        	        <Add mover_name="min_cycle_hard"/>
+        	        <Add mover_name="relax_cycle"/>
+                </ParsedProtocol>	        
+
+                <RandomMover name="run" movers="run_a,run_b" weights="0.80,0.20"/>
+                
+                <GenericMonteCarlo name="gmc" mover_name="run"
+		trials="10" sample_type="low" filter_name="ifscore"
+		temperature="0.593" drift="1" recover_low="1" reset_baselines="0" 
+		adaptive_movers="0" preapply="1" />
+
+	</MOVERS>
+	<APPLY_TO_POSE>
+	</APPLY_TO_POSE>
+	<PROTOCOLS>
+        	<Add mover_name="gmc"/>
+        	<Add mover_name="add_scores"/>
+	</PROTOCOLS>
+	<OUTPUT />
+</ROSETTASCRIPTS>
+protocols.rosetta_scripts.RosettaScriptsParser: Validating input script...
+protocols.rosetta_scripts.RosettaScriptsSchemaValidator: Generating XML Schema for rosetta_scripts...
+protocols.rosetta_scripts.RosettaScriptsSchemaValidator: ...done
+protocols.rosetta_scripts.RosettaScriptsSchemaValidator: Initializing schema validator...
+Got some signal... It is:2
+Signal 2 (SIGINT) means that the process was interrupted, usually by the user (e.g. Ctrl+C was pressed).

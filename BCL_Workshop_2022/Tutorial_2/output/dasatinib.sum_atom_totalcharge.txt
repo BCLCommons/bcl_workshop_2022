@@ -1,0 +1,3 @@
+Index,MoleculeSum(Atom_TotalCharge)
+0,2.10106e-06
+1,0.999996

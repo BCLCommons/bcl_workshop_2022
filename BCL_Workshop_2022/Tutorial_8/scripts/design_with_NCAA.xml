@@ -1,0 +1,59 @@
+<ROSETTASCRIPTS>
+    <SCOREFXNS>
+    </SCOREFXNS>
+    <PACKER_PALETTES>
+	<CustomBaseTypePackerPalette name="base_ncaa" additional_residue_types="%%res_type%%" />
+    </PACKER_PALETTES>
+    <RESIDUE_SELECTORS>
+	<Chain name="prot" chains="A"/>
+	<Chain name="pep" chains="C"/>
+	<Neighborhood name="interface" selector="pep" distance="8"/>
+	<Not name="not_interface" selector="interface"/>
+    </RESIDUE_SELECTORS>
+
+    <TASKOPERATIONS>
+	Include rotamer options from the command line
+	<InitializeFromCommandline name="ifcl" />
+	Design and repack residues based on resfile
+	<ReadResfile name="rrf" filename="%%resf_file%%"/>
+	<RestrictToRepacking name="repack_only"/>
+	<OperateOnResidueSubset name="fix_notinterface" selector="not_interface">
+	    <PreventRepackingRLT/>
+	</OperateOnResidueSubset>
+
+    </TASKOPERATIONS>
+    <MOVERS>
+	FavorNativeResidue name="favor_native" bonus="0.75"/>
+	Design the antibody interface
+	<PackRotamersMover name="design" scorefxn="REF2015" task_operations="ifcl,rrf" packer_palette="base_ncaa"/>
+	Analyze the resulting interface
+	<InterfaceAnalyzerMover name="analyze" scorefxn="REF2015" packstat="0" pack_input="0" pack_separated="1" fixedchains="A" />
+	Optimization
+	Backrub name="backrub" pivot_residues="1B-12B" pivot_atoms="CA"/>
+	<FastRelax name="relax" scorefxn="REF2015" repeats="1" task_operations="fix_notinterface">
+	    <MoveMap bb="false" chi="false">
+		<Jump number="0" setting="false"/>
+		<ResidueSelector selector="interface" bb="true" chi="true"/>
+		<ResidueSelector selector="not_interface" bb="false" chi="true" />
+	    </MoveMap>
+	</FastRelax>
+    </MOVERS>
+    <FILTERS>
+	Ddg name="ddg_f" scorefxn="REF2015" threshold="0" jump="1" repack="false" repeats="1" />
+	ShapeComplementarity name="sc_f" min_sc="0.5" jump="1" />
+    </FILTERS>
+    <APPLY_TO_POSE>
+    </APPLY_TO_POSE>
+    <PROTOCOLS>
+	Run the design protocol
+	Add mover="favor_native" />
+	<Add mover="design" />
+	Add mover="backrub" />
+	<Add mover_name="relax"/>
+	    Calculate interface metrics for the final sequence
+	<Add mover="analyze" />
+	Add filter="ddg_f" />
+	Add filter="sc_f" />
+    </PROTOCOLS>
+    <OUTPUT scorefxn="REF2015" />
+</ROSETTASCRIPTS>

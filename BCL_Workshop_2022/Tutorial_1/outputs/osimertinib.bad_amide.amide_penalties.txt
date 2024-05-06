@@ -1,0 +1,3 @@
+MoleculeIndex,AtomIndexLow,AtomIndexHigh,AmideBondPenalty(ConfScore units)
+0,0,16,53.1743
+0,0,16,53.1789

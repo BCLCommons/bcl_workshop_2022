@@ -1,0 +1,3 @@
+MoleculeIndex,AtomIndexLow,AtomIndexHigh,AmideDeviationFromPlanarity(degrees)
+0,0,16,71.8687
+0,0,16,71.8729

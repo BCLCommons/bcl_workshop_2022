@@ -1,0 +1,90 @@
+=std=bcl::util=> Logger was changed to: File with identifier: NCAA_XPF.log
+/home/ben/workspace/bcl/build/linux64_release/bin/bcl-apps-static.exe molecule:GenerateRosettaNCAAInstructions -input_filenames XPF.sdf -output_prefix NCAA_XPF -generate_3D -logger File NCAA_XPF.log -extra_properties L_AA AROMATIC -generate_partial_charge_file -chirality auto -explicit_aromaticity 
+BCL v4.2.0, r0, compiled on Thu Jan  6 10:36:55 2022
+=std=bcl=> executing application: molecule:GenerateRosettaNCAAInstructions
+=crt=bcl::random=> Seed was set to 5489!
+=crt=bcl::random=> Seed was set to 5489!
+
+========================================================================================================================
+
+BCL FLAGS
+
+-message_level not set
+   <level> Standard (default)
+   <verbosity> Summary (default)
+-logger set
+   <> File
+   <identifier> NCAA_XPF.log
+-help not set
+-readme not set
+-file_compressed_alternatives not set
+-file_compression not set
+   <compression_type> Uncompressed (default)
+-enums_files not set
+-random_seed not set
+   <seed> 5489 (default)
+-model_path not set
+   <model_path_name> /home/ben/workspace/bcl/model/ (default)
+-histogram_path not set
+   <path> /home/ben/workspace/bcl/histogram/ (default)
+-opencl not set
+   <platform> Disable (default)
+-scheduler not set
+   <scheduler> Serial (default)
+   <number_cpus> 1 (default)
+
+========================================================================================================================
+
+APPLICATION FLAGS
+
+-help not set
+-readme not set
+-input_filenames set
+   <filenames> XPF.sdf
+-input_start not set
+   <start> 0 (default)
+-input_max not set
+   <number> 18446744073709551615 (default)
+-add_h not set
+-remove_h not set
+-neutralize not set
+   <method> BondOrderAndpH (default)
+-explicit_aromaticity set
+-add_atom_type not set
+-output_prefix set
+   <output_prefix> NCAA_XPF
+-generate_3D set
+-sidechain_sample_by_parts not set
+-extra_properties set
+   <properties> L_AA
+   <properties> AROMATIC
+-chirality set
+   <Sidechain chirality> auto
+-generate_partial_charge_file set
+-ca_chi1_ids not set
+   <CA index>  (default)
+   <Chi 1 index>  (default)
+
+========================================================================================================================
+
+=std=bcl::app=> Molecule # 0: Computed CA chirality from input structure is L_AA
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 113
+=std=bcl::chemistry=> Found 10 rotatable bonds, 0 flexible rings, 9 changeable bond angles; 
+
+========================================================================================================================
+=slt=bcl=> bcl has run for 00:00:03, peak virtual memory used: 1331 MB, peak physical RAM used: 1238 MB
+=std=bcl::util=> ConformationComparison has run for 0.00619 seconds
+=std=bcl::util=> Clash resolution (not counting clash scoring) has run for 0.081184 seconds
+=std=bcl::util=>   AtomClashScore ClashComputation has run for 0.07319 seconds
+=std=bcl::util=> Sampling Total has run for 1.15736 seconds
+=std=bcl::util=> bond_length_sampling has run for 0.007852 seconds
+=std=bcl::util=> bond_angle_setup has run for 0.126606 seconds
+=std=bcl::util=> bond_angles_sampling_for_ring_bonds has run for 0.019702 seconds
+=std=bcl::util=> bond_angle_sampling_for_3-4_bonded_atoms has run for 0.065182 seconds
+=std=bcl::util=> bond_angle_sampling_for_2_bonded_atoms has run for 0.01829 seconds
+=std=bcl::util=> do_rotate_bond has run for 0.008947 seconds
+=std=bcl::util=> create_transformation_matrix has run for 0.038765 seconds
+=std=bcl::util=> mutate_chain has run for 0.390658 seconds
+=std=bcl::util=> mutate_ring has run for 9e-05 seconds
+=std=bcl::util=> MapFragmentIsomorphisms has run for 0.779593 seconds
+=std=bcl::util=> FindFrags has run for 0.711739 seconds

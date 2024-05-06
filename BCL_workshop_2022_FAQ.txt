@@ -1,0 +1,10 @@
+﻿BCL Workshop 2022 FAQ
+
+
+Common compilation errors
+
+bcl/extern/noarch/freeocl/0.3.6/include/CL/cl.hpp:177:10: fatal error: GL/gl.h: No such file or directory
+ #include <GL/gl.h>
+                 ^~~~~~~~~
+ubuntu – libgl-dev needs to be installed before compiling
+centos/redhat – gromacs-opencl needs to be installed

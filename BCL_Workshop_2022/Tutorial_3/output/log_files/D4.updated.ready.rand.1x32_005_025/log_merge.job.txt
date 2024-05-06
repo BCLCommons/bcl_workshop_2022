@@ -1,0 +1,10 @@
+Removing duplicate descriptor files in ./models/D4.updated.ready.rand.1x32_005_025
+/net/tungsten/hd1/brownbp1/workspace/bcl/build/linux64_release/bin/bcl-apps-static.exe: /dors/meilerlab/apps/Linux2/x86_64/lib64/libOpenCL.so.1: no version information available (required by /net/tungsten/hd1/brownbp1/workspace/bcl/build/linux64_release/bin/bcl-apps-static.exe)
+/net/tungsten/hd1/brownbp1/workspace/bcl/build/linux64_release/bin/bcl-apps-static.exe: /dors/meilerlab/apps/Linux2/x86_64/lib64/libOpenCL.so.1: no version information available (required by /net/tungsten/hd1/brownbp1/workspace/bcl/build/linux64_release/bin/bcl-apps-static.exe)
+/net/tungsten/hd1/brownbp1/workspace/bcl/build/linux64_release/bin/bcl-apps-static.exe: /dors/meilerlab/apps/Linux2/x86_64/lib64/libOpenCL.so.1: no version information available (required by /net/tungsten/hd1/brownbp1/workspace/bcl/build/linux64_release/bin/bcl-apps-static.exe)
+=std=bcl::util=> change Logger to: File with identifier: ./log_files/D4.updated.ready.rand.1x32_005_025/log_merge.txt
+/net/tungsten/hd1/brownbp1/workspace/bcl/build/linux64_release/bin/bcl-apps-static.exe: /dors/meilerlab/apps/Linux2/x86_64/lib64/libOpenCL.so.1: no version information available (required by /net/tungsten/hd1/brownbp1/workspace/bcl/build/linux64_release/bin/bcl-apps-static.exe)
+/net/tungsten/hd1/brownbp1/workspace/bcl/build/linux64_release/bin/bcl-apps-static.exe: /dors/meilerlab/apps/Linux2/x86_64/lib64/libOpenCL.so.1: no version information available (required by /net/tungsten/hd1/brownbp1/workspace/bcl/build/linux64_release/bin/bcl-apps-static.exe)
+/net/tungsten/hd1/brownbp1/workspace/bcl/build/linux64_release/bin/bcl-apps-static.exe: /dors/meilerlab/apps/Linux2/x86_64/lib64/libOpenCL.so.1: no version information available (required by /net/tungsten/hd1/brownbp1/workspace/bcl/build/linux64_release/bin/bcl-apps-static.exe)
+=std=bcl::util=> change Logger to: File with identifier: ./log_files/D4.updated.ready.rand.1x32_005_025/log_merge.txt
+gnuplot 4.4 patchlevel 4

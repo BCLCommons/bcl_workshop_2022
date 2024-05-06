@@ -1,0 +1,163 @@
+<ROSETTASCRIPTS>
+    	<SCOREFXNS>
+		<ScoreFunction name="ligand_soft_rep" weights="ligand_soft_rep">
+			<Reweight scoretype="fa_elec" weight="0.42"/>
+			<Reweight scoretype="hbond_bb_sc" weight="1.3"/>
+			<Reweight scoretype="hbond_sc" weight="1.3"/>
+			<Reweight scoretype="rama" weight="0.2"/>
+		</ScoreFunction>
+		<ScoreFunction name="hard_rep" weights="ligand">
+            		<Reweight scoretype="fa_intra_rep" weight="0.004"/>
+	            	<Reweight scoretype="fa_elec" weight="0.42"/>
+        	    	<Reweight scoretype="hbond_bb_sc" weight="1.3"/>
+            		<Reweight scoretype="hbond_sc" weight="1.3"/>
+	        	<Reweight scoretype="rama" weight="0.2"/>
+		</ScoreFunction>
+    	</SCOREFXNS>
+        <LIGAND_AREAS>
+        </LIGAND_AREAS>
+        <INTERFACE_BUILDERS>
+        </INTERFACE_BUILDERS>
+        <MOVEMAP_BUILDERS>
+        </MOVEMAP_BUILDERS>
+        <RESIDUE_SELECTORS>
+                <Chain name="ligand" chains="X"/>
+                <Not name="receptor" selector="ligand"/> #Note: this selects the entire receptor
+		<Index name="lig" resnums="114" />
+                <Not name="rec" selector="lig"/> #Note: this selects the entire receptor
+                <Neighborhood name="interface" selector="ligand" distance="8"/> #Note: this selects the ligand AND surrounding residues
+                <Not name="not_interface" selector="interface"/> #Note: this selects only the parts of the protein far from the interface
+        </RESIDUE_SELECTORS>
+	<TASKOPERATIONS>
+                # Turn off design but allow repacking
+		<RestrictToRepacking name="rtrp"/>
+		# Include rotamer options from the command line
+		<InitializeFromCommandline name="ifcl" />
+	    	# Design and repack residues based on resfile
+		<ReadResfile name="rrf" filename="%%resfile%%"/>
+		<OperateOnResidueSubset name="repackonly_ligand" selector="ligand" >
+                        <RestrictToRepackingRLT/>
+                </OperateOnResidueSubset>
+                <OperateOnResidueSubset name="repack_interface" selector="interface" >
+                        <RestrictToRepackingRLT/>
+                </OperateOnResidueSubset>
+                <OperateOnResidueSubset name="fix_notinterface" selector="not_interface" >
+                        <PreventRepackingRLT/>
+                </OperateOnResidueSubset>
+	</TASKOPERATIONS>
+	<FILTERS>
+		<LigInterfaceEnergy name="ifscore" scorefxn="hard_rep" include_cstE="0" energy_cutoff="0.0"/>
+		<ScoreType name="score_filter" score_type="total_score" threshold="0.0" scorefxn="hard_rep" confidence="1.0"/>
+	</FILTERS>
+        <SIMPLE_METRICS>
+        </SIMPLE_METRICS>
+	<MOVERS>
+		# Score mover
+		<InterfaceScoreCalculator name="add_scores" chains="X" scorefxn="hard_rep" compute_grid_scores="0" />
+	
+		# Constraint movers
+        	<AddConstraintsToCurrentConformationMover name="cst" coord_dev="1.0" CA_only="0" bb_only="1"/>
+		<ClearConstraintsMover name="uncst"/>
+		<AtomCoordinateCstMover name="relax_cst" coord_dev="1.0" bounded="false" bound_width="0" 
+		sidechain="true" native="false" func_groups="false"/>
+	
+		# Minimization movers
+		<MinMover name="min_soft" scorefxn="ligand_soft_rep" chi="true" bb="true" cartesian="false" type="lbfgs_armijo_nonmonotone"/>
+		<MinMover name="min_hard" scorefxn="hard_rep" chi="true" bb="true" cartesian="false" type="lbfgs_armijo_nonmonotone"/>
+		<ParsedProtocol name="min_cycle_soft">
+                        <Add mover_name="cst"/>
+                        <Add mover_name="min_soft"/>
+                        <Add mover_name="uncst"/>
+                </ParsedProtocol>	
+		<ParsedProtocol name="min_cycle_hard">
+                        <Add mover_name="cst"/>
+                        <Add mover_name="min_hard"/>
+                        <Add mover_name="uncst"/>
+                </ParsedProtocol>	
+	
+		# Repack / design movers
+		<PackRotamersMover name="mutate" scorefxn="ligand_soft_rep" nloop="5" 
+		task_operations="ifcl,rrf"/>
+		<PackRotamersMover name="repack_interface" scorefxn="ligand_soft_rep" nloop="5" 
+		task_operations="rtrp,repack_interface,fix_notinterface"/>
+		
+		# Relax
+                <VirtualRoot name="root" removable="1" />
+                <VirtualRoot name="remove" remove="1" />
+		<FastRelax name="relax" scorefxn="hard_rep" ramp_down_constraints="false" repeats="2" task_operations="rtrp,repack_interface,fix_notinterface"/>
+		<ParsedProtocol name="relax_cycle">
+                        <Add mover_name="root"/>
+                        <Add mover_name="relax_cst"/>
+                        <Add mover_name="relax"/>
+                        <Add mover_name="remove"/>
+                        <Add mover_name="uncst"/>
+                </ParsedProtocol>	
+
+		# BCL drug design movers
+		<BCLFragmentMutateMover name="add_medchem_bump_r1" 
+		ligand_chain="X" 
+		object_data_label="AddMedChem(
+		ov_shuffle_h=false,ov_reverse=false,
+		medchem_library=%%bump_r1%%, 
+		druglikeness_type=None,
+		mutable_atoms=0)"
+		/>
+
+		<BCLFragmentMutateMover name="add_medchem_bump_r2" 
+		ligand_chain="X" 
+		object_data_label="AddMedChem(
+		ov_shuffle_h=false,ov_reverse=false,
+		medchem_library=%%bump_r2%%, 
+		druglikeness_type=None,
+		mutable_atoms=0)"
+		/>
+
+		<BCLFragmentMutateMover name="add_medchem_methoxy_scan" 
+		ligand_chain="X" 
+		object_data_label="AddMedChem(
+		ov_shuffle_h=false,ov_reverse=false,
+		medchem_library=%%methoxy_scan_frag%%, 
+		druglikeness_type=None,
+		mutable_atoms=%%methoxy_res%%)"
+		/>
+
+                <ParsedProtocol name="run_a" mode="sequence">
+			<Add mover_name="mutate"/>
+        	        <Add mover_name="min_cycle_soft"/>
+        	        <Add mover_name="min_cycle_hard"/>
+		        <Add mover_name="add_medchem_methoxy_scan"/>
+		        <Add mover_name="add_medchem_bump_r2"/>
+		        <Add mover_name="add_medchem_bump_r1"/>
+        	        <Add mover_name="min_cycle_soft"/>
+        	        <Add mover_name="min_cycle_hard"/>
+        	        <Add mover_name="relax_cycle"/>
+        	        <Add filter_name="score_filter"/>
+        	        <Add mover_name="add_scores"/>
+                </ParsedProtocol>
+
+                <ParsedProtocol name="run_b" mode="sequence">
+			<Add mover_name="mutate"/>
+			<Add mover_name="min_cycle_soft"/>
+			<Add mover_name="min_cycle_hard"/>
+		        <Add mover_name="add_medchem_methoxy_scan"/>
+		        <Add mover_name="add_medchem_bump_r2"/>
+        	        <Add mover_name="min_cycle_soft"/>
+        	        <Add mover_name="min_cycle_hard"/>
+        	        <Add mover_name="relax_cycle"/>
+        	        <Add filter_name="score_filter"/>
+        	        <Add mover_name="add_scores"/>
+                </ParsedProtocol>
+
+                <RandomMover name="run"
+                movers="run_a,run_b"
+                weights="%%heavy_prob%%,%%h_prob%%"
+                />
+
+	</MOVERS>
+	<APPLY_TO_POSE>
+	</APPLY_TO_POSE>
+	<PROTOCOLS>
+        	<Add mover_name="run"/>
+	</PROTOCOLS>
+	<OUTPUT />
+</ROSETTASCRIPTS>

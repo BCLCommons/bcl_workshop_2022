@@ -1,0 +1,195 @@
+=std=bcl::util=> Logger was changed to: File with identifier: generate_dipeptides.log
+/home/oanh/Documents/BCL_github/bcl/build/linux64_release/bin/bcl-apps-static.exe molecule:GenerateRosettaNCAAInstructions -input_filenames phe_der.sdf -output_prefix dipeptide_sdf/phe_der_out -generate_3D -logger File generate_dipeptides.log -extra_properties AROMATIC -generate_partial_charge_file -chirality auto -explicit_aromaticity 
+BCL v4.1.0, r0, compiled on Mon Feb  8 18:24:20 2021
+=std=bcl=> executing application: molecule:GenerateRosettaNCAAInstructions
+=crt=bcl::random=> Seed was set to 5489!
+=crt=bcl::random=> Seed was set to 5489!
+
+========================================================================================================================
+
+BCL FLAGS
+
+-message_level not set
+   <level> Standard (default)
+   <verbosity> Summary (default)
+-logger set
+   <> File
+   <identifier> generate_dipeptides.log
+-help not set
+-readme not set
+-file_compressed_alternatives not set
+-file_compression not set
+   <compression_type> Uncompressed (default)
+-enums_files not set
+-random_seed not set
+   <seed> 5489 (default)
+-model_path not set
+   <model_path_name> /home/oanh/Documents/BCL_github/bcl/model/ (default)
+-histogram_path not set
+   <path> /home/oanh/Documents/BCL_github/bcl/histogram/ (default)
+-opencl not set
+   <platform> Disable (default)
+-scheduler not set
+   <scheduler> Serial (default)
+   <number_cpus> 1 (default)
+
+========================================================================================================================
+
+APPLICATION FLAGS
+
+-help not set
+-readme not set
+-input_filenames set
+   <filenames> phe_der.sdf
+-input_start not set
+   <start> 0 (default)
+-input_max not set
+   <number> 18446744073709551615 (default)
+-add_h not set
+-remove_h not set
+-neutralize not set
+   <method> BondOrderAndpH (default)
+-explicit_aromaticity set
+-add_atom_type not set
+-output_prefix set
+   <output_prefix> dipeptide_sdf/phe_der_out
+-generate_3D set
+-sidechain_sample_by_parts not set
+-extra_properties set
+   <properties> AROMATIC
+-chirality set
+   <Sidechain chirality> auto
+-generate_partial_charge_file set
+-ca_chi1_ids not set
+   <CA index>  (default)
+   <Chi 1 index>  (default)
+
+========================================================================================================================
+
+=std=bcl::app=> Molecule # 0: Computed CA chirality from input structure is D_AA
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 113
+=std=bcl::chemistry=> Found 11 rotatable bonds, 0 flexible rings, 9 changeable bond angles; 
+=std=bcl::chemistry=>  # rejected due to severe clashes: 1130
+=std=bcl::app=> Molecule # 1: Computed CA chirality from input structure is L_AA
+=std=bcl::util=> FindFrags has run for 1.87749 seconds
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 113
+=std=bcl::chemistry=> Found 11 rotatable bonds, 0 flexible rings, 9 changeable bond angles; 
+=std=bcl::app=> Molecule # 2: Computed CA chirality from input structure is L_AA
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 104
+=std=bcl::chemistry=> Found 8 rotatable bonds, 0 flexible rings, 8 changeable bond angles; 
+=std=bcl::app=> Molecule # 3: Computed CA chirality from input structure is L_AA
+=std=bcl::util=> FindFrags has run for 3.71833 seconds
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 104
+=std=bcl::chemistry=> Found 8 rotatable bonds, 0 flexible rings, 8 changeable bond angles; 
+=std=bcl::app=> Molecule # 4: Computed CA chirality from input structure is D_AA
+=std=bcl::util=> FindFrags has run for 4.72871 seconds
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 104
+=std=bcl::chemistry=> Found 8 rotatable bonds, 0 flexible rings, 8 changeable bond angles; 
+=std=bcl::chemistry=>  # rejected due to severe clashes: 1276
+=std=bcl::app=> Molecule # 5: Computed CA chirality from input structure is D_AA
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 106
+=std=bcl::chemistry=> Found 9 rotatable bonds, 0 flexible rings, 8 changeable bond angles; 
+=std=bcl::chemistry=>  # rejected due to severe clashes: 1221
+=std=bcl::app=> Molecule # 6: Computed CA chirality from input structure is L_AA
+=std=bcl::util=> FindFrags has run for 6.44884 seconds
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 105
+=std=bcl::chemistry=> Found 9 rotatable bonds, 0 flexible rings, 8 changeable bond angles; 
+=std=bcl::app=> Molecule # 7: Computed CA chirality from input structure is L_AA
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 106
+=std=bcl::chemistry=> Found 9 rotatable bonds, 0 flexible rings, 8 changeable bond angles; 
+=std=bcl::app=> Molecule # 8: Computed CA chirality from input structure is L_AA
+=std=bcl::util=> FindFrags has run for 8.37023 seconds
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 112
+=std=bcl::chemistry=> Found 9 rotatable bonds, 0 flexible rings, 9 changeable bond angles; 
+=std=bcl::chemistry=>  # rejected due to severe clashes: 1327
+=std=bcl::app=> Molecule # 9: Computed CA chirality from input structure is D_AA
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 112
+=std=bcl::chemistry=> Found 9 rotatable bonds, 0 flexible rings, 9 changeable bond angles; 
+=std=bcl::chemistry=>  # rejected due to severe clashes: 4206
+=std=bcl::app=> Molecule # 10: Computed CA chirality from input structure is L_AA
+=std=bcl::util=> FindFrags has run for 10.2977 seconds
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 112
+=std=bcl::chemistry=> Found 9 rotatable bonds, 0 flexible rings, 9 changeable bond angles; 
+=std=bcl::app=> Molecule # 11: Computed CA chirality from input structure is L_AA
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 112
+=std=bcl::chemistry=> Found 9 rotatable bonds, 0 flexible rings, 9 changeable bond angles; 
+=std=bcl::app=> Molecule # 12: Computed CA chirality from input structure is D_AA
+=std=bcl::util=> FindFrags has run for 12.2363 seconds
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 112
+=std=bcl::chemistry=> Found 9 rotatable bonds, 0 flexible rings, 9 changeable bond angles; 
+=std=bcl::chemistry=>  # rejected due to severe clashes: 1155
+=std=bcl::app=> Molecule # 13: Computed CA chirality from input structure is L_AA
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 104
+=std=bcl::chemistry=> Found 8 rotatable bonds, 0 flexible rings, 8 changeable bond angles; 
+=std=bcl::app=> Molecule # 14: Computed CA chirality from input structure is D_AA
+=std=bcl::util=> FindFrags has run for 14.1136 seconds
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 104
+=std=bcl::chemistry=> Found 8 rotatable bonds, 0 flexible rings, 9 changeable bond angles; 
+=std=bcl::chemistry=>  # rejected due to severe clashes: 1317
+=std=bcl::app=> Molecule # 15: Computed CA chirality from input structure is D_AA
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 104
+=std=bcl::chemistry=> Found 8 rotatable bonds, 0 flexible rings, 8 changeable bond angles; 
+=std=bcl::chemistry=>  # rejected due to severe clashes: 1273
+=std=bcl::app=> Molecule # 16: Computed CA chirality from input structure is L_AA
+=std=bcl::util=> FindFrags has run for 15.9599 seconds
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 104
+=std=bcl::chemistry=> Found 8 rotatable bonds, 0 flexible rings, 8 changeable bond angles; 
+=std=bcl::app=> Molecule # 17: Computed CA chirality from input structure is L_AA
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 104
+=std=bcl::chemistry=> Found 8 rotatable bonds, 0 flexible rings, 8 changeable bond angles; 
+=std=bcl::app=> Molecule # 18: Computed CA chirality from input structure is D_AA
+=std=bcl::util=> FindFrags has run for 17.8232 seconds
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 104
+=std=bcl::chemistry=> Found 8 rotatable bonds, 0 flexible rings, 8 changeable bond angles; 
+=std=bcl::chemistry=>  # rejected due to severe clashes: 1275
+=std=bcl::app=> Molecule # 19: Computed CA chirality from input structure is L_AA
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 104
+=std=bcl::chemistry=> Found 8 rotatable bonds, 0 flexible rings, 8 changeable bond angles; 
+=std=bcl::app=> Molecule # 20: Computed CA chirality from input structure is D_AA
+=std=bcl::util=> FindFrags has run for 19.6966 seconds
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 104
+=std=bcl::chemistry=> Found 8 rotatable bonds, 0 flexible rings, 8 changeable bond angles; 
+=std=bcl::chemistry=>  # rejected due to severe clashes: 1298
+=std=bcl::app=> Molecule # 21: Computed CA chirality from input structure is L_AA
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 106
+=std=bcl::chemistry=> Found 10 rotatable bonds, 0 flexible rings, 9 changeable bond angles; 
+=std=bcl::app=> Molecule # 22: Computed CA chirality from input structure is D_AA
+=std=bcl::util=> FindFrags has run for 21.377 seconds
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 105
+=std=bcl::chemistry=> Found 9 rotatable bonds, 0 flexible rings, 8 changeable bond angles; 
+=std=bcl::chemistry=>  # rejected due to severe clashes: 1113
+=std=bcl::app=> Molecule # 23: Computed CA chirality from input structure is D_AA
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 106
+=std=bcl::chemistry=> Found 10 rotatable bonds, 0 flexible rings, 9 changeable bond angles; 
+=std=bcl::chemistry=>  # rejected due to severe clashes: 1202
+=std=bcl::app=> Molecule # 24: Computed CA chirality from input structure is D_AA
+=std=bcl::util=> FindFrags has run for 23.2892 seconds
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 111
+=std=bcl::chemistry=> Found 10 rotatable bonds, 0 flexible rings, 9 changeable bond angles; 
+=std=bcl::chemistry=>  # rejected due to severe clashes: 1283
+=std=bcl::app=> Molecule # 25: Computed CA chirality from input structure is D_AA
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 106
+=std=bcl::chemistry=> Found 9 rotatable bonds, 0 flexible rings, 9 changeable bond angles; 
+=std=bcl::chemistry=>  # rejected due to severe clashes: 1251
+=std=bcl::app=> Molecule # 26: Computed CA chirality from input structure is L_AA
+=std=bcl::util=> FindFrags has run for 25.2115 seconds
+=std=bcl::chemistry=> Number of fragments in rotamer library that map to this molecule: 106
+=std=bcl::chemistry=> Found 9 rotatable bonds, 0 flexible rings, 9 changeable bond angles; 
+
+========================================================================================================================
+=slt=bcl=> bcl has run for 00:01:09, peak virtual memory used: 1340 MB, peak physical RAM used: 1235 MB
+=std=bcl::util=> ConformationComparison has run for 0.159056 seconds
+=std=bcl::util=> Clash resolution (not counting clash scoring) has run for 5.65466 seconds
+=std=bcl::util=>   AtomClashScore ClashComputation has run for 3.44383 seconds
+=std=bcl::util=> Sampling Total has run for 40.5704 seconds
+=std=bcl::util=> bond_length_sampling has run for 0.341203 seconds
+=std=bcl::util=> bond_angle_setup has run for 5.107 seconds
+=std=bcl::util=> bond_angles_sampling_for_ring_bonds has run for 1.27169 seconds
+=std=bcl::util=> bond_angle_sampling_for_3-4_bonded_atoms has run for 3.22743 seconds
+=std=bcl::util=> bond_angle_sampling_for_2_bonded_atoms has run for 0.516333 seconds
+=std=bcl::util=> do_rotate_bond has run for 0.431003 seconds
+=std=bcl::util=> create_transformation_matrix has run for 1.85558 seconds
+=std=bcl::util=> mutate_chain has run for 8.03543 seconds
+=std=bcl::util=> mutate_ring has run for 0.006787 seconds
+=std=bcl::util=> MapFragmentIsomorphisms has run for 1.10235 seconds
+=std=bcl::util=> FindFrags has run for 25.2115 seconds
